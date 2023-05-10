@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq入门</title>
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+第一个数：<input type="text" id="num1">+
+第二个数：<input type="text" id="num2">=<span id="num3"></span>
+<div><button id="btn">计算</button></div>
+<script>
+    $(()=>{
+        $("#btn").click(()=>{
+            let n = parseInt($("#num1").val()) + parseInt($("#num2").val());
+            $("#num3").html(n);
+        })
+    })
+
+</script>
+</body>
+</html>
