@@ -4,10 +4,9 @@ import com.ruoyi.common.annotation.Anonymous;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.suke.pojo.AssetsTotal;
-import com.ruoyi.suke.service.IAssetsTotalService;
+import com.ruoyi.suke.service.AssetsTotalService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -22,22 +21,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/assetstotal")
 public class AssetsTotalController extends BaseController {
     @Autowired
-    private IAssetsTotalService assetsTotalService;
-    /**
-     * 根据资产id返回资产对象
-     * */
-//    @Anonymous
-//    @PostMapping("/findbyid")
-//    public AssetsTotal findById (Integer id){
-////        System.out.println(assetsTotalService.save());
-//        AssetsTotal assetstotal = assetsTotalService.selectAssetsTotalById(id.toString());
-//        return assetstotal;
-//    }
+    private AssetsTotalService assetstotalservice;
+
     @Anonymous
-    @PostMapping("/findbyid")
-    public AjaxResult getInfo(@Param("id") String id)
-    {
-        return success(assetsTotalService.selectAssetsTotalById(id));
+    @RequestMapping("/findbyid")
+    public AssetsTotal findById (Integer id){
+        AssetsTotal assetstotal = assetstotalservice.findById(id);
+        System.out.println(assetstotal);
+        return assetstotal;
     }
 
 }

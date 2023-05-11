@@ -1,4 +1,4 @@
-let baseurl = "http://localhost:82/dev-api/";
+let baseurl = "http://localhost:80/dev-api";
 
 // 1.入驻企业饼图
 ( () => {
