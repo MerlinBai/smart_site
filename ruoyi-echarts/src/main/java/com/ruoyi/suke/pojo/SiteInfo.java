@@ -28,6 +28,7 @@ PRIMARY KEY (`id`)
 @TableName("tb_site_info")
 public class SiteInfo {
     @TableId(type= IdType.AUTO)  //该列主键生成策略: 自增
+
     private Integer id;
     private Integer companyNumber;
     private Integer dettledCompanyNumber;

@@ -6,8 +6,18 @@
     写的是: 对应的Mapper接口的全限定名(Mapper接口的包名.类名)
 -->
 <mapper namespace="com.ruoyi.suke.mapper.SiteInfoDao">
+    <resultMap id="selectUpTocaseSite" type="com.ruoyi.suke.pojo.SiteInfo">
+        <result column="id" property="id"></result>
+        <result column="company_number" property="companyNumber"></result>
+        <result column="dettled_company_number" property="dettledCompanyNumber"></result>
+        <result column="engaged_people_number" property="engagedPeopleNumber"></result>
+        <result column="covered_area" property="coveredArea"></result>
+        <result column="Construction_erea" property="ConstructionErea"></result>
+        <result column="Construction_land_erea" property="ConstructionLandErea"></result>
+    </resultMap>
+
     <!--  id是方法名，resultType是返回值类型  -->
-    <select id="getSiteInfoById" resultType="com.ruoyi.suke.pojo.SiteInfo">
+    <select id="getSiteInfoById" resultMap="selectUpTocaseSite">
         SELECT *
         FROM tb_site_info
         WHERE id = #{id}
