@@ -1,4 +1,4 @@
-let baseurl = "http://localhost:82/dev-api/";
+let baseurl = "http://localhost:81/dev-api";
 
 
 // 3.空间环境监控
