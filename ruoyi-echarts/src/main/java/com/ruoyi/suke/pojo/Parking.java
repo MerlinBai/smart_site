@@ -22,8 +22,9 @@ SELECT p.parking_number,p.site_id,
 p.gates_number,p.parking_space,pr.entry_number,pr.out_number,
 pr.vehicles_number,pr.parkId
  */
-@TableName("tb_parking")
+//@TableName("tb_parking")
 public class Parking {
+
     private Integer parkingNumber ;//车场数
     private Integer gatesNumber ;//道闸数
     private Integer parkingSpace ;//车位数
