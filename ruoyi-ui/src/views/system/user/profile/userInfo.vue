@@ -9,6 +9,9 @@
     <el-form-item label="邮箱" prop="email">
       <el-input v-model="user.email" maxlength="50" />
     </el-form-item>
+    <el-form-item label="身份证号" prop="idNumber">
+      <el-input v-model="user.idNumber" maxlength="50" />
+    </el-form-item>
     <el-form-item label="性别">
       <el-radio-group v-model="user.sex">
         <el-radio label="0">男</el-radio>
@@ -51,6 +54,14 @@ export default {
           {
             pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
             message: "请输入正确的手机号码",
+            trigger: "blur"
+          }
+        ],
+        idNumber: [
+          { required: true, message: "身份证号不能为空", trigger: "blur" },
+          {
+            pattern: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/,
+            message: "请输入正确的身份证号",
             trigger: "blur"
           }
         ]

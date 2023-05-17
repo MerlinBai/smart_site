@@ -24,6 +24,10 @@
                 <div class="pull-right">{{ user.email }}</div>
               </li>
               <li class="list-group-item">
+                <svg-icon icon-class="idNumber" />身份证号
+                <div class="pull-right">{{ user.idNumber }}</div>
+              </li>
+              <li class="list-group-item">
                 <svg-icon icon-class="tree" />所属部门
                 <div class="pull-right" v-if="user.dept">{{ user.dept.deptName }} / {{ postGroup }}</div>
               </li>

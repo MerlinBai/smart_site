@@ -38,6 +38,9 @@ public class SysProfileController extends BaseController
     @Autowired
     private TokenService tokenService;
 
+    @Autowired
+    private ISysUserService sysUserService;
+
     /**
      * 个人信息
      */
@@ -46,6 +49,7 @@ public class SysProfileController extends BaseController
     {
         LoginUser loginUser = getLoginUser();
         SysUser user = loginUser.getUser();
+        user.setIdNumber(sysUserService.selectUserById(SecurityUtils.getUserId()).getIdNumber());
         AjaxResult ajax = AjaxResult.success(user);
         ajax.put("roleGroup", userService.selectUserRoleGroup(loginUser.getUsername()));
         ajax.put("postGroup", userService.selectUserPostGroup(loginUser.getUsername()));
