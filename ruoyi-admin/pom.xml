@@ -68,6 +68,12 @@
             <artifactId>ruoyi-echarts</artifactId>
             <version>3.8.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-video</artifactId>
+            <version>3.8.5</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

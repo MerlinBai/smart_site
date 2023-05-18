@@ -181,6 +181,7 @@
         <module>ruoyi-generator</module>
         <module>ruoyi-common</module>
         <module>ruoyi-echarts</module>
+        <module>ruoyi-video</module>
     </modules>
     <packaging>pom</packaging>
 
