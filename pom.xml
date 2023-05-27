@@ -149,6 +149,11 @@
                 <version>${ruoyi.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-inform</artifactId>
+                <version>3.8.5</version>
+            </dependency>
             <!-- 核心模块-->
             <dependency>
                 <groupId>com.ruoyi</groupId>
@@ -182,6 +187,7 @@
         <module>ruoyi-common</module>
         <module>ruoyi-echarts</module>
         <module>ruoyi-video</module>
+        <module>ruoyi-inform</module>
     </modules>
     <packaging>pom</packaging>
 

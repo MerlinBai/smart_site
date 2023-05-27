@@ -1,4 +1,4 @@
-let baseurl = "http://localhost:81/dev-api";
+let baseurl = "http://localhost:80/dev-api";
 
 
 // 3.空间环境监控
@@ -18,7 +18,7 @@ let baseurl = "http://localhost:81/dev-api";
         // 设置图表提示框组件
         tooltip: {
             // 触发方式---axis坐标轴触发；item数据项图形触发
-            trigger: 'axis'nb
+            trigger: 'axis'
         },
         xAxis: {
             type: 'category',

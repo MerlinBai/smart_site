@@ -116,7 +116,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -222,6 +222,17 @@ export default {
     getList() {
       this.loading = true;
       listInform(this.queryParams).then(response => {
+        // for(var i=0;i<response.rows.length;i++) {
+        //   // console.log(response.rows[i].infromFile);
+        //   var informFileMsg = response.rows[i].infromFile;
+        //   var split = informFileMsg.split("/");
+        //   informFileMsg = "";
+        //   for(var j = 6; j<split.length; j++) {
+        //     informFileMsg = informFileMsg + split[j];
+        //   }
+        //   // console.log(informFileMsg);
+        //   response.rows[i].infromFile = informFileMsg;
+        // }
         this.informList = response.rows;
         this.total = response.total;
         this.loading = false;

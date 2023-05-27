@@ -7,7 +7,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 通知对象 tb_inform
- * 
+ *
  * @author ruoyi
  * @date 2023-05-17
  */
@@ -38,57 +38,57 @@ public class Inform extends BaseEntity
     @Excel(name = "通知文件")
     private String infromFile;
 
-    public void setInformId(Long informId) 
+    public void setInformId(Long informId)
     {
         this.informId = informId;
     }
 
-    public Long getInformId() 
+    public Long getInformId()
     {
         return informId;
     }
-    public void setInformTitle(String informTitle) 
+    public void setInformTitle(String informTitle)
     {
         this.informTitle = informTitle;
     }
 
-    public String getInformTitle() 
+    public String getInformTitle()
     {
         return informTitle;
     }
-    public void setInformType(String informType) 
+    public void setInformType(String informType)
     {
         this.informType = informType;
     }
 
-    public String getInformType() 
+    public String getInformType()
     {
         return informType;
     }
-    public void setStatus(String status) 
+    public void setStatus(String status)
     {
         this.status = status;
     }
 
-    public String getStatus() 
+    public String getStatus()
     {
         return status;
     }
-    public void setInformContent(String informContent) 
+    public void setInformContent(String informContent)
     {
         this.informContent = informContent;
     }
 
-    public String getInformContent() 
+    public String getInformContent()
     {
         return informContent;
     }
-    public void setInfromFile(String infromFile) 
+    public void setInfromFile(String infromFile)
     {
         this.infromFile = infromFile;
     }
 
-    public String getInfromFile() 
+    public String getInfromFile()
     {
         return infromFile;
     }
@@ -96,16 +96,16 @@ public class Inform extends BaseEntity
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("informId", getInformId())
-            .append("informTitle", getInformTitle())
-            .append("informType", getInformType())
-            .append("status", getStatus())
-            .append("informContent", getInformContent())
-            .append("infromFile", getInfromFile())
-            .append("createBy", getCreateBy())
-            .append("createTime", getCreateTime())
-            .append("updateBy", getUpdateBy())
-            .append("updateTime", getUpdateTime())
-            .toString();
+                .append("informId", getInformId())
+                .append("informTitle", getInformTitle())
+                .append("informType", getInformType())
+                .append("status", getStatus())
+                .append("informContent", getInformContent())
+                .append("infromFile", getInfromFile())
+                .append("createBy", getCreateBy())
+                .append("createTime", getCreateTime())
+                .append("updateBy", getUpdateBy())
+                .append("updateTime", getUpdateTime())
+                .toString();
     }
 }
