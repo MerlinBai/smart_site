@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.satisfaction.mapper.SurveyMapper">
+    
+    <resultMap type="Survey" id="SurveyResult">
+        <result property="surveyId"    column="survey_id"    />
+        <result property="surveyType"    column="survey_type"    />
+        <result property="surveyRegion"    column="survey_region"    />
+        <result property="surveyNum"    column="survey_num"    />
+        <result property="surveyBy"    column="survey_by"    />
+        <result property="surveyResult"    column="survey_result"    />
+        <result property="surveyTime"    column="survey_time"    />
+    </resultMap>
+
+    <sql id="selectSurveyVo">
+        select survey_id, survey_type, survey_region, survey_num, survey_by, survey_result, survey_time from tb_survey
+    </sql>
+
+    <select id="selectSurveyList" parameterType="Survey" resultMap="SurveyResult">
+        <include refid="selectSurveyVo"/>
+        <where>  
+            <if test="surveyType != null  and surveyType != ''"> and survey_type = #{surveyType}</if>
+            <if test="surveyRegion != null  and surveyRegion != ''"> and survey_region like concat('%', #{surveyRegion}, '%')</if>
+            <if test="surveyNum != null "> and survey_num = #{surveyNum}</if>
+            <if test="surveyBy != null  and surveyBy != ''"> and survey_by = #{surveyBy}</if>
+            <if test="surveyResult != null "> and survey_result = #{surveyResult}</if>
+            <if test="surveyTime != null "> and survey_time = #{surveyTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectSurveyBySurveyId" parameterType="Long" resultMap="SurveyResult">
+        <include refid="selectSurveyVo"/>
+        where survey_id = #{surveyId}
+    </select>
+        
+    <insert id="insertSurvey" parameterType="Survey" useGeneratedKeys="true" keyProperty="surveyId">
+        insert into tb_survey
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="surveyType != null">survey_type,</if>
+            <if test="surveyRegion != null">survey_region,</if>
+            <if test="surveyNum != null">survey_num,</if>
+            <if test="surveyBy != null">survey_by,</if>
+            <if test="surveyResult != null">survey_result,</if>
+            <if test="surveyTime != null">survey_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="surveyType != null">#{surveyType},</if>
+            <if test="surveyRegion != null">#{surveyRegion},</if>
+            <if test="surveyNum != null">#{surveyNum},</if>
+            <if test="surveyBy != null">#{surveyBy},</if>
+            <if test="surveyResult != null">#{surveyResult},</if>
+            <if test="surveyTime != null">#{surveyTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSurvey" parameterType="Survey">
+        update tb_survey
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="surveyType != null">survey_type = #{surveyType},</if>
+            <if test="surveyRegion != null">survey_region = #{surveyRegion},</if>
+            <if test="surveyNum != null">survey_num = #{surveyNum},</if>
+            <if test="surveyBy != null">survey_by = #{surveyBy},</if>
+            <if test="surveyResult != null">survey_result = #{surveyResult},</if>
+            <if test="surveyTime != null">survey_time = #{surveyTime},</if>
+        </trim>
+        where survey_id = #{surveyId}
+    </update>
+
+    <delete id="deleteSurveyBySurveyId" parameterType="Long">
+        delete from tb_survey where survey_id = #{surveyId}
+    </delete>
+
+    <delete id="deleteSurveyBySurveyIds" parameterType="String">
+        delete from tb_survey where survey_id in 
+        <foreach item="surveyId" collection="array" open="(" separator="," close=")">
+            #{surveyId}
+        </foreach>
+    </delete>
+</mapper>

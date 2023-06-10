@@ -14,6 +14,7 @@ import com.ruoyi.inform.service.IInformService;
 import com.ruoyi.inform.service.IUserInformStatusService;
 import com.ruoyi.system.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
@@ -90,7 +91,6 @@ public class InformController extends BaseController
                 list.add(userInformStatusList.get(i));
             }
         }
-
         for (int i = 0; i < list.size(); i++) {
 
             if (list.get(i).getUserId().longValue() == SecurityUtils.getUserId().longValue()) {

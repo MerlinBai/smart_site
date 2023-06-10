@@ -74,9 +74,39 @@
             <artifactId>ruoyi-echarts</artifactId>
             <version>3.8.5</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>ruoyi-map</artifactId>
+            <version>3.8.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>ruoyi-crew</artifactId>
+            <version>3.8.5</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>ruoyi-worker</artifactId>
+            <version>3.8.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>ruoyi-satisfaction</artifactId>
+            <version>3.8.5</version>
+        </dependency>
         <dependency>
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-video</artifactId>
+            <version>3.8.5</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>ruoyi-satisfaction</artifactId>
             <version>3.8.5</version>
             <scope>compile</scope>
         </dependency>

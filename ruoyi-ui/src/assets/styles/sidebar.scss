@@ -1,7 +1,7 @@
 #app {
 
   .main-container {
-    height: 100%;
+    height: calc(100% - 100px);
     transition: margin-left .28s;
     margin-left: $base-sidebar-width;
     position: relative;
@@ -16,10 +16,10 @@
     transition: width 0.28s;
     width: $base-sidebar-width !important;
     background-color: $base-menu-background;
-    height: 100%;
+    height: calc(100% - 100px);
     position: fixed;
     font-size: 0px;
-    top: 0;
+    top: 100px;
     bottom: 0;
     left: 0;
     z-index: 1001;

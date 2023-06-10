@@ -1,17 +1,22 @@
 <template>
   <div :class="classObj" class="app-wrapper" :style="{'--current-color': theme}">
+    <div class="nav-home">陵城区智慧村建</div>
+    <div style="height: 100px;"></div>
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>
     <sidebar v-if="!sidebar.hide" class="sidebar-container"/>
-    <div :class="{hasTagsView:needTagsView,sidebarHide:sidebar.hide}" class="main-container">
-      <div :class="{'fixed-header':fixedHeader}">
-        <navbar/>
-        <tags-view v-if="needTagsView"/>
+    <div>
+      <div :class="{hasTagsView:needTagsView,sidebarHide:sidebar.hide}" class="main-container">
+        <div :class="{'fixed-header':fixedHeader}">
+          <navbar/>
+          <tags-view v-if="needTagsView"/>
+        </div>
+        <app-main/>
+        <right-panel>
+          <settings/>
+        </right-panel>
       </div>
-      <app-main/>
-      <right-panel>
-        <settings/>
-      </right-panel>
     </div>
+    
   </div>
 </template>
 
@@ -66,6 +71,24 @@ export default {
   @import "~@/assets/styles/mixin.scss";
   @import "~@/assets/styles/variables.scss";
 
+  .nav-home{
+    position: fixed;
+    // bottom: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1001;
+    height: 100px;
+    // background-color: #111;
+    background-image: url('../assets/Likenoai/navBg2.png');
+    background-size: cover;
+    font-size: 54px;
+    font-weight:400;
+    letter-spacing: 15px;
+    color: white;
+    line-height: 100px;
+    text-align: center;
+  }
   .app-wrapper {
     @include clearfix;
     position: relative;
