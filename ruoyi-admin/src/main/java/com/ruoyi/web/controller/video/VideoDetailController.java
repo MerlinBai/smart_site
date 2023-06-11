@@ -1,7 +1,9 @@
-package com.ruoyi.video.controller;
+package com.ruoyi.web.controller.video;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ruoyi.common.annotation.Anonymous;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  * @author ruoyi
  * @date 2023-05-18
  */
+@Anonymous
 @RestController
 @RequestMapping("/systevideom/detail")
 public class VideoDetailController extends BaseController
@@ -37,7 +40,7 @@ public class VideoDetailController extends BaseController
     /**
      * 查询记录视频观看时长列表
      */
-    @PreAuthorize("@ss.hasPermi('systevideom:detail:list')")
+    //@PreAuthorize("@ss.hasPermi('systevideom:detail:list')")
     @GetMapping("/list")
     public TableDataInfo list(VideoDetail videoDetail)
     {
@@ -49,7 +52,7 @@ public class VideoDetailController extends BaseController
     /**
      * 导出记录视频观看时长列表
      */
-    @PreAuthorize("@ss.hasPermi('systevideom:detail:export')")
+    //@PreAuthorize("@ss.hasPermi('systevideom:detail:export')")
     @Log(title = "记录视频观看时长", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, VideoDetail videoDetail)
@@ -62,7 +65,7 @@ public class VideoDetailController extends BaseController
     /**
      * 获取记录视频观看时长详细信息
      */
-    @PreAuthorize("@ss.hasPermi('systevideom:detail:query')")
+    //@PreAuthorize("@ss.hasPermi('systevideom:detail:query')")
     @GetMapping(value = "/{videoId}")
     public AjaxResult getInfo(@PathVariable("videoId") Long videoId)
     {
@@ -72,7 +75,7 @@ public class VideoDetailController extends BaseController
     /**
      * 新增记录视频观看时长
      */
-    @PreAuthorize("@ss.hasPermi('systevideom:detail:add')")
+    //@PreAuthorize("@ss.hasPermi('systevideom:detail:add')")
     @Log(title = "记录视频观看时长", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody VideoDetail videoDetail)
@@ -83,7 +86,7 @@ public class VideoDetailController extends BaseController
     /**
      * 修改记录视频观看时长
      */
-    @PreAuthorize("@ss.hasPermi('systevideom:detail:edit')")
+    //@PreAuthorize("@ss.hasPermi('systevideom:detail:edit')")
     @Log(title = "记录视频观看时长", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody VideoDetail videoDetail)
@@ -94,7 +97,7 @@ public class VideoDetailController extends BaseController
     /**
      * 删除记录视频观看时长
      */
-    @PreAuthorize("@ss.hasPermi('systevideom:detail:remove')")
+    //@PreAuthorize("@ss.hasPermi('systevideom:detail:remove')")
     @Log(title = "记录视频观看时长", businessType = BusinessType.DELETE)
     @DeleteMapping("/{videoIds}")
     public AjaxResult remove(@PathVariable Long[] videoIds)

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.mapper.ProjectMapper">
+
+    <resultMap type="Project" id="ProjectResult">
+        <result property="projectId"    column="project_id"    />
+        <result property="projectName"    column="project_name"    />
+        <result property="projectInfo"    column="project_info"    />
+        <result property="projectPopulaion"    column="project_populaion"    />
+        <result property="projetcBeginTime"    column="projetc_begin_time"    />
+        <result property="projectEndTime"    column="project_end_time"    />
+        <result property="crewId"    column="crew_id"    />
+    </resultMap>
+
+    <sql id="selectProjectVo">
+        select project_id, project_name, project_info, project_populaion, projetc_begin_time, project_end_time, crew_id from tb_project
+    </sql>
+
+    <select id="selectProjectList" parameterType="Project" resultMap="ProjectResult">
+        <include refid="selectProjectVo"/>
+        <where>
+            <if test="projectName != null  and projectName != ''"> and project_name like concat('%', #{projectName}, '%')</if>
+            <if test="crewId != null "> and crew_id = #{crewId}</if>
+        </where>
+    </select>
+
+    <select id="selectProjectByProjectId" parameterType="Long" resultMap="ProjectResult">
+        <include refid="selectProjectVo"/>
+        where project_id = #{projectId}
+    </select>
+    <select id="SelectCrewName" resultType="java.lang.String">
+        select name from tb_ruoyi_crew where crew_id = #{crewId}
+    </select>
+
+
+    <insert id="insertProject" parameterType="Project">
+        insert into tb_project
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="projectId != null">project_id,</if>
+            <if test="projectName != null">project_name,</if>
+            <if test="projectInfo != null">project_info,</if>
+            <if test="projectPopulaion != null">project_populaion,</if>
+            <if test="projetcBeginTime != null">projetc_begin_time,</if>
+            <if test="projectEndTime != null">project_end_time,</if>
+            <if test="crewId != null">crew_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="projectId != null">#{projectId},</if>
+            <if test="projectName != null">#{projectName},</if>
+            <if test="projectInfo != null">#{projectInfo},</if>
+            <if test="projectPopulaion != null">#{projectPopulaion},</if>
+            <if test="projetcBeginTime != null">#{projetcBeginTime},</if>
+            <if test="projectEndTime != null">#{projectEndTime},</if>
+            <if test="crewId != null">#{crewId},</if>
+        </trim>
+    </insert>
+
+    <update id="updateProject" parameterType="Project">
+        update tb_project
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="projectName != null">project_name = #{projectName},</if>
+            <if test="projectInfo != null">project_info = #{projectInfo},</if>
+            <if test="projectPopulaion != null">project_populaion = #{projectPopulaion},</if>
+            <if test="projetcBeginTime != null">projetc_begin_time = #{projetcBeginTime},</if>
+            <if test="projectEndTime != null">project_end_time = #{projectEndTime},</if>
+            <if test="crewId != null">crew_id = #{crewId},</if>
+        </trim>
+        where project_id = #{projectId}
+    </update>
+
+    <delete id="deleteProjectByProjectId" parameterType="Long">
+        delete from tb_project where project_id = #{projectId}
+    </delete>
+
+    <delete id="deleteProjectByProjectIds" parameterType="String">
+        delete from tb_project where project_id in
+        <foreach item="projectId" collection="array" open="(" separator="," close=")">
+            #{projectId}
+        </foreach>
+    </delete>
+</mapper>

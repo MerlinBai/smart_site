@@ -83,7 +83,7 @@
 
     <el-table v-loading="loading" :data="informList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="通知id" align="center" prop="informId" />
+      <!-- <el-table-column label="通知id" align="center" prop="informId" /> -->
       <el-table-column label="通知标题" align="center" prop="informTitle" />
       <el-table-column label="通知类型" align="center" prop="informType">
         <template slot-scope="scope">
@@ -95,7 +95,7 @@
           <dict-tag :options="dict.type.sys_notice_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="通知内容" align="center" prop="informContent" />
+      <!-- <el-table-column label="通知内容" align="center" prop="informContent" /> -->
       <el-table-column label="通知文件" align="center" prop="infromFile" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">

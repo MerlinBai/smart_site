@@ -53,13 +53,16 @@ public class InformServiceImpl implements IInformService
         List<Inform> informs = informMapper.selectInformList(inform);
         for (int i = 0; i < informs.size(); i++) {
             String infromFile = informs.get(i).getInfromFile();
-            String[] split = infromFile.split("/");
-            infromFile = "";
-            for (int j = 6; j < split.length; j++) {
-                infromFile = infromFile + split[j];
+            if (infromFile != null) {
+                String[] split = infromFile.split("/");
+                infromFile = "";
+                for (int j = 6; j < split.length; j++) {
+                    infromFile = infromFile + split[j];
+                }
+                informs.get(i).setInfromFile(infromFile);
             }
-            informs.get(i).setInfromFile(infromFile);
         }
+//        informs.sort((t1, t2) -> t2.getUpdateTime().compareTo(t1.getUpdateTime()));
         return informs;
     }
 

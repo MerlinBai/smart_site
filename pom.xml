@@ -188,6 +188,10 @@
         <module>ruoyi-echarts</module>
         <module>ruoyi-video</module>
         <module>ruoyi-inform</module>
+        <module>ruoyi-satisfaction</module>
+        <module>ruoyi-map</module>
+        <module>ruoyi-crew</module>
+        <module>ruoyi-worker</module>
     </modules>
     <packaging>pom</packaging>
 
