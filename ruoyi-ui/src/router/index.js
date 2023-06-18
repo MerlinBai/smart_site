@@ -6,6 +6,7 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 
+
 /**
  * Note: 路由配置项
  *
@@ -44,6 +45,16 @@ export const constantRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login'),
+    hidden: true
+  },
+  {
+    path: '/video',
+    component: () => import('@/views/theVideo'),
+    hidden: true
+  },
+  {
+    path: '/test',
+    component: () => import('@/views/train/video/watch.vue'),
     hidden: true
   },
   {
@@ -87,7 +98,7 @@ export const constantRoutes = [
         meta: { title: '个人中心', icon: 'user' }
       }
     ]
-  }
+  },
 ]
 
 // 动态路由，基于用户权限动态去加载
@@ -103,6 +114,17 @@ export const dynamicRoutes = [
         component: () => import('@/views/system/user/authRole'),
         name: 'AuthRole',
         meta: { title: '分配角色', activeMenu: '/system/user' }
+      }
+    ]
+  },
+  {
+    path:' /train/train',
+    component: Layout,
+    hidden:false,
+    children: [
+      {
+        path: 'test',
+        component:() => import('@/views/train/video/watch.vue')
       }
     ]
   },
