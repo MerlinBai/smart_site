@@ -40,7 +40,7 @@ public class ProjectController extends BaseController
     /**
      * 查询项目管理列表
      */
-    @PreAuthorize("@ss.hasPermi('project:project:list')")
+//    @PreAuthorize("@ss.hasPermi('project:project:list')")
     @GetMapping("/list")
     public TableDataInfo list( Project project)
     {
@@ -56,7 +56,7 @@ public class ProjectController extends BaseController
     /**
      * 导出项目管理列表
      */
-    @PreAuthorize("@ss.hasPermi('project:project:export')")
+//    @PreAuthorize("@ss.hasPermi('project:project:export')")
     @Log(title = "项目管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, Project project)
@@ -69,7 +69,7 @@ public class ProjectController extends BaseController
     /**
      * 获取项目管理详细信息
      */
-    @PreAuthorize("@ss.hasPermi('project:project:query')")
+//    @PreAuthorize("@ss.hasPermi('project:project:query')")
     @GetMapping(value = "/{projectId}")
     public AjaxResult getInfo(@PathVariable("projectId") Long projectId)
     {
@@ -79,7 +79,7 @@ public class ProjectController extends BaseController
     /**
      * 新增项目管理
      */
-    @PreAuthorize("@ss.hasPermi('project:project:add')")
+//    @PreAuthorize("@ss.hasPermi('project:project:add')")
     @Log(title = "项目管理", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody Project project)
@@ -92,7 +92,7 @@ public class ProjectController extends BaseController
     /**
      * 修改项目管理
      */
-    @PreAuthorize("@ss.hasPermi('project:project:edit')")
+//    @PreAuthorize("@ss.hasPermi('project:project:edit')")
     @Log(title = "项目管理", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody Project project)
@@ -103,7 +103,7 @@ public class ProjectController extends BaseController
     /**
      * 删除项目管理
      */
-    @PreAuthorize("@ss.hasPermi('project:project:remove')")
+//    @PreAuthorize("@ss.hasPermi('project:project:remove')")
     @Log(title = "项目管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{projectIds}")
     public AjaxResult remove(@PathVariable Long[] projectIds)

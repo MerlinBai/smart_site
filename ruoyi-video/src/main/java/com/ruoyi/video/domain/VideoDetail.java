@@ -1,9 +1,13 @@
 package com.ruoyi.video.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ruoyi.common.annotation.DataSource;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
+
+import java.util.Date;
 
 /**
  * 记录视频观看时长对象 tb_video_detail
@@ -11,6 +15,8 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * @author ruoyi
  * @date 2023-05-18
  */
+
+
 public class VideoDetail extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
@@ -37,8 +43,42 @@ public class VideoDetail extends BaseEntity
     /** 用户id */
     @Excel(name = "用户id")
     private Long userId;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+    private Date createTime;
 
     private Long realTime;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String createBy;
+
+    @Override
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    @Override
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    private String name;
+
+    private String img;
 
     public void setVideoId(Long videoId)
     {
@@ -104,6 +144,16 @@ public class VideoDetail extends BaseEntity
     }
 
     @Override
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    @Override
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    @Override
     public String toString() {
         return "VideoDetail{" +
                 "videoId=" + videoId +
@@ -112,7 +162,11 @@ public class VideoDetail extends BaseEntity
                 ", videoLink='" + videoLink + '\'' +
                 ", done=" + done +
                 ", userId=" + userId +
+                ", createTime=" + createTime +
                 ", realTime=" + realTime +
+                ", createBy='" + createBy + '\'' +
+                ", name='" + name + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 

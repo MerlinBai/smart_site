@@ -43,7 +43,7 @@ public class RuoyiWorkerController extends BaseController
     /**
      * 查询员工管理列表
      */
-    @PreAuthorize("@ss.hasPermi('system:worker:list')")
+//    @PreAuthorize("@ss.hasPermi('system:worker:list')")
     @GetMapping("/list")
     public TableDataInfo list(RuoyiWorker ruoyiWorker)
     {
@@ -55,7 +55,7 @@ public class RuoyiWorkerController extends BaseController
     /**
      * 导出员工管理列表
      */
-    @PreAuthorize("@ss.hasPermi('system:worker:export')")
+//    @PreAuthorize("@ss.hasPermi('system:worker:export')")
     @Log(title = "员工管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, RuoyiWorker ruoyiWorker)
@@ -68,7 +68,7 @@ public class RuoyiWorkerController extends BaseController
     /**
      * 获取员工管理详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:worker:query')")
+//    @PreAuthorize("@ss.hasPermi('system:worker:query')")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
     {
@@ -78,7 +78,7 @@ public class RuoyiWorkerController extends BaseController
     /**
      * 新增员工管理
      */
-    @PreAuthorize("@ss.hasPermi('system:worker:add')")
+//    @PreAuthorize("@ss.hasPermi('system:worker:add')")
     @Log(title = "员工管理", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody RuoyiWorker ruoyiWorker)
@@ -89,7 +89,7 @@ public class RuoyiWorkerController extends BaseController
     /**
      * 修改员工管理
      */
-    @PreAuthorize("@ss.hasPermi('system:worker:edit')")
+//    @PreAuthorize("@ss.hasPermi('system:worker:edit')")
     @Log(title = "员工管理", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody RuoyiWorker ruoyiWorker)
@@ -100,7 +100,7 @@ public class RuoyiWorkerController extends BaseController
     /**
      * 删除员工管理
      */
-    @PreAuthorize("@ss.hasPermi('system:worker:remove')")
+//    @PreAuthorize("@ss.hasPermi('system:worker:remove')")
     @Log(title = "员工管理", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
@@ -116,7 +116,7 @@ public class RuoyiWorkerController extends BaseController
     }
 
     @Log(title = "员工管理", businessType = BusinessType.IMPORT)
-    @PreAuthorize("@ss.hasPermi('system:worker:import')")
+//    @PreAuthorize("@ss.hasPermi('system:worker:import')")
     @PostMapping("/importData")
     public AjaxResult importData(MultipartFile file, boolean updateSupport) throws Exception
     {

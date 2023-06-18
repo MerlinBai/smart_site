@@ -1,11 +1,19 @@
 package com.ruoyi.video.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+
+import com.ruoyi.video.domain.UserLog;
+import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.video.mapper.VideoDetailMapper;
 import com.ruoyi.video.domain.VideoDetail;
 import com.ruoyi.video.service.IVideoDetailService;
+
+import javax.annotation.Resource;
 
 /**
  * 记录视频观看时长Service业务层处理
@@ -51,9 +59,23 @@ public class VideoDetailServiceImpl implements IVideoDetailService
      */
     @Override
     public int insertVideoDetail(VideoDetail videoDetail){
+        String videoViewTime = videoDetail.getVideoViewTime();
+        String progressBar = videoDetail.getProgressBar();
+        if(videoViewTime!=null&&progressBar!=null) {
+            long videoViewTimeLong = Long.parseLong(videoViewTime);
+            long progressBarLong = Long.parseLong(progressBar);
+            Long realTime = videoDetail.getRealTime();
 
+            Long flag1 = videoViewTimeLong / realTime;
+            Long flag2 = progressBarLong / realTime;
+            if (flag1 >= 0.8 && flag2 >= 0.8) {
+                videoDetail.setDone(1L);
+            }
+        }
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        Date date = new Date(System.currentTimeMillis());
 
-
+        videoDetail.setCreateTime(date);
         return videoDetailMapper.insertVideoDetail(videoDetail);
     }
 
@@ -111,5 +133,28 @@ public class VideoDetailServiceImpl implements IVideoDetailService
     public int deleteVideoDetailByVideoId(Long videoId)
     {
         return videoDetailMapper.deleteVideoDetailByVideoId(videoId);
+    }
+
+    @Override
+    public List<VideoDetail> select() {
+        return videoDetailMapper.select();
+    }
+
+    @Override
+    public void lasttime(UserLog userlog) {
+        UserLog ul = videoDetailMapper.selectLog(userlog);
+        if(ul != null) {
+            if(userlog.getLastTime() < ul.getLastTime())
+                userlog.setLastTime(ul.getLastTime());
+            videoDetailMapper.updateLog(userlog);
+        }
+        else {
+            videoDetailMapper.insertLog(userlog);
+        }
+    }
+
+    @Override
+    public Double getlast(UserLog userLog) {
+        return videoDetailMapper.getlast(userLog);
     }
 }

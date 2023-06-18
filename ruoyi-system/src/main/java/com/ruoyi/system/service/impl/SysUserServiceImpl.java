@@ -29,6 +29,7 @@ import com.ruoyi.system.mapper.SysUserPostMapper;
 import com.ruoyi.system.mapper.SysUserRoleMapper;
 import com.ruoyi.system.service.ISysConfigService;
 import com.ruoyi.system.service.ISysUserService;
+import org.springframework.util.DigestUtils;
 
 /**
  * 用户 业务层处理
@@ -540,5 +541,12 @@ public class SysUserServiceImpl implements ISysUserService
             successMsg.insert(0, "恭喜您，数据已全部导入成功！共 " + successNum + " 条，数据如下：");
         }
         return successMsg.toString();
+    }
+
+    @Override
+    public Integer getid(String username) {
+        Integer id = userMapper.getid(username);
+        System.out.println("=========================" + id + "=========================");
+        return id;
     }
 }

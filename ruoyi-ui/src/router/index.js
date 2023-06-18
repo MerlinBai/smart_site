@@ -6,18 +6,6 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 
-// Likenoai
-// import LoginView from '@/views/likenoai/LoginView.vue'
-// import HomeView from '@/views/likenoai/HomeView.vue'
-// import CraftsmanView from '@/views/likenoai/CraftsmanView.vue'
-// import EstimateCom from '@/components/likenoai/EstimateCom.vue'
-// import SupervisionCom from '@/components/likenoai/SupervisionCom.vue'
-// import TrainCom from '@/components/likenoai/TrainCom/TrainCom.vue'
-// import UnitView from '@/views/likenoai/UnitView.vue'
-// import VideoCom from '@/components/likenoai/TrainCom/VideoCom.vue'
-// import InformView from '@/views/likenoai/InformView.vue'
-// import UserView from '@/views/likenoai/UserInformView.vue'
-// Likenoai
 
 /**
  * Note: 路由配置项
@@ -57,6 +45,16 @@ export const constantRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login'),
+    hidden: true
+  },
+  {
+    path: '/video',
+    component: () => import('@/views/theVideo'),
+    hidden: true
+  },
+  {
+    path: '/test',
+    component: () => import('@/views/train/video/watch.vue'),
     hidden: true
   },
   {
@@ -101,28 +99,6 @@ export const constantRoutes = [
       }
     ]
   },
-  // { path:'train',component:TrainCom,
-  //   children: [
-  //     {path:'video',component:VideoCom}
-  //   ]
-  // },
-  // likenoai
-  // { path: '/',
-  // redirect: '/login'},
-  // { path:'/login',component: LoginView},
-  // { path:'/home',
-  //   component: HomeView,
-  //   children: [
-      // { path:'craftsman',component:CraftsmanView},
-      // { path:'estimate',component:EstimateCom},
-      // { path:'supervision',component:SupervisionCom},
-      // { path:'train',component:TrainCom},
-      // { path:'unit',component:UnitView},
-      // { path:'video',component:VideoCom},
-      // { path:'inform',component:InformView},
-      // { path:'user',component:UserView},
-  //   ]
-  // }
 ]
 
 // 动态路由，基于用户权限动态去加载
@@ -138,6 +114,17 @@ export const dynamicRoutes = [
         component: () => import('@/views/system/user/authRole'),
         name: 'AuthRole',
         meta: { title: '分配角色', activeMenu: '/system/user' }
+      }
+    ]
+  },
+  {
+    path:' /train/train',
+    component: Layout,
+    hidden:false,
+    children: [
+      {
+        path: 'test',
+        component:() => import('@/views/train/video/watch.vue')
       }
     ]
   },

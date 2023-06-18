@@ -38,6 +38,7 @@ const user = {
       return new Promise((resolve, reject) => {
         login(username, password, code, uuid).then(res => {
           setToken(res.token)
+          localStorage.setItem('id',res.id)
           commit('SET_TOKEN', res.token)
           resolve()
         }).catch(error => {

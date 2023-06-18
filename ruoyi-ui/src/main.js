@@ -4,6 +4,15 @@ import Cookies from 'js-cookie'
 
 import Element from 'element-ui'
 import './assets/styles/element-variables.scss'
+import VideoPlayer from 'vue-video-player/src'
+
+require('video.js/dist/video-js.css')
+
+require('vue-video-player/src/custom-theme.css')
+
+Vue.use(VideoPlayer)
+
+
 
 import '@/assets/styles/index.scss' // global css
 import '@/assets/styles/ruoyi.scss' // ruoyi css
@@ -48,6 +57,7 @@ Vue.prototype.selectDictLabel = selectDictLabel
 Vue.prototype.selectDictLabels = selectDictLabels
 Vue.prototype.download = download
 Vue.prototype.handleTree = handleTree
+
 
 // 全局组件挂载
 Vue.component('DictTag', DictTag)

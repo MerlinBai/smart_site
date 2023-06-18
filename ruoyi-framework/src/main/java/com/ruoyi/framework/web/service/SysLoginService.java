@@ -1,11 +1,19 @@
 package com.ruoyi.framework.web.service;
 
 import javax.annotation.Resource;
+
+import com.ruoyi.common.utils.sign.Md5Utils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.ruoyi.common.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import com.ruoyi.common.constant.CacheConstants;
 import com.ruoyi.common.constant.Constants;
@@ -29,14 +37,22 @@ import com.ruoyi.framework.security.context.AuthenticationContextHolder;
 import com.ruoyi.system.service.ISysConfigService;
 import com.ruoyi.system.service.ISysUserService;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * 登录校验方法
  * 
  * @author ruoyi
  */
+
+
 @Component
 public class SysLoginService
 {
+    private static final Logger log = LoggerFactory.getLogger(Md5Utils.class);
+
     @Autowired
     private TokenService tokenService;
 
@@ -177,5 +193,53 @@ public class SysLoginService
         sysUser.setLoginIp(IpUtils.getIpAddr());
         sysUser.setLoginDate(DateUtils.getNowDate());
         userService.updateUserProfile(sysUser);
+    }
+
+
+
+    public Integer getid(String username) {
+//        MessageDigest algorithm;
+//        String password2;
+//        //StringBuilder sb = new StringBuilder();
+//        byte[] hash;
+//        try
+//        {
+//            algorithm = MessageDigest.getInstance("MD5");
+//            algorithm.reset();
+//            algorithm.update(password.getBytes("UTF-8"));
+//            byte[] messageDigest = algorithm.digest();
+//            hash = messageDigest;
+//
+//            if (hash == null)
+//            {
+//                return null;
+//            }
+//            StringBuffer buf = new StringBuffer(hash.length * 2);
+//            int i;
+//
+//            for (i = 0; i < hash.length; i++)
+//            {
+//                if ((hash[i] & 0xff) < 0x10)
+//                {
+//                    buf.append("0");
+//                }
+//                buf.append(Long.toString(hash[i] & 0xff, 16));
+//            }
+//            String str = buf.toString();
+//            password = new String(str.getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
+//            password2 = new String(str.getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
+//            System.out.println("======================" +password2);
+//            System.out.println("aaaaaaaaaaaaaa  " +password);
+//
+//        }
+//        catch (Exception e)
+//        {
+//            log.error("MD5 Error...", e);
+//        }
+//
+//
+//        userService.getid(username,password);
+//        BCrypt.checkpw(password,);
+        return userService.getid(username);
     }
 }
