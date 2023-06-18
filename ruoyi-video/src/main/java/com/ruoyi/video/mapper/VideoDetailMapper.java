@@ -1,7 +1,12 @@
 package com.ruoyi.video.mapper;
 
 import java.util.List;
+
+import com.ruoyi.video.domain.UserLog;
 import com.ruoyi.video.domain.VideoDetail;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * 记录视频观看时长Mapper接口
@@ -58,4 +63,19 @@ public interface VideoDetailMapper
      * @return 结果
      */
     public int deleteVideoDetailByVideoIds(Long[] videoIds);
+
+    @Select("select * from tb_video_detail")
+    List<VideoDetail> select();
+
+    @Select("select * from user_video_log where userId = #{userId} and videoId = #{videoId}")
+    UserLog selectLog(UserLog userlog);
+
+    @Update("update user_video_log set lastTime = #{lastTime} where userId = #{userId} and videoId = #{videoId}")
+    void updateLog(UserLog userLog);
+
+    @Insert("insert into user_video_log set lastTime = #{lastTime}, userId = #{userId}, videoId = #{videoId}")
+    void insertLog(UserLog userlog);
+
+    @Select("select lastTime from user_video_log where userId = #{userId} and videoId = #{videoId}")
+    Double getlast(UserLog userLog);
 }

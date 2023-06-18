@@ -131,3 +131,10 @@ xss:
   excludes: /system/notice
   # 匹配链接
   urlPatterns: /system/*,/monitor/*,/tool/*
+
+aliyun:
+  oss:
+    endpoint: https://oss-cn-hangzhou.aliyuncs.com
+    accessKeyId: LTAI5tPTofdepZrSup8UbcLC
+    accessKeySecret: KVq4uDmRYyElDArdSMXiwHj7n2LJrA
+    bucketName: webtlias

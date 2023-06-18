@@ -65,6 +65,7 @@
 import { getCodeImg } from "@/api/login";
 import Cookies from "js-cookie";
 import { encrypt, decrypt } from '@/utils/jsencrypt'
+import axios from 'axios'
 
 export default {
   name: "Login",

@@ -1,6 +1,8 @@
 package com.ruoyi.video.service;
 
 import java.util.List;
+
+import com.ruoyi.video.domain.UserLog;
 import com.ruoyi.video.domain.VideoDetail;
 
 /**
@@ -58,4 +60,15 @@ public interface IVideoDetailService
      * @return 结果
      */
     public int deleteVideoDetailByVideoId(Long videoId);
+
+    List<VideoDetail> select();
+
+    void lasttime(UserLog userlog);
+
+    Double getlast(UserLog userLog);
 }
+
+
+
+
+

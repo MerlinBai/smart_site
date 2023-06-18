@@ -4,6 +4,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.common.annotation.Anonymous;
+import com.ruoyi.video.domain.UserLog;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,6 +73,11 @@ public class VideoDetailController extends BaseController
         return success(videoDetailService.selectVideoDetailByVideoId(videoId));
     }
 
+    @GetMapping("/getlist")
+    public AjaxResult getlist() {
+        return success(videoDetailService.select());
+    }
+
     /**
      * 新增记录视频观看时长
      */
@@ -92,6 +98,19 @@ public class VideoDetailController extends BaseController
     public AjaxResult edit(@RequestBody VideoDetail videoDetail)
     {
         return toAjax(videoDetailService.updateVideoDetail(videoDetail));
+    }
+
+
+    @PostMapping("/lasttime")
+    public AjaxResult LastTime(@RequestBody UserLog userlog) {
+        System.out.println(userlog.getUserId());
+        videoDetailService.lasttime(userlog);
+        return success();
+    }
+
+    @GetMapping("/gl")
+    public AjaxResult getLastTime(UserLog userlog) {
+        return success(videoDetailService.getlast(userlog));
     }
 
     /**

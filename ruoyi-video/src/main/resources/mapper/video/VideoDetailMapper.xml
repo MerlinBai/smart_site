@@ -11,21 +11,28 @@
         <result property="videoLink"    column="video_link"    />
         <result property="done"    column="done"    />
         <result property="userId"    column="user_id"    />
+        <result property="img"    column="img"    />
+        <result property="name"    column="name"    />
+        <result property="createTime"    column="createTime"    />
+        <result property="createBy"    column="createBy"    />
     </resultMap>
 
     <sql id="selectVideoDetailVo">
-        select video_id, video_view_time, progress_bar, video_link, done, user_id from tb_video_detail
+        select video_id, video_view_time, progress_bar, video_link, done, user_id, img, name, createTime, createBy from tb_video_detail
     </sql>
 
     <select id="selectVideoDetailList" parameterType="VideoDetail" resultMap="VideoDetailResult">
         <include refid="selectVideoDetailVo"/>
         <where>
-            <if test="videoId != null "> and video_id = #{videoId}</if>
             <if test="videoViewTime != null  and videoViewTime != ''"> and video_view_time = #{videoViewTime}</if>
             <if test="progressBar != null  and progressBar != ''"> and progress_bar = #{progressBar}</if>
             <if test="videoLink != null  and videoLink != ''"> and video_link = #{videoLink}</if>
-            <if test="done != null "> and done = #{done}</if>
+            <if test="done != null  and done != ''"> and done = #{done}</if>
             <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="img != null  and img != ''"> and img = #{img}</if>
+            <if test="name != null  and name != ''"> and name = #{name}</if>
+            <if test="createTime != null "> and createTime = #{createTime}</if>
+            <if test="createBy != null  and createBy != ''"> and createBy = #{createBy}</if>
         </where>
     </select>
 
@@ -42,6 +49,10 @@
             <if test="videoLink != null">video_link,</if>
             <if test="done != null">done,</if>
             <if test="userId != null">user_id,</if>
+            <if test="img != null and img != ''">img,</if>
+            <if test="name != null and name != ''">name,</if>
+            <if test="createTime != null">createTime,</if>
+            <if test="createBy != null and createBy != ''">createBy,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="videoViewTime != null">#{videoViewTime},</if>
@@ -49,6 +60,10 @@
             <if test="videoLink != null">#{videoLink},</if>
             <if test="done != null">#{done},</if>
             <if test="userId != null">#{userId},</if>
+            <if test="img != null and img != ''">#{img},</if>
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="createBy != null and createBy != ''">#{createBy},</if>
         </trim>
     </insert>
 
@@ -60,6 +75,10 @@
             <if test="videoLink != null">video_link = #{videoLink},</if>
             <if test="done != null">done = #{done},</if>
             <if test="userId != null">user_id = #{userId},</if>
+            <if test="img != null and img != ''">img = #{img},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+            <if test="createBy != null and createBy != ''">createBy = #{createBy},</if>
         </trim>
         where video_id = #{videoId}
     </update>

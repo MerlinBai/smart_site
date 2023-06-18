@@ -30,6 +30,8 @@ public class SysLoginController
     @Autowired
     private SysLoginService loginService;
 
+
+
     @Autowired
     private ISysMenuService menuService;
 
@@ -52,7 +54,11 @@ public class SysLoginController
         // 生成令牌
         String token = loginService.login(loginBody.getUsername(), loginBody.getPassword(), loginBody.getCode(),
                 loginBody.getUuid());
+        Integer id = null;
+        if (token != null)
+            id = loginService.getid(loginBody.getUsername());
         ajax.put(Constants.TOKEN, token);
+        ajax.put(Constants.ID,id);
         return ajax;
     }
 
