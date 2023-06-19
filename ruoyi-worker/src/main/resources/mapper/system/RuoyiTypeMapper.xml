@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.worker.mapper.RuoyiTypeMapper">
+
+    <resultMap type="RuoyiType" id="RuoyiTypeResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+    </resultMap>
+
+    <sql id="selectRuoyiTypeVo">
+        select id, name from tb_ruoyi_type
+    </sql>
+
+    <select id="selectRuoyiTypeList" parameterType="RuoyiType" resultMap="RuoyiTypeResult">
+        <include refid="selectRuoyiTypeVo"/>
+        <where>
+            <if test="id != null  and id != ''"> and id = #{id}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+        </where>
+    </select>
+
+    <select id="selectRuoyiTypeById" parameterType="Long" resultMap="RuoyiTypeResult">
+        <include refid="selectRuoyiTypeVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertRuoyiType" parameterType="RuoyiType" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_ruoyi_type
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+        </trim>
+    </insert>
+
+    <update id="updateRuoyiType" parameterType="RuoyiType">
+        update tb_ruoyi_type
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteRuoyiTypeById" parameterType="Long">
+        delete from tb_ruoyi_type where id = #{id}
+    </delete>
+
+    <delete id="deleteRuoyiTypeByIds" parameterType="String">
+        delete from tb_ruoyi_type where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
