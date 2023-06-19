@@ -1,0 +1,131 @@
+package com.ruoyi.video.domain;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import com.ruoyi.common.annotation.Excel;
+import com.ruoyi.common.core.domain.BaseEntity;
+
+/**
+ * 记录视频观看时长对象 tb_video_detail
+ *
+ * @author ruoyi
+ * @date 2023-05-18
+ */
+public class VideoDetail extends BaseEntity
+{
+    private static final long serialVersionUID = 1L;
+
+    /** 视频id */
+    private Long videoId;
+
+    /** 观看视频时间 */
+    @Excel(name = "观看视频时间")
+    private String videoViewTime;
+
+    /** 进度条时间 */
+    @Excel(name = "进度条时间")
+    private String progressBar;
+
+    /** 视频链接 */
+    @Excel(name = "视频链接")
+    private String videoLink;
+
+    /** 视频看没看完0未看1看完 */
+    @Excel(name = "视频看没看完0未看1看完")
+    private Long done;
+
+    /** 用户id */
+    @Excel(name = "用户id")
+    private Long userId;
+
+    private Long realTime;
+
+    public void setVideoId(Long videoId)
+    {
+        this.videoId = videoId;
+    }
+
+    public Long getVideoId()
+    {
+        return videoId;
+    }
+    public void setVideoViewTime(String videoViewTime)
+    {
+        this.videoViewTime = videoViewTime;
+    }
+
+    public String getVideoViewTime()
+    {
+        return videoViewTime;
+    }
+    public void setProgressBar(String progressBar)
+    {
+        this.progressBar = progressBar;
+    }
+
+    public String getProgressBar()
+    {
+        return progressBar;
+    }
+    public void setVideoLink(String videoLink)
+    {
+        this.videoLink = videoLink;
+    }
+
+    public String getVideoLink()
+    {
+        return videoLink;
+    }
+    public void setDone(Long done)
+    {
+        this.done = done;
+    }
+
+    public Long getDone()
+    {
+        return done;
+    }
+    public void setUserId(Long userId)
+    {
+        this.userId = userId;
+    }
+
+    public Long getUserId()
+    {
+        return userId;
+    }
+
+    public Long getRealTime() {
+        return realTime;
+    }
+
+    public void setRealTime(Long realTime) {
+        this.realTime = realTime;
+    }
+
+    @Override
+    public String toString() {
+        return "VideoDetail{" +
+                "videoId=" + videoId +
+                ", videoViewTime='" + videoViewTime + '\'' +
+                ", progressBar='" + progressBar + '\'' +
+                ", videoLink='" + videoLink + '\'' +
+                ", done=" + done +
+                ", userId=" + userId +
+                ", realTime=" + realTime +
+                '}';
+    }
+
+    public VideoDetail(Long videoId, String videoViewTime, String progressBar, String videoLink, Long done, Long userId, Long realTime) {
+        this.videoId = videoId;
+        this.videoViewTime = videoViewTime;
+        this.progressBar = progressBar;
+        this.videoLink = videoLink;
+        this.done = done;
+        this.userId = userId;
+        this.realTime = realTime;
+    }
+
+    public VideoDetail() {
+    }
+}

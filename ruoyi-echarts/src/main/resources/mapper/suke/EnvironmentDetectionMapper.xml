@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 命名空间:
+    写的是: 对应的Mapper接口的全限定名(Mapper接口的包名.类名)
+-->
+<mapper namespace="com.ruoyi.suke.mapper.EnvironmentDetectionDao">
+    <!--  id是方法名，resultType是返回值类型  -->
+    <select id="getCheckTime" resultType="date">
+        SELECT check_time
+        FROM `tb_environment_detection`
+    </select>
+    <select id="getWindSpeedByCheckTime" parameterType="Date" resultType="Integer">
+        SELECT wind_speed
+        FROM `tb_environment_detection`
+        where check_time = #{ checkTime }
+    </select>
+    <select id="getTemperatureByCheckTime" parameterType="Date" resultType="Double">
+        SELECT temperature
+        FROM `tb_environment_detection`
+        where check_time = #{ checkTime }
+    </select>
+    <select id="getHumidityByCheckTime" parameterType="Date" resultType="Double">
+        SELECT humidity
+        FROM `tb_environment_detection`
+        where check_time = #{ checkTime }
+    </select>
+    <select id="getPM25ByCheckTime" parameterType="Date" resultType="Double">
+        SELECT pm25
+        FROM `tb_environment_detection`
+        where check_time = #{ checkTime }
+    </select>
+
+    <!--  查询环境质量数据  -->
+    <resultMap id="rm" type="com.ruoyi.suke.pojo.EnvironmentDetection">
+        <result column="temperature" property="temperature"></result>
+        <result column="pm25" property="pm25"></result>
+        <result column="humidity" property="humidity"></result>
+        <result column="noise" property="noise"></result>
+        <result column="wind_speed" property="windSpeed"></result>
+        <association property="checkpoint" javaType="com.ruoyi.suke.pojo.CheckPoint">
+            <result column="name" property="name"></result>
+        </association>
+    </resultMap>
+    <select id="getEnvironmentDetection" resultMap="rm">
+        SELECT cp.name,e.temperature,e.pm25,e.humidity,e.noise,e.wind_speed
+        FROM `tb_environment_detection` e,tb_check_point cp
+        where e.cid = cp.id;
+    </select>
+
+    <!--  分组查询每月最高温度  -->
+    <select id="getMaxTemMonth" resultType="Double">
+        SELECT MAX(temperature) `max_temperature`,tb.`month`,COUNT(*)
+        FROM (
+                 SELECT *, SUBSTR(check_time,1,7) `month`
+                 FROM `tb_environment_detection`
+             ) tb
+        GROUP BY tb.`month`
+    </select>
+    <!--  分组查询每月最低温度  -->
+    <select id="getMinTemMonth" resultType="Double">
+        SELECT MIN(temperature) `min_temperature`,tb.`month`,COUNT(*)
+        FROM (
+                 SELECT *, SUBSTR(check_time,1,7) `month`
+                 FROM `tb_environment_detection`
+             ) tb
+        GROUP BY tb.`month`
+    </select>
+</mapper>

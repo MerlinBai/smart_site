@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.video.mapper.VideoDetailMapper">
+
+    <resultMap type="VideoDetail" id="VideoDetailResult">
+        <result property="videoId"    column="video_id"    />
+        <result property="videoViewTime"    column="video_view_time"    />
+        <result property="progressBar"    column="progress_bar"    />
+        <result property="videoLink"    column="video_link"    />
+        <result property="done"    column="done"    />
+        <result property="userId"    column="user_id"    />
+    </resultMap>
+
+    <sql id="selectVideoDetailVo">
+        select video_id, video_view_time, progress_bar, video_link, done, user_id from tb_video_detail
+    </sql>
+
+    <select id="selectVideoDetailList" parameterType="VideoDetail" resultMap="VideoDetailResult">
+        <include refid="selectVideoDetailVo"/>
+        <where>
+            <if test="videoId != null "> and video_id = #{videoId}</if>
+            <if test="videoViewTime != null  and videoViewTime != ''"> and video_view_time = #{videoViewTime}</if>
+            <if test="progressBar != null  and progressBar != ''"> and progress_bar = #{progressBar}</if>
+            <if test="videoLink != null  and videoLink != ''"> and video_link = #{videoLink}</if>
+            <if test="done != null "> and done = #{done}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
+        </where>
+    </select>
+
+    <select id="selectVideoDetailByVideoId" parameterType="Long" resultMap="VideoDetailResult">
+        <include refid="selectVideoDetailVo"/>
+        where video_id = #{videoId}
+    </select>
+
+    <insert id="insertVideoDetail" parameterType="VideoDetail" useGeneratedKeys="true" keyProperty="videoId">
+        insert into tb_video_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="videoViewTime != null">video_view_time,</if>
+            <if test="progressBar != null">progress_bar,</if>
+            <if test="videoLink != null">video_link,</if>
+            <if test="done != null">done,</if>
+            <if test="userId != null">user_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="videoViewTime != null">#{videoViewTime},</if>
+            <if test="progressBar != null">#{progressBar},</if>
+            <if test="videoLink != null">#{videoLink},</if>
+            <if test="done != null">#{done},</if>
+            <if test="userId != null">#{userId},</if>
+        </trim>
+    </insert>
+
+    <update id="updateVideoDetail" parameterType="VideoDetail">
+        update tb_video_detail
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="videoViewTime != null">video_view_time = #{videoViewTime},</if>
+            <if test="progressBar != null">progress_bar = #{progressBar},</if>
+            <if test="videoLink != null">video_link = #{videoLink},</if>
+            <if test="done != null">done = #{done},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+        </trim>
+        where video_id = #{videoId}
+    </update>
+
+    <delete id="deleteVideoDetailByVideoId" parameterType="Long">
+        delete from tb_video_detail where video_id = #{videoId}
+    </delete>
+
+    <delete id="deleteVideoDetailByVideoIds" parameterType="String">
+        delete from tb_video_detail where video_id in
+        <foreach item="videoId" collection="array" open="(" separator="," close=")">
+            #{videoId}
+        </foreach>
+    </delete>
+</mapper>
