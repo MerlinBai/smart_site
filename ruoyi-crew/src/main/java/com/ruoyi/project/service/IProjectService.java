@@ -1,6 +1,8 @@
 package com.ruoyi.project.service;
 
 import java.util.List;
+
+import com.ruoyi.crew.domain.RuoyiCrew;
 import com.ruoyi.project.domain.Project;
 
 /**
@@ -25,7 +27,7 @@ public interface IProjectService
      * @param project 项目管理
      * @return 项目管理集合
      */
-    public List<Project> selectProjectList(Project project);
+
 
     /**
      * 新增项目管理
@@ -58,6 +60,8 @@ public interface IProjectService
      * @return 结果
      */
     public int deleteProjectByProjectId(Long projectId);
+
+    List<Project> selectProjectList(Project project, RuoyiCrew ruoyiCrew);
 
     String SelectCrewName(Long crewId);
 }

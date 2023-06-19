@@ -188,7 +188,7 @@ export default {
     height: 100vh;
     width: 100%;
     background-color: #efefef;
-    //background-image: linear-gradient(60deg, #d1ebfd, #ffffff, #d1ebfd);
+    /* background-image: linear-gradient(60deg, #d1ebfd, #ffffff, #d1ebfd); */
 }
 
 .left {
@@ -209,7 +209,7 @@ export default {
 
 .temp div {
     background-color: white;
-    //border-bottom: 1px silver solid;
+    /* border-bottom: 1px silver solid; */
     height: 7vh;
     box-sizing: border-box;
 }

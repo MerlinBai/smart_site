@@ -42,7 +42,7 @@ public class RuoyiCrewController extends BaseController
     /**
      * 查询施工队信息列表
      */
-//    @PreAuthorize("@ss.hasPermi('crew:crew:list')")
+    @PreAuthorize("@ss.hasPermi('crew:crew:list')")
     @GetMapping("/list")
     public TableDataInfo list(RuoyiCrew ruoyiCrew, Project project)
     {
@@ -54,7 +54,7 @@ public class RuoyiCrewController extends BaseController
     /**
      * 导出施工队信息列表
      */
-//    @PreAuthorize("@ss.hasPermi('crew:crew:export')")
+    @PreAuthorize("@ss.hasPermi('crew:crew:export')")
     @Log(title = "施工队信息", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, RuoyiCrew ruoyiCrew, Project project)
@@ -67,7 +67,7 @@ public class RuoyiCrewController extends BaseController
     /**
      * 获取施工队信息详细信息
      */
-//    @PreAuthorize("@ss.hasPermi('crew:crew:query')")
+    @PreAuthorize("@ss.hasPermi('crew:crew:query')")
     @GetMapping(value = "/{crewId}")
     public AjaxResult getInfo(@PathVariable("crewId") Long crewId, Project project)
     {
@@ -77,7 +77,7 @@ public class RuoyiCrewController extends BaseController
     /**
      * 新增施工队信息
      */
-//    @PreAuthorize("@ss.hasPermi('crew:crew:add')")
+    @PreAuthorize("@ss.hasPermi('crew:crew:add')")
     @Log(title = "施工队信息", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody RuoyiCrew ruoyiCrew)
@@ -88,7 +88,7 @@ public class RuoyiCrewController extends BaseController
     /**
      * 修改施工队信息
      */
-//    @PreAuthorize("@ss.hasPermi('crew:crew:edit')")
+    @PreAuthorize("@ss.hasPermi('crew:crew:edit')")
     @Log(title = "施工队信息", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody RuoyiCrew ruoyiCrew)
@@ -99,7 +99,7 @@ public class RuoyiCrewController extends BaseController
     /**
      * 删除施工队信息
      */
-//    @PreAuthorize("@ss.hasPermi('crew:crew:remove')")
+    @PreAuthorize("@ss.hasPermi('crew:crew:remove')")
     @Log(title = "施工队信息", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{crewIds}")
     public AjaxResult remove(@PathVariable Long[] crewIds)

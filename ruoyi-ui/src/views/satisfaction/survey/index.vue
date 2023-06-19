@@ -1,29 +1,25 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="调查类型" prop="surveyType">
-        <el-input
-          v-model="queryParams.surveyType"
-          placeholder="请输入调查类型"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
+      <el-form-item label="调查范围" prop="surveyScope">
+        <el-select v-model="queryParams.surveyScope" placeholder="请选择调查范围" clearable>
+          <el-option
+            v-for="dict in dict.type.survey"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
       </el-form-item>
-      <el-form-item label="调查区域" prop="surveyRegion">
-        <el-input
-          v-model="queryParams.surveyRegion"
-          placeholder="请输入调查区域"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="调查人" prop="surveyBy">
-        <el-input
-          v-model="queryParams.surveyBy"
-          placeholder="请输入调查人"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
+      <el-form-item label="调查等级" prop="surveyResult">
+        <el-select v-model="queryParams.surveyResult" placeholder="请选择调查等级" clearable>
+          <el-option
+            v-for="dict in dict.type.grade"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -80,17 +76,24 @@
     <el-table v-loading="loading" :data="surveyList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <!-- <el-table-column label="主键id" align="center" prop="surveyId" /> -->
-      <el-table-column label="调查类型" align="center" prop="surveyType" />
-      <el-table-column label="调查区域" align="center" prop="surveyRegion" />
-      <el-table-column label="调查人数" align="center" prop="surveyNum" />
+      <el-table-column label="调查范围" align="center" prop="surveyScope">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.survey" :value="scope.row.surveyScope"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="调查对象" align="center" prop="surveyObject" />
       <el-table-column label="调查人" align="center" prop="surveyBy" />
-      <el-table-column label="调查分数" align="center" prop="surveyResult" />
+      <el-table-column label="调查等级" align="center" prop="surveyResult">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.grade" :value="scope.row.surveyResult"/>
+        </template>
+      </el-table-column>
       <el-table-column label="调查时间" align="center" prop="surveyTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.surveyTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+      <!-- <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -107,7 +110,7 @@
             v-hasPermi="['satisfaction:survey:remove']"
           >删除</el-button>
         </template>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
     
     <pagination
@@ -121,20 +124,39 @@
     <!-- 添加或修改满意度检查对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="调查类型" prop="surveyType">
-          <el-input v-model="form.surveyType" placeholder="请输入调查类型" />
+        <el-form-item label="调查范围" prop="surveyScope">
+          <el-select v-model="form.surveyScope" placeholder="请选择调查范围">
+            <el-option
+              v-for="dict in dict.type.survey"
+              :key="dict.value"
+              :label="dict.label"
+              :value="dict.value"
+            ></el-option>
+          </el-select>
         </el-form-item>
-        <el-form-item label="调查区域" prop="surveyRegion">
-          <el-input v-model="form.surveyRegion" placeholder="请输入调查区域" />
-        </el-form-item>
-        <el-form-item label="调查人数" prop="surveyNum">
-          <el-input v-model="form.surveyNum" placeholder="请输入调查人数" />
+        <el-form-item label="调查对象" prop="surveyObject">
+          <el-input v-model="form.surveyObject" placeholder="请输入调查对象" />
         </el-form-item>
         <el-form-item label="调查人" prop="surveyBy">
           <el-input v-model="form.surveyBy" placeholder="请输入调查人" />
         </el-form-item>
-        <el-form-item label="调查分数" prop="surveyResult">
-          <el-input v-model="form.surveyResult" placeholder="请输入调查分数" />
+        <el-form-item label="调查等级" prop="surveyResult">
+          <el-select v-model="form.surveyResult" placeholder="请选择调查等级">
+            <el-option
+              v-for="dict in dict.type.grade"
+              :key="dict.value"
+              :label="dict.label"
+              :value="dict.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="调查时间" prop="surveyTime">
+          <el-date-picker clearable
+            v-model="form.surveyTime"
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="请选择调查时间">
+          </el-date-picker>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -150,6 +172,7 @@ import { listSurvey, getSurvey, delSurvey, addSurvey, updateSurvey } from "@/api
 
 export default {
   name: "Survey",
+  dicts: ['survey', 'grade'],
   data() {
     return {
       // 遮罩层
@@ -174,14 +197,28 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
-        surveyType: null,
-        surveyRegion: null,
-        surveyBy: null,
+        surveyScope: null,
+        surveyResult: null,
       },
       // 表单参数
       form: {},
       // 表单校验
       rules: {
+        surveyScope: [
+          { required: true, message: "调查范围不能为空", trigger: "change" }
+        ],
+        surveyObject: [
+          { required: true, message: "调查对象不能为空", trigger: "blur" }
+        ],
+        surveyBy: [
+          { required: true, message: "调查人不能为空", trigger: "blur" }
+        ],
+        surveyResult: [
+          { required: true, message: "调查等级不能为空", trigger: "change" }
+        ],
+        surveyTime: [
+          { required: true, message: "调查时间不能为空", trigger: "blur" }
+        ]
       }
     };
   },
@@ -207,9 +244,8 @@ export default {
     reset() {
       this.form = {
         surveyId: null,
-        surveyType: null,
-        surveyRegion: null,
-        surveyNum: null,
+        surveyScope: null,
+        surveyObject: null,
         surveyBy: null,
         surveyResult: null,
         surveyTime: null

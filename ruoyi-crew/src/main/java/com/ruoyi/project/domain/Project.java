@@ -35,7 +35,7 @@ public class Project extends BaseEntity
 
     /** 项目人数 */
     @Excel(name = "项目人数")
-    private Long projectPopulaion;
+    private Long projectPopulation;
 
     /** 开始时间 */
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -52,6 +52,26 @@ public class Project extends BaseEntity
     private Long crewId;
     @Excel(name = "由哪一施工队承包")
     private String crewName;
+    @Excel(name = "项目资金")
+    private Double projectFund;
+
+    public String getAuthentication() {
+        return authentication;
+    }
+
+    public void setAuthentication(String authentication) {
+        this.authentication = authentication;
+    }
+
+    @Excel(name = "是否完成")
+    private   String authentication;
+    public Double getProjectFund() {
+        return projectFund;
+    }
+
+    public void setProjectFund(Double projectFund) {
+        this.projectFund = projectFund;
+    }
 
     public String getCrewName() {
 
@@ -89,15 +109,7 @@ public class Project extends BaseEntity
     {
         return projectInfo;
     }
-    public void setProjectPopulaion(Long projectPopulaion) 
-    {
-        this.projectPopulaion = projectPopulaion;
-    }
 
-    public Long getProjectPopulaion() 
-    {
-        return projectPopulaion;
-    }
     public void setProjetcBeginTime(Date projetcBeginTime) 
     {
         this.projetcBeginTime = projetcBeginTime;
@@ -126,16 +138,26 @@ public class Project extends BaseEntity
         return crewId;
     }
 
+    public Long getProjectPopulation() {
+        return projectPopulation;
+    }
+
+    public void setProjectPopulation(Long projectPopulation) {
+        this.projectPopulation = projectPopulation;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("projectId", getProjectId())
             .append("projectName", getProjectName())
             .append("projectInfo", getProjectInfo())
-            .append("projectPopulaion", getProjectPopulaion())
+            .append("projectPopulation", getProjectPopulation())
             .append("projetcBeginTime", getProjetcBeginTime())
             .append("projectEndTime", getProjectEndTime())
             .append("crewId", getCrewId())
+            .append("projectFund", getProjectFund())
+            .append("authentication", getAuthentication())
             .toString();
     }
 }

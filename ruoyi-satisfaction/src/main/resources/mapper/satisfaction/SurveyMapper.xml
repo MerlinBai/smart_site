@@ -6,27 +6,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <resultMap type="Survey" id="SurveyResult">
         <result property="surveyId"    column="survey_id"    />
-        <result property="surveyType"    column="survey_type"    />
-        <result property="surveyRegion"    column="survey_region"    />
-        <result property="surveyNum"    column="survey_num"    />
+        <result property="surveyScope"    column="survey_scope"    />
+        <result property="surveyObject"    column="survey_object"    />
         <result property="surveyBy"    column="survey_by"    />
         <result property="surveyResult"    column="survey_result"    />
         <result property="surveyTime"    column="survey_time"    />
     </resultMap>
 
     <sql id="selectSurveyVo">
-        select survey_id, survey_type, survey_region, survey_num, survey_by, survey_result, survey_time from tb_survey
+        select survey_id, survey_scope, survey_object, survey_by, survey_result, survey_time from tb_survey
     </sql>
 
     <select id="selectSurveyList" parameterType="Survey" resultMap="SurveyResult">
         <include refid="selectSurveyVo"/>
         <where>  
-            <if test="surveyType != null  and surveyType != ''"> and survey_type = #{surveyType}</if>
-            <if test="surveyRegion != null  and surveyRegion != ''"> and survey_region like concat('%', #{surveyRegion}, '%')</if>
-            <if test="surveyNum != null "> and survey_num = #{surveyNum}</if>
-            <if test="surveyBy != null  and surveyBy != ''"> and survey_by = #{surveyBy}</if>
-            <if test="surveyResult != null "> and survey_result = #{surveyResult}</if>
-            <if test="surveyTime != null "> and survey_time = #{surveyTime}</if>
+            <if test="surveyScope != null  and surveyScope != ''"> and survey_scope = #{surveyScope}</if>
+            <if test="surveyResult != null  and surveyResult != ''"> and survey_result = #{surveyResult}</if>
         </where>
     </select>
     
@@ -38,19 +33,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="insertSurvey" parameterType="Survey" useGeneratedKeys="true" keyProperty="surveyId">
         insert into tb_survey
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="surveyType != null">survey_type,</if>
-            <if test="surveyRegion != null">survey_region,</if>
-            <if test="surveyNum != null">survey_num,</if>
-            <if test="surveyBy != null">survey_by,</if>
-            <if test="surveyResult != null">survey_result,</if>
+            <if test="surveyScope != null and surveyScope != ''">survey_scope,</if>
+            <if test="surveyObject != null and surveyObject != ''">survey_object,</if>
+            <if test="surveyBy != null and surveyBy != ''">survey_by,</if>
+            <if test="surveyResult != null and surveyResult != ''">survey_result,</if>
             <if test="surveyTime != null">survey_time,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="surveyType != null">#{surveyType},</if>
-            <if test="surveyRegion != null">#{surveyRegion},</if>
-            <if test="surveyNum != null">#{surveyNum},</if>
-            <if test="surveyBy != null">#{surveyBy},</if>
-            <if test="surveyResult != null">#{surveyResult},</if>
+            <if test="surveyScope != null and surveyScope != ''">#{surveyScope},</if>
+            <if test="surveyObject != null and surveyObject != ''">#{surveyObject},</if>
+            <if test="surveyBy != null and surveyBy != ''">#{surveyBy},</if>
+            <if test="surveyResult != null and surveyResult != ''">#{surveyResult},</if>
             <if test="surveyTime != null">#{surveyTime},</if>
          </trim>
     </insert>
@@ -58,11 +51,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="updateSurvey" parameterType="Survey">
         update tb_survey
         <trim prefix="SET" suffixOverrides=",">
-            <if test="surveyType != null">survey_type = #{surveyType},</if>
-            <if test="surveyRegion != null">survey_region = #{surveyRegion},</if>
-            <if test="surveyNum != null">survey_num = #{surveyNum},</if>
-            <if test="surveyBy != null">survey_by = #{surveyBy},</if>
-            <if test="surveyResult != null">survey_result = #{surveyResult},</if>
+            <if test="surveyScope != null and surveyScope != ''">survey_scope = #{surveyScope},</if>
+            <if test="surveyObject != null and surveyObject != ''">survey_object = #{surveyObject},</if>
+            <if test="surveyBy != null and surveyBy != ''">survey_by = #{surveyBy},</if>
+            <if test="surveyResult != null and surveyResult != ''">survey_result = #{surveyResult},</if>
             <if test="surveyTime != null">survey_time = #{surveyTime},</if>
         </trim>
         where survey_id = #{surveyId}

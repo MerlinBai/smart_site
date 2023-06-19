@@ -25,7 +25,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  * 满意度检查Controller
  * 
  * @author ruoyi
- * @date 2023-06-07
+ * @date 2023-06-18
  */
 @RestController
 @RequestMapping("/satisfaction/survey")

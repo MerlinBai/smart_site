@@ -19,7 +19,7 @@ import com.ruoyi.crew.service.IRuoyiCrewService;
  * @date 2023-06-07
  */
 @Service
-public class RuoyiCrewServiceImpl implements IRuoyiCrewService 
+public class RuoyiCrewServiceImpl implements IRuoyiCrewService
 {
     @Autowired
     private RuoyiCrewMapper ruoyiCrewMapper;
@@ -39,7 +39,7 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
 
     /**
      * 查询施工队信息
-     * 
+     *
      * @param crewId 施工队信息主键
      * @return 施工队信息
      */
@@ -53,8 +53,9 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
 
         for (int i = 0; i < projects.size(); i++) {
             if (projects.get(i).getCrewId().equals(crewId)) {
-                if (projects.get(i).getProjectEndTime() != null) {
+                if (projects.get(i).getAuthentication().equals("是")) {
                     finishList.add(projects.get(i).getProjectName());
+
                 }else {
                     unfinishList.add(projects.get(i).getProjectName());
                 }
@@ -69,9 +70,11 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
         return crew;
     }
 
+
+
     /**
      * 查询施工队信息列表
-     * 
+     *
      * @param ruoyiCrew 施工队信息
      * @return 施工队信息
      */
@@ -85,29 +88,67 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
             s.setUnfinishProject(0L);
         });
 
-//        List<Long> crewIdList = new ArrayList<>();
-//
-//        crewList.forEach(s -> {
-//            crewIdList.add(s.getCrewId());
-//        });
-
+      List<Integer>finishList=new ArrayList<>();
+      List<Integer>unfinishList=new ArrayList<>();
+      List<String>finishNameList=new ArrayList<>();
+      List<String>unfinishNameList=new ArrayList<>();
         List<Project> projects = projectMapper.selectProjectList(project);
 
-        for (int i = 0; i < projects.size(); i++) {
-            for (int j = 0; j < crewList.size(); j++) {
-                if (projects.get(i).getCrewId().equals(crewList.get(j).getCrewId())) {
-                    if (projects.get(i).getProjectEndTime() != null) {
-
-                        Long len =crewList.get(i).getFinishProject()+1;
-                        crewList.get(i).setFinishProject(len);
+        for( RuoyiCrew crew:crewList ) {
+                   for(Project p:projects)
+            {
+                if(p.getCrewId().equals(crew.getCrewId()))
+                {
+                    if(p.getAuthentication().equals("是"))
+                    {
+                        if (finishList != null) {
+                            finishList.add(p.getProjectId());
+                            finishNameList.add(p.getProjectName());
+                        }
+                        crew.setFinishProjectsName(finishNameList);
+                        crew.setFinishProjects(finishList);
+                        crew.setFinishProject(crew.getFinishProject()+1);
                     }
                     else {
-                        Long len2 =crewList.get(i).getUnfinishProject()+1;
-                        crewList.get(i).setUnfinishProject(len2);
+                        if (unfinishList != null) {
+                            unfinishList.add(p.getProjectId());
+                            unfinishNameList.add(p.getProjectName());
+                        }
+                        crew.setUnfinishProjectsName(unfinishNameList);
+                        crew.setUnfinishProjects(unfinishList);
+                        crew.setUnfinishProject(crew.getUnfinishProject() + 1);
                     }
                 }
             }
+            crew.setFinSumName( String.join(",", finishNameList));
+            crew.setUnFinSumName(String.join(",", unfinishNameList));
+            if (crew.getFinSumName().equals("")) {
+                crew.setFinSumName("无");
+            }
+            if(crew.getUnFinSumName().equals("")){
+                crew.setUnFinSumName("无");
+            }
+            finishList=new ArrayList<>();
+            unfinishList=new ArrayList<>();
+            finishNameList=new ArrayList<>();
+            unfinishNameList=new ArrayList<>();
         }
+
+//        for (int i = 0; i < projects.size(); i++) {
+//            for (int j = 0; j < crewList.size(); j++) {
+//                if (projects.get(i).getCrewId().equals(crewList.get(j).getCrewId())) {
+//                    if (projects.get(i).getProjectEndTime() != null) {
+//
+//                        Long len =crewList.get(i).getFinishProject()+1;
+//                        crewList.get(i).setFinishProject(len);
+//                    }
+//                    else {
+//                        Long len2 =crewList.get(i).getUnfinishProject()+1;
+//                        crewList.get(i).setUnfinishProject(len2);
+//                    }
+//                }
+//            }
+//        }
 
 
         return crewList;
@@ -166,6 +207,14 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
     public List<Project> selectFinshProject(Integer ProjectId) {
         return null;
     }
+
+
+/**
+ * 添加已完成项目
+ *
+ * @param ruoyiCrew 施工队信息
+ * @return 结果
+ */
 
 
 }

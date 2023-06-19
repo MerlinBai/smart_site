@@ -7,7 +7,7 @@ import com.ruoyi.satisfaction.domain.Survey;
  * 满意度检查Service接口
  * 
  * @author ruoyi
- * @date 2023-06-07
+ * @date 2023-06-18
  */
 public interface ISurveyService 
 {

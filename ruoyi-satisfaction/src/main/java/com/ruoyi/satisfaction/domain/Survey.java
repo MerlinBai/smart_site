@@ -11,7 +11,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 满意度检查对象 tb_survey
  * 
  * @author ruoyi
- * @date 2023-06-07
+ * @date 2023-06-18
  */
 public class Survey extends BaseEntity
 {
@@ -20,27 +20,25 @@ public class Survey extends BaseEntity
     /** 主键id */
     private Long surveyId;
 
-    /** 调查类型 */
-    @Excel(name = "调查类型")
-    private String surveyType;
+    /** 调查范围 */
+    @Excel(name = "调查范围")
+    private String surveyScope;
 
-    /** 调查区域 */
-    @Excel(name = "调查区域")
-    private String surveyRegion;
-
-    /** 调查人数 */
-    @Excel(name = "调查人数")
-    private Long surveyNum;
+    /** 调查对象 */
+    @Excel(name = "调查对象")
+    private String surveyObject;
 
     /** 调查人 */
     @Excel(name = "调查人")
     private String surveyBy;
 
-    /** 调查分数 */
-    @Excel(name = "调查分数")
-    private Long surveyResult;
+    /** 调查等级 */
+    @Excel(name = "调查等级")
+    private String surveyResult;
 
     /** 调查时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "调查时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date surveyTime;
 
     public void setSurveyId(Long surveyId) 
@@ -52,32 +50,23 @@ public class Survey extends BaseEntity
     {
         return surveyId;
     }
-    public void setSurveyType(String surveyType) 
+    public void setSurveyScope(String surveyScope) 
     {
-        this.surveyType = surveyType;
+        this.surveyScope = surveyScope;
     }
 
-    public String getSurveyType() 
+    public String getSurveyScope() 
     {
-        return surveyType;
+        return surveyScope;
     }
-    public void setSurveyRegion(String surveyRegion) 
+    public void setSurveyObject(String surveyObject) 
     {
-        this.surveyRegion = surveyRegion;
-    }
-
-    public String getSurveyRegion() 
-    {
-        return surveyRegion;
-    }
-    public void setSurveyNum(Long surveyNum) 
-    {
-        this.surveyNum = surveyNum;
+        this.surveyObject = surveyObject;
     }
 
-    public Long getSurveyNum() 
+    public String getSurveyObject() 
     {
-        return surveyNum;
+        return surveyObject;
     }
     public void setSurveyBy(String surveyBy) 
     {
@@ -88,12 +77,12 @@ public class Survey extends BaseEntity
     {
         return surveyBy;
     }
-    public void setSurveyResult(Long surveyResult) 
+    public void setSurveyResult(String surveyResult) 
     {
         this.surveyResult = surveyResult;
     }
 
-    public Long getSurveyResult() 
+    public String getSurveyResult() 
     {
         return surveyResult;
     }
@@ -111,9 +100,8 @@ public class Survey extends BaseEntity
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("surveyId", getSurveyId())
-            .append("surveyType", getSurveyType())
-            .append("surveyRegion", getSurveyRegion())
-            .append("surveyNum", getSurveyNum())
+            .append("surveyScope", getSurveyScope())
+            .append("surveyObject", getSurveyObject())
             .append("surveyBy", getSurveyBy())
             .append("surveyResult", getSurveyResult())
             .append("surveyTime", getSurveyTime())

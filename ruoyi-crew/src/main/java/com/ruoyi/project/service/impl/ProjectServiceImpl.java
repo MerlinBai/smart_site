@@ -1,6 +1,5 @@
 package com.ruoyi.project.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.ruoyi.crew.domain.RuoyiCrew;
@@ -44,30 +43,12 @@ public class ProjectServiceImpl implements IProjectService
      * @return 项目管理
      */
     @Override
-    public List<Project> selectProjectList(Project project)
+    public List<Project> selectProjectList(Project project, RuoyiCrew ruoyiCrew)
     {
+        List<Project> projectList = projectMapper.selectProjectList(project);
+        List<RuoyiCrew> crewList = ruoyiCrewMapper.selectRuoyiCrewList(ruoyiCrew);
 
-//     RuoyiCrew crew =new RuoyiCrew();
-//     crew.setName(project.getCrewName());
-//     List<RuoyiCrew> crewList =ruoyiCrewMapper.selectRuoyiCrewList(crew);
-//     List<Project> projects = new ArrayList<>();
-//     for (RuoyiCrew c:crewList)
-//     {
-//         project .setCrewId(c.getCrewId());
-//         projects.addAll(projectMapper.selectProjectList(project));
-//     }
-//     for (Project p :projects)
-//     {
-//         if(p.getCrewId()==null)
-//         {
-//             continue;
-//         }
-//         crew =ruoyiCrewMapper.selectRuoyiCrewByCrewId(p.getCrewId());
-//         p.setCrewName(crew.getName());
-//     }
-//
-//     return projects ;
-        return projectMapper.selectProjectList(project);
+        return projectList;
     }
 
     @Override

@@ -151,6 +151,60 @@ public class RuoyiCrew extends BaseEntity
     {
         return buildTime;
     }
+    private List<Integer> finishProjects;
+    private List<Integer>unfinishProjects;
+    private List<String>finishProjectsName;
+    private List<String>unfinishProjectsName;
+    private String FinSumName;
+    private String UnFinSumName;
+
+    public String getFinSumName() {
+        return FinSumName;
+    }
+
+    public void setFinSumName(String finSumName) {
+        FinSumName = finSumName;
+    }
+
+    public String getUnFinSumName() {
+        return UnFinSumName;
+    }
+
+    public void setUnFinSumName(String unFinSumName) {
+        UnFinSumName = unFinSumName;
+    }
+
+    public List<String> getFinishProjectsName() {
+        return finishProjectsName;
+    }
+
+    public void setFinishProjectsName(List<String> finishProjectsName) {
+        this.finishProjectsName = finishProjectsName;
+    }
+
+    public List<String> getUnfinishProjectsName() {
+        return unfinishProjectsName;
+    }
+
+    public void setUnfinishProjectsName(List<String> unfinishProjectsName) {
+        this.unfinishProjectsName = unfinishProjectsName;
+    }
+
+    public List<Integer> getFinishProjects() {
+        return finishProjects;
+    }
+
+    public void setFinishProjects(List<Integer> finishProjects) {
+        this.finishProjects = finishProjects;
+    }
+
+    public List<Integer> getUnfinishProjects() {
+        return unfinishProjects;
+    }
+
+    public void setUnfinishProjects(List<Integer> unfinishProjects) {
+        this.unfinishProjects = unfinishProjects;
+    }
 
     @Override
     public String toString() {

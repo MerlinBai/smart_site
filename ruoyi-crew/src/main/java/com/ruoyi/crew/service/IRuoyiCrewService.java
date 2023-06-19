@@ -1,6 +1,8 @@
 package com.ruoyi.crew.service;
 
 import java.util.List;
+
+import com.ruoyi.crew.domain.CrewProject;
 import com.ruoyi.crew.domain.RuoyiCrew;
 import com.ruoyi.project.domain.Project;
 
@@ -27,6 +29,7 @@ public interface IRuoyiCrewService
      * @return 施工队信息集合
      */
     public List<RuoyiCrew> selectRuoyiCrewList(RuoyiCrew ruoyiCrew, Project project);
+
 
     /**
      * 新增施工队信息
@@ -63,7 +66,9 @@ public interface IRuoyiCrewService
  * 通过projectId查询项目信息
  *
  */
+//废弃
  public List<Project>selectFinshProject(Integer ProjectId);
-
+//废弃
     public void addfinsh(Integer CrewId,Integer ProjectId);
+
 }
