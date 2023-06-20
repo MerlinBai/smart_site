@@ -10,15 +10,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="sex"    column="sex"    />
         <result property="age"    column="age"    />
         <result property="phone"    column="phone"    />
-        <result property="address"    column="address"    />
+        <result property="addressNow"    column="address_now"    />
+        <result property="addressReg"    column="address_reg"    />
         <result property="polStatus"    column="pol_status"    />
         <result property="crewId"    column="crew_id"    />
         <result property="projectNow"    column="project_now"    />
         <result property="authentication"    column="authentication"    />
+        <result property="idNumber"    column="id_number"    />
     </resultMap>
 
+
     <sql id="selectRuoyiWorkerVo">
-        select id, name, sex, age, phone, address, pol_status,crew_id, project_now, authentication from tb_ruoyi_worker
+        select id, name, sex, age,pol_status,crew_id, project_now, authentication from tb_ruoyi_worker
+    </sql>
+
+    <sql id="selectDetails">
+        select id,name,sex,age,phone,address_now,address_reg,pol_status,crew_id,project_now,authentication,id_number from tb_ruoyi_worker
     </sql>
 
     <select id="selectRuoyiWorkerList" parameterType="RuoyiWorker" resultMap="RuoyiWorkerResult">
@@ -26,13 +33,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <where>
             <if test="id != null ">id = #{id}</if>
             <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
-            <if test="address != null  and address != ''"> and address like concat('%', #{address}, '%')</if>
-            <if test="crewId != null "> and crew_id = #{crewId}</if>
+            <if test="authentication != null "> and authentication = #{authentication}</if>
+        </where>
+    </select>
+
+    <select id="selectRuoyiWorkerListDetails" parameterType="RuoyiWorker" resultMap="RuoyiWorkerResult">
+        <include refid="selectDetails"/>
+        <where>
+            <if test="id != null ">id = #{id}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="authentication != null "> and authentication = #{authentication}</if>
         </where>
     </select>
     
     <select id="selectRuoyiWorkerById" parameterType="Long" resultMap="RuoyiWorkerResult">
-        <include refid="selectRuoyiWorkerVo"/>
+        <include refid="selectDetails"/>
         where id = #{id}
     </select>
         
@@ -44,10 +59,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="sex != null">sex,</if>
             <if test="age != null">age,</if>
             <if test="phone != null">phone,</if>
-            <if test="address != null">address,</if>
+            <if test="addressNow != null">address_now,</if>
             <if test="polStatus != null">pol_status,</if>
             <if test="crewId != null">crew_id,</if>
             <if test="projectNow != null">project_now,</if>
+            <if test="idNumber != null">id_number,</if>
             <if test="authentication != null">authentication,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -56,10 +72,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="sex != null">#{sex},</if>
             <if test="age != null">#{age},</if>
             <if test="phone != null">#{phone},</if>
-            <if test="address != null">#{address},</if>
+            <if test="addressNow != null">#{addressNow},</if>
             <if test="polStatus != null">#{polStatus},</if>
             <if test="crewId != null">#{crewId},</if>
             <if test="projectNow != null">#{projectNow},</if>
+            <if test="idNumber != null">#{idNumber},</if>
             <if test="authentication != null">#{authentication},</if>
          </trim>
     </insert>
@@ -71,10 +88,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="sex != null">sex = #{sex},</if>
             <if test="age != null">age = #{age},</if>
             <if test="phone != null">phone = #{phone},</if>
-            <if test="address != null">address = #{address},</if>
+            <if test="addressNow != null">address_now = #{addressNow},</if>
+            <if test="addressReg != null">address_reg = #{addressReg},</if>
             <if test="polStatus != null">pol_status = #{polStatus},</if>
             <if test="crewId != null">crew_id = #{crewId},</if>
             <if test="projectNow != null">project_now = #{projectNow},</if>
+            <if test="idNumber != null">id_number = #{idNumber},</if>
             <if test="authentication != null">authentication = #{authentication},</if>
         </trim>
         where id = #{id}

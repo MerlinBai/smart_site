@@ -35,10 +35,18 @@ export function updateWorker(data) {
   })
 }
 
-// 删除员工管理
+// 修改工匠的认证信息
 export function delWorker(id) {
   return request({
     url: '/system/worker/' + id,
-    method: 'delete'
+    method: 'put'
+  })
+}
+
+//查询员工详细信息
+export function showWorkerDetails(id) {
+  return request({
+    url: '/system/worker/details?id=' + id,
+    method: 'get',
   })
 }

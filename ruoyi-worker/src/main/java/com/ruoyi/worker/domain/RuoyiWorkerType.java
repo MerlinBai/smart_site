@@ -7,6 +7,8 @@ import javax.naming.InsufficientResourcesException;
  * @Date: 2023/06/08/20:07
  */
 public class RuoyiWorkerType {
+    public RuoyiWorkerType() {}
+
     public RuoyiWorkerType(Long workerId, Long typeId) {
         this.workerId = workerId;
         this.typeId = typeId;

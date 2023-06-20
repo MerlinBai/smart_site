@@ -2,6 +2,7 @@ package com.ruoyi.worker.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.ruoyi.common.core.domain.entity.SysUser;
 import com.ruoyi.common.exception.ServiceException;
@@ -64,35 +65,31 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
      * @return 员工管理
      */
     @Override
-    public List<RuoyiWorker> selectRuoyiWorkerList(RuoyiWorker ruoyiWorker)
+    public List<RuoyiWorker> selectRuoyiWorkerList(List<String> workerTypeNames,List<Long> authentication,String name,Boolean isDetails)
     {
+        RuoyiCrew crew ;
         StringBuilder str = new StringBuilder();
         List<Long> typeIdList;
-        RuoyiCrew crew = new RuoyiCrew();
-        crew.setName(ruoyiWorker.getCrewName());
-        List<RuoyiCrew> crewList = ruoyiCrewMapper.selectRuoyiCrewList(crew);
+        RuoyiWorker ruoyiWorker = new RuoyiWorker();
         List<RuoyiWorker> list = new ArrayList<>();
-        List<Long> typeIdList2;
+        List<Long> typeIdList2 = new ArrayList<>();
         List<Long> workerIdList = new ArrayList<>();
-
-        typeIdList2 = ruoyiTypeMapper.selectTypeId(ruoyiWorker.getWorkerTypeName());
-
-        if(typeIdList2.size() != 0){
-            for(Long l : typeIdList2)
-                workerIdList.addAll(ruoyiWorkerTypeMapper.selectWorkerId(l));
-            if (workerIdList.size() != 0){
-                for(Long wi : workerIdList)
-                    for(RuoyiCrew c : crewList){
-                        ruoyiWorker.setId(wi);
-                        ruoyiWorker.setCrewId(c.getCrewId());
-                        list.addAll(ruoyiWorkerMapper.selectRuoyiWorkerList(ruoyiWorker));
-                    }
-            }
+        for(String typeName : workerTypeNames) {
+            typeIdList2.addAll(ruoyiTypeMapper.selectTypeId(typeName));
         }
-        else{
-            for(RuoyiCrew c : crewList){
-                ruoyiWorker.setCrewId(c.getCrewId());
-                list.addAll(ruoyiWorkerMapper.selectRuoyiWorkerList(ruoyiWorker));
+        ruoyiWorker.setName(name);
+        for(Long l : typeIdList2)
+            workerIdList.addAll(ruoyiWorkerTypeMapper.selectWorkerId(l));
+        if (workerIdList.size() != 0){
+            for(Long wi : workerIdList) {
+                ruoyiWorker.setId(wi);
+                for (Long aut : authentication) {
+                    ruoyiWorker.setAuthentication(aut);
+                    if (isDetails)
+                        list.addAll(ruoyiWorkerMapper.selectRuoyiWorkerListDetails(ruoyiWorker));
+                    else
+                            list.addAll(ruoyiWorkerMapper.selectRuoyiWorkerList(ruoyiWorker));
+                }
             }
         }
 
@@ -112,6 +109,12 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
             if(str.length() != 0)
               worker.setWorkerTypeName(str.deleteCharAt(str.length() - 1).toString());
             str.delete(0,str.length());
+        }
+        for(int i = 0; i < list.size() - 1 ; i++){
+            for(int j = i+1 ; j < list.size() ; j++){
+                if(Objects.equals(list.get(i).getId(), list.get(j).getId()))
+                    list.remove(j);
+            }
         }
         return list;
     }
@@ -140,6 +143,14 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
     @Override
     public int updateRuoyiWorker(RuoyiWorker ruoyiWorker)
     {
+        RuoyiWorkerType ruoyiWorkerType = new RuoyiWorkerType();
+        ruoyiWorkerType.setWorkerId(ruoyiWorker.getId());
+        ruoyiWorkerTypeMapper.deleteByWorkerId(ruoyiWorker.getId());
+        String[] split = ruoyiWorker.getWorkerTypeName().split(",");
+        for(String s : split){
+            ruoyiWorkerType.setTypeId(ruoyiTypeMapper.selectOneTypeId(s));
+            ruoyiWorkerTypeMapper.insert(ruoyiWorkerType);
+        }
         return ruoyiWorkerMapper.updateRuoyiWorker(ruoyiWorker);
     }
 
@@ -150,9 +161,16 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
      * @return 结果
      */
     @Override
-    public int deleteRuoyiWorkerByIds(Long[] ids)
+    public int updateAutRuoyiWorkerByIds(Long[] ids)
     {
-        return ruoyiWorkerMapper.deleteRuoyiWorkerByIds(ids);
+        RuoyiWorker ruoyiWorker;
+        for(Long id : ids){
+            ruoyiWorker = ruoyiWorkerMapper.selectRuoyiWorkerById(id);
+            if(ruoyiWorker.getAuthentication() == 0) ruoyiWorker.setAuthentication(1L);
+            else if(ruoyiWorker.getAuthentication() == 1) ruoyiWorker.setAuthentication(0L);
+            ruoyiWorkerMapper.updateRuoyiWorker(ruoyiWorker);
+        }
+        return 1;
     }
 
     /**
@@ -182,6 +200,18 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
         RuoyiCrew crew;
         for (RuoyiWorker worker : workerList)
         {
+            if(worker.getSexName().equals("男")) worker.setSex(0L);
+            else if(worker.getSexName().equals("女")) worker.setSex(1L);
+            else worker.setSex(2L);
+
+            if(worker.getPolStatusName().equals("群众")) worker.setPolStatus(0);
+            else if(worker.getPolStatusName().equals("党员")) worker.setPolStatus(1);
+            else worker.setPolStatus(2);
+
+            if(worker.getAuthenticationName().equals("否")) worker.setAuthentication(0L);
+            else if(worker.getAuthenticationName().equals("是")) worker.setAuthentication(1L);
+            else worker.setAuthentication(2L);
+
             try
             {
                 // 验证是否存在这个用户
@@ -242,5 +272,21 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
             successMsg.insert(0, "恭喜您，数据已全部导入成功！共 " + successNum + " 条，数据如下：");
         }
         return successMsg.toString();
+    }
+
+    public RuoyiWorker selectDetails(Long id){
+        RuoyiWorker worker = ruoyiWorkerMapper.selectRuoyiWorkerById(id);
+        StringBuilder str = new StringBuilder();
+//        worker.setCrewName(ruoyiCrewMapper.selectCrewNamebyCrewId(worker.getCrewId()));
+//        worker.setWorkerTypeName(ruoyiWorkerTypeMapper.);
+        if(worker.getCrewId() != null){
+            worker.setCrewName(ruoyiCrewMapper.selectRuoyiCrewByCrewId(worker.getCrewId()).getName());
+        }
+        for(Long typeId : ruoyiWorkerTypeMapper.selectTypeId(worker.getId())){
+            str.append(ruoyiTypeMapper.selectTypeName(typeId)).append(',');
+        }
+        if(str.length() != 0)
+            worker.setWorkerTypeName(str.deleteCharAt(str.length() - 1).toString());
+        return worker;
     }
 }

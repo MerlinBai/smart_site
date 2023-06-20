@@ -28,7 +28,7 @@ public interface IRuoyiWorkerService
      * @param ruoyiWorker 员工管理
      * @return 员工管理集合
      */
-    public List<RuoyiWorker> selectRuoyiWorkerList(RuoyiWorker ruoyiWorker);
+    public List<RuoyiWorker> selectRuoyiWorkerList(List<String> workerTypeNames,List<Long> authentication,String name,Boolean isDetails);
 
     /**
      * 新增员工管理
@@ -52,7 +52,7 @@ public interface IRuoyiWorkerService
      * @param ids 需要删除的员工管理主键集合
      * @return 结果
      */
-    public int deleteRuoyiWorkerByIds(Long[] ids);
+    public int updateAutRuoyiWorkerByIds(Long[] ids);
 
     /**
      * 删除员工管理信息
@@ -63,4 +63,6 @@ public interface IRuoyiWorkerService
     public int deleteRuoyiWorkerById(Long id);
 
     public String importWorker(List<RuoyiWorker> workerList, Boolean isUpdateSupport, String operName);
+
+    public RuoyiWorker selectDetails(Long id);
 }

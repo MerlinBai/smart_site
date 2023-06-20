@@ -1,7 +1,9 @@
 package com.ruoyi.worker.mapper;
 
 
+import com.ruoyi.common.core.domain.R;
 import com.ruoyi.worker.domain.RuoyiWorker;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -28,6 +30,8 @@ public interface RuoyiWorkerMapper
      * @return 员工管理集合
      */
     public List<RuoyiWorker> selectRuoyiWorkerList(RuoyiWorker ruoyiWorker);
+
+    public List<RuoyiWorker> selectRuoyiWorkerListDetails(RuoyiWorker ruoyiWorker);
 
     /**
      * 新增员工管理
@@ -60,4 +64,5 @@ public interface RuoyiWorkerMapper
      * @return 结果
      */
     public int deleteRuoyiWorkerByIds(Long[] ids);
+
 }

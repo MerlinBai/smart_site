@@ -19,9 +19,9 @@ public interface RuoyiWorkerTypeMapper {
     @Select("select type_id from tb_ruoyi_worker_type where worker_id = #{workerId}")
     public List<Long> selectTypeId (Long workerId);
 
-    @Insert("insert into tb_ruoyi_worker_type (worker_id, type_id) values (#{workerId},#{typeId})")
+    @Insert("insert into smart_site.tb_ruoyi_worker_type (worker_id, type_id) values (#{workerId},#{typeId})")
     public void insert(RuoyiWorkerType ruoyiWorkerType);
 
-    @Delete("delete from tb_ruoyi_worker_type where worker_id = #{workerId}")
+    @Delete("delete from smart_site.tb_ruoyi_worker_type where worker_id = #{workerId}")
     public void deleteByWorkerId(Long workerId);
 }

@@ -5,6 +5,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 员工管理对象 tb_ruoyi_worker
  * 
@@ -14,6 +17,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
 public class RuoyiWorker extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
+    private Double persent;
 
     /** id */
     @Excel( name = "用户id" )
@@ -39,12 +43,13 @@ public class RuoyiWorker extends BaseEntity
     private String phone;
 
     /** 住址 */
-    @Excel(name = "住址")
-    private String address;
+    @Excel(name = "现住址")
+    private String addressNow;
 
+    @Excel(name = "户籍住址")
+    private String addressReg;
     /** 政治面貌 */
-    @Excel(name = "政治面貌")
-    private String polStatus;
+    private Integer polStatus;
 
     /** 工种id */
 
@@ -54,7 +59,7 @@ public class RuoyiWorker extends BaseEntity
     private String workerTypeName;
 
     /** 属于哪一个施工队 */
-    @Excel(name = "所属施工队")
+    @Excel(name = "所属施工队id")
     private Long crewId;
 
     /** 正在进行的项目 */
@@ -62,14 +67,81 @@ public class RuoyiWorker extends BaseEntity
     private Long projectNow;
 
     /** 是否认证 */
-    @Excel(name = "是否认证")
+
     private Long authentication;
 
     private String crewName;
 
+    @Excel(name = "政治面貌")
+    private String polStatusName;
 
+    @Excel(name = "身份证号")
+    private String idNumber;
 
-    public void setId(Long id) 
+    @Excel(name = "是否认证")
+    private String authenticationName;
+
+    private List<String>  workerTypeNames =new ArrayList<>() ;
+
+    private List<String> authenticationList = new ArrayList<>() ;
+
+    public List<String> getWorkerTypeNames() {
+        return workerTypeNames;
+    }
+
+    public void setWorkerTypeNames(List<String> workerTypeNames) {
+        this.workerTypeNames = workerTypeNames;
+    }
+
+    public List<String> getAuthenticationList() {
+        return authenticationList;
+    }
+
+    public void setAuthenticationList(List<String> authenticationList) {
+        this.authenticationList = authenticationList;
+    }
+
+    public Double getPersent() {
+        return persent;
+    }
+
+    public void setPersent(Double persent) {
+        this.persent = persent;
+    }
+
+    public String getAddressReg() {
+        return addressReg;
+    }
+
+    public void setAddressReg(String addressReg) {
+        this.addressReg = addressReg;
+    }
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
+
+    public String getPolStatusName() {
+        return polStatusName;
+    }
+
+    public void setPolStatusName(String polStatusName) {
+        this.polStatusName = polStatusName;
+    }
+
+    public String getAuthenticationName() {
+        return authenticationName;
+    }
+
+    public void setAuthenticationName(String authenticationName) {
+        this.authenticationName = authenticationName;
+    }
+
+    public void setId(Long id)
     {
         this.id = id;
     }
@@ -114,27 +186,27 @@ public class RuoyiWorker extends BaseEntity
     {
         return phone;
     }
-    public void setAddress(String address) 
+    public void setAddressNow(String addressNow)
     {
-        this.address = address;
+        this.addressNow = addressNow;
     }
 
-    public String getAddress() 
+    public String getAddressNow()
     {
-        return address;
+        return addressNow;
     }
-    public void setPolStatus(String polStatus) 
+    public void setPolStatus(Integer polStatus)
     {
         this.polStatus = polStatus;
     }
 
-    public String getPolStatus() 
+    public Integer getPolStatus()
     {
         return polStatus;
     }
-    public void setWorkerTypeId(Long wokerTypeId)
+    public void setWorkerTypeId(Long workerTypeId)
     {
-        this.workerTypeId = wokerTypeId;
+        this.workerTypeId = workerTypeId;
     }
 
     public Long getWorkerTypeId()
@@ -201,12 +273,15 @@ public class RuoyiWorker extends BaseEntity
             .append("sex", getSex())
             .append("age", getAge())
             .append("phone", getPhone())
-            .append("address", getAddress())
+            .append("addressNow", getAddressNow())
+            .append("addressReg", getAddressReg())
             .append("polStatus", getPolStatus())
             .append("wokerTypeId", getWorkerTypeId())
             .append("crewId", getCrewId())
             .append("projectNow", getProjectNow())
+            .append("idNumber",getIdNumber())
             .append("authentication", getAuthentication())
+            .append("persent",getPersent())
             .toString();
     }
 }
