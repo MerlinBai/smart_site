@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ruoyi.worker.domain.RuoyiType;
 import com.ruoyi.worker.mapper.RuoyiTypeMapper;
+import com.ruoyi.worker.mapper.RuoyiWorkerTypeMapper;
 import com.ruoyi.worker.service.IRuoyiTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ public class RuoyiTypeServiceImpl implements IRuoyiTypeService
 {
     @Autowired
     private RuoyiTypeMapper ruoyiTypeMapper;
+
+    @Autowired
+    private RuoyiWorkerTypeMapper ruoyiWorkerTypeMapper;
 
     /**
      * 查询工种id与工种名的对应表
@@ -41,7 +45,11 @@ public class RuoyiTypeServiceImpl implements IRuoyiTypeService
     @Override
     public List<RuoyiType> selectRuoyiTypeList(RuoyiType ruoyiType)
     {
-        return ruoyiTypeMapper.selectRuoyiTypeList(ruoyiType);
+        List<RuoyiType> ruoyiTypes = ruoyiTypeMapper.selectRuoyiTypeList(ruoyiType);
+        for(RuoyiType type : ruoyiTypes){
+            type.setNumberOfPeople((long)ruoyiWorkerTypeMapper.selectWorkerId((long)type.getId()).size());
+        }
+        return ruoyiTypes;
     }
 
     /**

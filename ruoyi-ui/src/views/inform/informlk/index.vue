@@ -1,288 +1,176 @@
 <template>
   <div class="inform-shell">
-    <nav class="inform-unit">
-      单位档案信息
-    </nav>
-    <div class="body-inform-unit">
-        <el-table
-          :data="tableData"
-          height="100%"
-          stripe
-          style="width: 100%">
-          <el-table-column
-            prop="date"
-            label="序号"
-            width="180">
-          </el-table-column>
-          <el-table-column
-            prop="informTitle"
-            label="公告标题"
-            width="180">
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="公告类型">
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="状态">
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="创建者">
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="创建时间">
-          </el-table-column>
-          <el-table-column
-            label="操作">
-            <span>修改 </span>
-            <span>删除</span>
-          </el-table-column>
-        </el-table>
+    <nav v-if="!boo" class="inform-unit">单位档案信息</nav>
+    <div v-if="!boo" class="body-inform-unit">
+      <el-table
+        :data="InformList"
+        height="100%"
+        row-class-name="table-row"
+        stripe
+        style="width: 100%"
+      >
+        <el-table-column prop="informId" label="序号" width="80px" />
+        <el-table-column prop="informTitle" label="通知标题" width="390" />
+        <el-table-column
+          prop="informType"
+          label="通知类型"
+          :formatter="formatInformType"
+          width="180"
+        />
+        <el-table-column prop="createBy" label="发送者" width="220" />
+        <el-table-column prop="createTime" label="发送时间" width="" />
+        <el-table-column label="查看详情">
+          <template #default="{ row }">
+            <div>
+              <button
+                class="particulars-inform"
+                @click="showInform(row.informId)"
+              >
+                详情
+              </button>
+            </div>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+    <div v-show="boo" class="particulars-show">
+      <nav class="pts-nav">{{ this.InformListCopy.informTitle }}</nav>
+      <div class="pts-content">{{ this.InformListCopy.informContent }}</div>
+      <div class="pts-time">发送时间：{{ this.InformListCopy.createTime }}</div>
+      <div class="pts-author">发送者：{{ this.InformListCopy.createBy }}</div>
+      <button class="pts-btn" @click="boo = !boo">关闭通知</button>
     </div>
   </div>
 </template>
 
 <script>
-import { listInform, getInform, delInform, addInform, updateInform } from "@/api/inform/inform";
+import axios from "axios";
 
 export default {
-  name: "Inform",
-  dicts: ['sys_notice_status', 'sys_notice_type'],
   data() {
     return {
-      // 遮罩层
-      loading: true,
-      // 选中数组
-      ids: [],
-      // 非单个禁用
-      single: true,
-      // 非多个禁用
-      multiple: true,
-      // 显示搜索条件
-      showSearch: true,
-      // 总条数
-      total: 0,
-      // 通知表格数据
-      informList: [],
-      // 弹出层标题
-      title: "",
-      // 是否显示弹出层
-      open: false,
-      // 查询参数
-      queryParams: {
-        pageNum: 1,
-        pageSize: 10,
-        informTitle: null,
-        informType: null,
-        status: null,
-        informContent: null,
-        infromFile: null,
-      },
-      // 表单参数
-      form: {},
-      // 表单校验
-      rules: {
-        informTitle: [
-          { required: true, message: "通知标题不能为空", trigger: "blur" }
-        ],
-        informType: [
-          { required: true, message: "通知类型不能为空", trigger: "change" }
-        ],
-      }
+      InformList: [],
+      InformListCopy: [],
+      boo: true,
     };
   },
   created() {
-    this.getList();
+    this.getMessageList();
   },
   methods: {
-    /** 查询通知列表 */
-    getList() {
-      this.loading = true;
-      listInform(this.queryParams).then(response => {
-        // for(var i=0;i<response.rows.length;i++) {
-        //   // console.log(response.rows[i].infromFile);
-        //   var informFileMsg = response.rows[i].infromFile;
-        //   var split = informFileMsg.split("/");
-        //   informFileMsg = "";
-        //   for(var j = 6; j<split.length; j++) {
-        //     informFileMsg = informFileMsg + split[j];
-        //   }
-        //   // console.log(informFileMsg);
-        //   response.rows[i].infromFile = informFileMsg;
-        // }
-        this.informList = response.rows;
-        this.total = response.total;
-        this.loading = false;
-      });
+    async getMessageList() {
+      const { data: res } = await axios.get(
+        "http://localhost:81/dev-api/inform/inform/list?pageNum=1&pageSize=10"
+      );
+      if (res.code != 200) console.log("数据获取失败！");
+      this.InformList = res.rows;
+      // console.log(this.InformList);
+
     },
-    // 取消按钮
-    cancel() {
-      this.open = false;
-      this.reset();
+    formatInformType(row, column) {
+      if (row.informType == 1) {
+        return "通知";
+      } else if (row.informType == 2) {
+        return "公告";
+      }
     },
-    // 表单重置
-    reset() {
-      this.form = {
-        informId: null,
-        informTitle: null,
-        informType: null,
-        status: null,
-        informContent: null,
-        infromFile: null,
-        createBy: null,
-        createTime: null,
-        updateBy: null,
-        updateTime: null
-      };
-      this.resetForm("form");
+    showInform(id) {
+      console.log(id);
+      id = id - 1;
+      this.boo = true;
+      console.log(this.InformList);
+      this.InformListCopy = this.InformList[id];
+      console.log(this.InformListCopy);
     },
-    /** 搜索按钮操作 */
-    handleQuery() {
-      this.queryParams.pageNum = 1;
-      this.getList();
-    },
-    /** 重置按钮操作 */
-    resetQuery() {
-      this.resetForm("queryForm");
-      this.handleQuery();
-    },
-    // 多选框选中数据
-    handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.informId)
-      this.single = selection.length!==1
-      this.multiple = !selection.length
-    },
-    /** 新增按钮操作 */
-    handleAdd() {
-      this.reset();
-      this.open = true;
-      this.title = "添加通知";
-    },
-    /** 修改按钮操作 */
-    handleUpdate(row) {
-      this.reset();
-      const informId = row.informId || this.ids
-      getInform(informId).then(response => {
-        this.form = response.data;
-        this.open = true;
-        this.title = "修改通知";
-      });
-    },
-    /** 提交按钮 */
-    submitForm() {
-      this.$refs["form"].validate(valid => {
-        if (valid) {
-          if (this.form.informId != null) {
-            updateInform(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
-              this.open = false;
-              this.getList();
-            });
-          } else {
-            addInform(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
-              this.open = false;
-              this.getList();
-            });
-          }
-        }
-      });
-    },
-    /** 删除按钮操作 */
-    handleDelete(row) {
-      const informIds = row.informId || this.ids;
-      this.$modal.confirm('是否确认删除通知编号为"' + informIds + '"的数据项？').then(function() {
-        return delInform(informIds);
-      }).then(() => {
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {});
-    },
-    /** 导出按钮操作 */
-    handleExport() {
-      this.download('inform/inform/export', {
-        ...this.queryParams
-      }, `inform_${new Date().getTime()}.xlsx`)
-    }
-  }
+  },
 };
 </script>
 
-export default {
-  data() {
-      return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }]
-      }
-    }
+<style>
+.particulars-show {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 70vw;
+  height: 70vh;
+  background-color: #ebfeff;
+  border-radius: 10px;
+  border: solid rgb(177, 177, 177) 3px;
 }
-</script>
-
-<style >
-.inform-shell{
+.pts-nav {
+  font-size: 36px;
+  font-weight: 800;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.pts-content {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 24px;
+}
+.pts-time {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+}
+.pts-author {
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+}
+.pts-btn {
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
+  bottom: 50px;
+  width: 160px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #b1bdff;
+  font-size: 24px;
+}
+.particulars-inform {
+  background-color: initial;
+  border: none;
+}
+.table-row {
+  height: 60px;
+}
+.inform-shell {
   height: calc(100vh - 30px);
   padding: 30px;
   padding-bottom: 0;
   background-color: #cad5d7;
 }
-.inform-unit{
+.inform-unit {
   margin: 0 6%;
   margin-top: 10px;
   width: 88%;
   height: 60px;
-  background-image: linear-gradient(to right,rgb(0, 162, 255),rgb(118, 205, 255),rgb(0, 162, 255));
-  border-radius: 10px 10px 0 0 ;
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 162, 255),
+    rgb(118, 205, 255),
+    rgb(0, 162, 255)
+  );
+  border-radius: 10px 10px 0 0;
   text-align: center;
   line-height: 60px;
-  font-size:24px;
+  font-size: 24px;
   font-weight: 400;
 }
-.body-inform-unit{
+.body-inform-unit {
   height: calc(80% - 129px);
   background-color: #fff;
   margin: 0 6%;
   padding: 20px;
   border-radius: 0 0 20px 20px;
 }
-li{
+li {
   list-style: none;
 }
 </style>

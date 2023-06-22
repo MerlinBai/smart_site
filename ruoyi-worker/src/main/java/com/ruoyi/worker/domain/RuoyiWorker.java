@@ -81,6 +81,16 @@ public class RuoyiWorker extends BaseEntity
     @Excel(name = "是否认证")
     private String authenticationName;
 
+    private String projectName;
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
     private List<String>  workerTypeNames =new ArrayList<>() ;
 
     private List<String> authenticationList = new ArrayList<>() ;

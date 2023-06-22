@@ -7,10 +7,11 @@
     <resultMap type="RuoyiType" id="RuoyiTypeResult">
         <result property="id"    column="id"    />
         <result property="name"    column="name"    />
+        <result property="brief"    column="brief"    />
     </resultMap>
 
     <sql id="selectRuoyiTypeVo">
-        select id, name from tb_ruoyi_type
+        select id, name,brief from tb_ruoyi_type
     </sql>
 
     <select id="selectRuoyiTypeList" parameterType="RuoyiType" resultMap="RuoyiTypeResult">

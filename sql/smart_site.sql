@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 20/06/2023 17:17:04
+ Date: 22/06/2023 17:26:59
 */
 
 SET NAMES utf8mb4;
@@ -43,7 +43,7 @@ CREATE TABLE `gen_table`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`table_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of gen_table
@@ -54,6 +54,8 @@ INSERT INTO `gen_table` VALUES (3, 'tb_inform', '通知', NULL, NULL, 'Inform', 
 INSERT INTO `gen_table` VALUES (5, 'tb_user_inform_status', '用户通知状态信息', NULL, NULL, 'UserInformStatus', 'crud', 'com.ruoyi.inform', 'inform', 'inform', '用户通知状态信息', 'ruoyi', '0', '/', '{}', 'admin', '2023-05-27 14:24:35', '', '2023-05-27 14:25:26', NULL);
 INSERT INTO `gen_table` VALUES (9, 'tb_lingcheng_map', '陵城区区域', NULL, NULL, 'LingchengMap', 'crud', 'com.ruoyi.lingchengqumap', 'lingchengqumap', 'lingchengqumap', '陵城区区域', 'ruoyi', '0', '/', '{}', 'admin', '2023-06-07 13:56:02', '', '2023-06-07 13:56:59', NULL);
 INSERT INTO `gen_table` VALUES (11, 'tb_survey', '满意度检查', NULL, NULL, 'Survey', 'crud', 'com.ruoyi.satisfaction', 'satisfaction', 'survey', '满意度检查', 'ruoyi', '0', '/', '{}', 'admin', '2023-06-18 18:58:15', '', '2023-06-18 18:59:37', NULL);
+INSERT INTO `gen_table` VALUES (13, 'tb_recruitment', '招聘公告表', NULL, NULL, 'Recruitment', 'crud', 'com.ruoyi.recruitment', 'recruitment', 'recruitment', '招聘公告', 'ruoyi', '0', '/', '{}', 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41', NULL);
+INSERT INTO `gen_table` VALUES (14, 'tb_apply', '应聘人信息表', NULL, NULL, 'Apply', 'crud', 'com.ruoyi.apply', 'apply', 'apply', '应聘人信息', 'ruoyi', '0', '/', '{\"parentMenuId\":\"2029\"}', 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17', NULL);
 
 -- ----------------------------
 -- Table structure for gen_table_column
@@ -83,7 +85,7 @@ CREATE TABLE `gen_table_column`  (
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`column_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 87 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 117 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of gen_table_column
@@ -141,6 +143,25 @@ INSERT INTO `gen_table_column` VALUES (83, '11', 'survey_object', '调查对象'
 INSERT INTO `gen_table_column` VALUES (84, '11', 'survey_by', '调查人', 'varchar(255)', 'String', 'surveyBy', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-06-18 18:58:15', '', '2023-06-18 18:59:37');
 INSERT INTO `gen_table_column` VALUES (85, '11', 'survey_result', '调查等级', 'varchar(255)', 'String', 'surveyResult', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'grade', 5, 'admin', '2023-06-18 18:58:15', '', '2023-06-18 18:59:37');
 INSERT INTO `gen_table_column` VALUES (86, '11', 'survey_time', '调查时间', 'datetime', 'Date', 'surveyTime', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'datetime', '', 6, 'admin', '2023-06-18 18:58:15', '', '2023-06-18 18:59:37');
+INSERT INTO `gen_table_column` VALUES (98, '13', 'item_id', '项目id', 'bigint', 'Long', 'itemId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
+INSERT INTO `gen_table_column` VALUES (99, '13', 'item_name', '项目名称', 'varchar(255)', 'String', 'itemName', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 2, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
+INSERT INTO `gen_table_column` VALUES (100, '13', 'require_corporation', '招聘公司', 'varchar(255)', 'String', 'requireCorporation', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
+INSERT INTO `gen_table_column` VALUES (101, '13', 'item_content', '项目内容', 'varchar(255)', 'String', 'itemContent', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'textarea', '', 4, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
+INSERT INTO `gen_table_column` VALUES (102, '13', 'item_location', '项目所在地', 'varchar(255)', 'String', 'itemLocation', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 5, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
+INSERT INTO `gen_table_column` VALUES (103, '13', 'worker_require', '工种需求', 'varchar(255)', 'String', 'workerRequire', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 6, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
+INSERT INTO `gen_table_column` VALUES (104, '13', 'require_num', '招聘人数', 'int', 'Long', 'requireNum', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
+INSERT INTO `gen_table_column` VALUES (105, '13', 'item_finish_time', '预计完成时间', 'datetime', 'Date', 'itemFinishTime', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'datetime', '', 8, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
+INSERT INTO `gen_table_column` VALUES (106, '13', 'contact_phone', '联系电话', 'int', 'String', 'contactPhone', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 9, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
+INSERT INTO `gen_table_column` VALUES (107, '13', 'item_status', '项目招聘状态', 'varchar(255)', 'String', 'itemStatus', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'recruitment', 10, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:42');
+INSERT INTO `gen_table_column` VALUES (108, '13', 'release_time', '发布时间', 'datetime', 'Date', 'releaseTime', '0', '0', '1', '0', '0', '1', '0', 'EQ', 'datetime', '', 11, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:42');
+INSERT INTO `gen_table_column` VALUES (109, '14', 'apply_id', '应聘id', 'bigint', 'Long', 'applyId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
+INSERT INTO `gen_table_column` VALUES (110, '14', 'item_id', '项目id', 'bigint', 'Long', 'itemId', '0', '0', '0', '0', '0', '0', '0', 'EQ', 'input', '', 2, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
+INSERT INTO `gen_table_column` VALUES (111, '14', 'item_name', '项目名称', 'varchar(255)', 'String', 'itemName', '0', '0', '0', '0', '0', '1', '1', 'LIKE', 'input', '', 3, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
+INSERT INTO `gen_table_column` VALUES (112, '14', 'worker_require', '应聘工种', 'varchar(255)', 'String', 'workerRequire', '0', '0', '0', '0', '0', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
+INSERT INTO `gen_table_column` VALUES (113, '14', 'apply_user', '应聘人', 'varchar(255)', 'String', 'applyUser', '0', '0', '0', '0', '0', '1', '0', 'EQ', 'input', '', 5, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
+INSERT INTO `gen_table_column` VALUES (114, '14', 'apply_phone', '应聘人联系方式', 'varchar(15)', 'String', 'applyPhone', '0', '0', '0', '0', '0', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
+INSERT INTO `gen_table_column` VALUES (115, '14', 'apply_time', '应聘时间', 'datetime', 'Date', 'applyTime', '0', '0', NULL, '0', '0', '1', '1', 'BETWEEN', 'datetime', '', 7, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
+INSERT INTO `gen_table_column` VALUES (116, '14', 'apply_audit', '审核结果', 'varchar(255)', 'String', 'applyAudit', '0', '0', '0', '0', '1', '1', '1', 'EQ', 'select', 'audit', 8, '', '2023-06-21 10:42:56', '', '2023-06-21 10:44:17');
 
 -- ----------------------------
 -- Table structure for qrtz_blob_triggers
@@ -443,7 +464,7 @@ CREATE TABLE `sys_dict_data`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 112 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict_data
@@ -484,6 +505,11 @@ INSERT INTO `sys_dict_data` VALUES (103, 2, '良好', '2', 'grade', NULL, 'defau
 INSERT INTO `sys_dict_data` VALUES (104, 3, '中等', '3', 'grade', NULL, 'default', 'N', '0', 'admin', '2023-06-18 18:55:05', '', NULL, '中等');
 INSERT INTO `sys_dict_data` VALUES (105, 4, '及格', '4', 'grade', NULL, 'default', 'N', '0', 'admin', '2023-06-18 18:55:21', '', NULL, '及格');
 INSERT INTO `sys_dict_data` VALUES (106, 5, '不及格', '5', 'grade', NULL, 'default', 'N', '0', 'admin', '2023-06-18 18:55:31', '', NULL, '不及格');
+INSERT INTO `sys_dict_data` VALUES (107, 1, '正在招聘', '0', 'recruitment', NULL, 'success', 'N', '0', 'admin', '2023-06-20 18:29:30', 'admin', '2023-06-20 18:30:18', '正在招聘');
+INSERT INTO `sys_dict_data` VALUES (108, 2, '停止招聘', '1', 'recruitment', NULL, 'info', 'N', '0', 'admin', '2023-06-20 18:29:54', '', NULL, '停止招聘');
+INSERT INTO `sys_dict_data` VALUES (109, 1, '审核通过', '0', 'audit', NULL, 'success', 'N', '0', 'admin', '2023-06-21 10:41:54', '', NULL, '审核通过');
+INSERT INTO `sys_dict_data` VALUES (110, 2, '待处理', '1', 'audit', NULL, 'primary', 'N', '0', 'admin', '2023-06-21 10:42:13', 'admin', '2023-06-21 10:42:44', '待处理');
+INSERT INTO `sys_dict_data` VALUES (111, 3, '审核未通过', '2', 'audit', NULL, 'info', 'N', '0', 'admin', '2023-06-21 10:42:38', 'admin', '2023-06-21 10:42:48', '审核未通过');
 
 -- ----------------------------
 -- Table structure for sys_dict_type
@@ -501,7 +527,7 @@ CREATE TABLE `sys_dict_type`  (
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_id`) USING BTREE,
   UNIQUE INDEX `dict_type`(`dict_type` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 103 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 105 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict_type
@@ -519,6 +545,8 @@ INSERT INTO `sys_dict_type` VALUES (10, '系统状态', 'sys_common_status', '0'
 INSERT INTO `sys_dict_type` VALUES (100, '陵城区区域', 'lingchengqumap', '0', 'admin', '2023-06-07 14:02:12', '', NULL, '陵城区区域');
 INSERT INTO `sys_dict_type` VALUES (101, '调查范围', 'survey', '0', 'admin', '2023-06-18 18:46:43', '', NULL, '调查范围列表');
 INSERT INTO `sys_dict_type` VALUES (102, '分数', 'grade', '0', 'admin', '2023-06-18 18:53:08', '', NULL, '分数');
+INSERT INTO `sys_dict_type` VALUES (103, '招聘状态', 'recruitment', '0', 'admin', '2023-06-20 18:28:38', '', NULL, '招聘状态');
+INSERT INTO `sys_dict_type` VALUES (104, '审核', 'audit', '0', 'admin', '2023-06-21 10:41:21', '', NULL, '审核');
 
 -- ----------------------------
 -- Table structure for sys_job
@@ -562,7 +590,7 @@ CREATE TABLE `sys_job_log`  (
   `exception_info` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '异常信息',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`job_log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_job_log
@@ -597,7 +625,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 259 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 270 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -763,6 +791,16 @@ INSERT INTO `sys_logininfor` VALUES (257, 'admin', '127.0.0.1', '内网IP', 'Chr
 INSERT INTO `sys_logininfor` VALUES (258, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-19 20:06:41');
 INSERT INTO `sys_logininfor` VALUES (259, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-19 21:20:18');
 INSERT INTO `sys_logininfor` VALUES (260, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-20 16:39:30');
+INSERT INTO `sys_logininfor` VALUES (261, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-20 18:25:20');
+INSERT INTO `sys_logininfor` VALUES (262, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-21 09:00:45');
+INSERT INTO `sys_logininfor` VALUES (263, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-21 09:32:24');
+INSERT INTO `sys_logininfor` VALUES (264, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-06-21 09:58:30');
+INSERT INTO `sys_logininfor` VALUES (265, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-21 09:58:38');
+INSERT INTO `sys_logininfor` VALUES (266, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-21 09:59:13');
+INSERT INTO `sys_logininfor` VALUES (267, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-06-21 10:31:44');
+INSERT INTO `sys_logininfor` VALUES (268, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-21 10:32:07');
+INSERT INTO `sys_logininfor` VALUES (269, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-22 14:41:14');
+INSERT INTO `sys_logininfor` VALUES (270, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-22 17:25:22');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -789,7 +827,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2029 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2063 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -904,6 +942,16 @@ INSERT INTO `sys_menu` VALUES (2029, '项目管理', 0, 10, 'project', NULL, NUL
 INSERT INTO `sys_menu` VALUES (2030, '项目信息', 2029, 1, 'project', 'project/project/index', NULL, 1, 0, 'C', '0', '0', '', 'clipboard', 'admin', '2023-06-19 20:16:33', 'admin', '2023-06-19 20:18:42', '');
 INSERT INTO `sys_menu` VALUES (2031, '技能学习', 2025, 2, 'watch', 'train/video/watch', NULL, 1, 0, 'C', '0', '0', '', 'component', 'admin', '2023-06-19 20:22:55', 'admin', '2023-06-19 20:28:30', '');
 INSERT INTO `sys_menu` VALUES (2032, '工种信息', 2022, 2, 'type', 'worker/type/index', NULL, 1, 0, 'C', '0', '0', NULL, 'list', 'admin', '2023-06-19 21:22:00', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2033, '招聘公告', 2029, 2, 'recruitment', 'crew/recruitment/index', NULL, 1, 0, 'C', '0', '0', 'recruitment:recruitment:list', 'button', 'admin', '2023-06-20 18:37:50', 'admin', '2023-06-20 18:47:45', '招聘公告菜单');
+INSERT INTO `sys_menu` VALUES (2034, '招聘公告查询', 2033, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'recruitment:recruitment:query', '#', 'admin', '2023-06-20 18:37:50', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2035, '招聘公告新增', 2033, 2, '#', '', NULL, 1, 0, 'F', '0', '0', 'recruitment:recruitment:add', '#', 'admin', '2023-06-20 18:37:50', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2036, '招聘公告修改', 2033, 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'recruitment:recruitment:edit', '#', 'admin', '2023-06-20 18:37:50', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2037, '招聘公告删除', 2033, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'recruitment:recruitment:remove', '#', 'admin', '2023-06-20 18:37:50', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2038, '招聘公告导出', 2033, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'recruitment:recruitment:export', '#', 'admin', '2023-06-20 18:37:50', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2057, '应聘人信息', 2029, 3, 'apply', 'crew/apply/index', NULL, 1, 0, 'C', '0', '0', 'apply:apply:list', 'component', 'admin', '2023-06-21 10:45:42', 'admin', '2023-06-21 10:46:29', '应聘人信息菜单');
+INSERT INTO `sys_menu` VALUES (2058, '应聘人信息查询', 2057, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'apply:apply:query', '#', 'admin', '2023-06-21 10:45:42', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2061, '应聘人信息删除', 2057, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'apply:apply:remove', '#', 'admin', '2023-06-21 10:45:42', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2062, '应聘人信息导出', 2057, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'apply:apply:export', '#', 'admin', '2023-06-21 10:45:42', '', NULL, '');
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -921,7 +969,7 @@ CREATE TABLE `sys_notice`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`notice_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知公告表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知公告表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_notice
@@ -961,7 +1009,7 @@ CREATE TABLE `sys_oper_log`  (
   INDEX `idx_sys_oper_log_bt`(`business_type` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_ot`(`oper_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 396 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 526 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -1278,6 +1326,120 @@ INSERT INTO `sys_oper_log` VALUES (408, '菜单管理', 2, 'com.ruoyi.web.contro
 INSERT INTO `sys_oper_log` VALUES (409, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-06-10 16:13:40\",\"icon\":\"education\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2022,\"menuName\":\"员工管理\",\"menuType\":\"M\",\"orderNum\":8,\"params\":{},\"parentId\":0,\"path\":\"worker\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-19 21:20:46', 19);
 INSERT INTO `sys_oper_log` VALUES (410, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"worker/worker/index\",\"createTime\":\"2023-06-10 16:14:46\",\"icon\":\"people\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2023,\"menuName\":\"员工信息\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2022,\"path\":\"worker\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-19 21:21:17', 8);
 INSERT INTO `sys_oper_log` VALUES (411, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"worker/type/index\",\"createBy\":\"admin\",\"icon\":\"list\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"工种信息\",\"menuType\":\"C\",\"orderNum\":2,\"params\":{},\"parentId\":2022,\"path\":\"type\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-19 21:22:00', 10);
+INSERT INTO `sys_oper_log` VALUES (412, '代码生成', 6, 'com.ruoyi.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', NULL, '/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":\"tb_recruitment\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 17:34:25', 87);
+INSERT INTO `sys_oper_log` VALUES (413, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":87,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":12,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":88,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":12,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":89,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"requireCorporation\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":12,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"ItemContent\",\"columnComment\":\"项目内容\",\"columnId\":90,\"columnName\":\"item_content\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"editor\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"is', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 17:36:44', 48);
+INSERT INTO `sys_oper_log` VALUES (414, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":87,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":12,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 17:36:44\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":88,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":12,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 17:36:44\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":89,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"requireCorporation\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":12,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 17:36:44\",\"usableColumn\":false},{\"capJavaField\":\"ItemContent\",\"columnComment\":\"项目内容\",\"columnId\":90,\"columnName\":\"item_content\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":true,\"htmlTyp', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:27:42', 34);
+INSERT INTO `sys_oper_log` VALUES (415, '字典类型', 1, 'com.ruoyi.web.controller.system.SysDictTypeController.add()', 'POST', 1, 'admin', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"dictName\":\"招聘状态\",\"dictType\":\"recruitment\",\"params\":{},\"remark\":\"招聘状态\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:28:38', 10);
+INSERT INTO `sys_oper_log` VALUES (416, '字典数据', 1, 'com.ruoyi.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"招聘中\",\"dictSort\":1,\"dictType\":\"recruitment\",\"dictValue\":\"0\",\"listClass\":\"success\",\"params\":{},\"remark\":\"招聘中\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:29:30', 11);
+INSERT INTO `sys_oper_log` VALUES (417, '字典数据', 1, 'com.ruoyi.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"停止招聘\",\"dictSort\":2,\"dictType\":\"recruitment\",\"dictValue\":\"1\",\"listClass\":\"info\",\"params\":{},\"remark\":\"停止招聘\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:29:54', 11);
+INSERT INTO `sys_oper_log` VALUES (418, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:29:30\",\"default\":false,\"dictCode\":107,\"dictLabel\":\"正在招聘\",\"dictSort\":1,\"dictType\":\"recruitment\",\"dictValue\":\"0\",\"isDefault\":\"N\",\"listClass\":\"success\",\"params\":{},\"remark\":\"正在招聘\",\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:30:18', 9);
+INSERT INTO `sys_oper_log` VALUES (419, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":87,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":12,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:27:41\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":88,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":12,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:27:42\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":89,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"requireCorporation\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":12,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:27:42\",\"usableColumn\":false},{\"capJavaField\":\"ItemContent\",\"columnComment\":\"项目内容\",\"columnId\":90,\"columnName\":\"item_content\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 17:34:25\",\"dictType\":\"\",\"edit\":true,\"htmlTyp', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:31:37', 32);
+INSERT INTO `sys_oper_log` VALUES (420, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.synchDb()', 'GET', 1, 'admin', NULL, '/tool/gen/synchDb/tb_recruitment', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:32:00', 44);
+INSERT INTO `sys_oper_log` VALUES (421, '代码生成', 3, 'com.ruoyi.generator.controller.GenController.remove()', 'DELETE', 1, 'admin', NULL, '/tool/gen/12', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:32:07', 14);
+INSERT INTO `sys_oper_log` VALUES (422, '代码生成', 6, 'com.ruoyi.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', NULL, '/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":\"tb_recruitment\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:32:13', 38);
+INSERT INTO `sys_oper_log` VALUES (423, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":98,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":true,\"isIncrement\":\"1\",\"isInsert\":\"1\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":99,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":100,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"requireCorporation\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"ItemContent\",\"columnComment\":\"项目内容\",\"columnId\":101,\"columnName\":\"item_content\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"editor\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:32:44', 29);
+INSERT INTO `sys_oper_log` VALUES (424, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":98,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:32:44\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":99,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:32:44\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":100,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"requireCorporation\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:32:44\",\"usableColumn\":false},{\"capJavaField\":\"ItemContent\",\"columnComment\":\"项目内容\",\"columnId\":101,\"columnName\":\"item_content\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlT', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:35:04', 36);
+INSERT INTO `sys_oper_log` VALUES (425, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":98,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:35:04\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":99,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:35:04\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":100,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"requireCorporation\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:35:04\",\"usableColumn\":false},{\"capJavaField\":\"ItemContent\",\"columnComment\":\"项目内容\",\"columnId\":101,\"columnName\":\"item_content\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlT', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:35:44', 34);
+INSERT INTO `sys_oper_log` VALUES (426, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"tb_recruitment\"}', NULL, 0, NULL, '2023-06-20 18:35:49', 140);
+INSERT INTO `sys_oper_log` VALUES (427, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":98,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:35:43\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":99,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:35:43\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":100,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"requireCorporation\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:35:43\",\"usableColumn\":false},{\"capJavaField\":\"ItemContent\",\"columnComment\":\"项目内容\",\"columnId\":101,\"columnName\":\"item_content\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlT', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:36:32', 38);
+INSERT INTO `sys_oper_log` VALUES (428, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"tb_recruitment\"}', NULL, 0, NULL, '2023-06-20 18:36:35', 34);
+INSERT INTO `sys_oper_log` VALUES (429, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":98,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:36:32\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":99,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:36:32\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":100,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"requireCorporation\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:36:32\",\"usableColumn\":false},{\"capJavaField\":\"ItemContent\",\"columnComment\":\"项目内容\",\"columnId\":101,\"columnName\":\"item_content\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlT', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:38:26', 28);
+INSERT INTO `sys_oper_log` VALUES (430, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"tb_recruitment\"}', NULL, 0, NULL, '2023-06-20 18:38:28', 32);
+INSERT INTO `sys_oper_log` VALUES (431, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":98,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:38:26\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":99,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:38:26\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":100,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"requireCorporation\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:38:26\",\"usableColumn\":false},{\"capJavaField\":\"ItemContent\",\"columnComment\":\"项目内容\",\"columnId\":101,\"columnName\":\"item_content\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlT', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:39:36', 37);
+INSERT INTO `sys_oper_log` VALUES (432, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"tb_recruitment\"}', NULL, 0, NULL, '2023-06-20 18:39:49', 27);
+INSERT INTO `sys_oper_log` VALUES (433, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2045', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"存在子菜单,不允许删除\",\"code\":601}', 0, NULL, '2023-06-20 18:45:37', 4);
+INSERT INTO `sys_oper_log` VALUES (434, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2050', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:45:43', 11);
+INSERT INTO `sys_oper_log` VALUES (435, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2049', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:45:48', 9);
+INSERT INTO `sys_oper_log` VALUES (436, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2048', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:45:54', 9);
+INSERT INTO `sys_oper_log` VALUES (437, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2047', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:45:56', 10);
+INSERT INTO `sys_oper_log` VALUES (438, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2046', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:45:59', 8);
+INSERT INTO `sys_oper_log` VALUES (439, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2045', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:46:02', 9);
+INSERT INTO `sys_oper_log` VALUES (440, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2040', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:46:07', 10);
+INSERT INTO `sys_oper_log` VALUES (441, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2041', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:46:10', 7);
+INSERT INTO `sys_oper_log` VALUES (442, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2042', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:46:11', 11);
+INSERT INTO `sys_oper_log` VALUES (443, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2043', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:46:13', 10);
+INSERT INTO `sys_oper_log` VALUES (444, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2044', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:46:15', 11);
+INSERT INTO `sys_oper_log` VALUES (445, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2039', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:46:18', 9);
+INSERT INTO `sys_oper_log` VALUES (446, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"recruitment/recruitment/index\",\"createTime\":\"2023-06-20 18:37:50\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2033,\"menuName\":\"招聘公告\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2029,\"path\":\"recruitment\",\"perms\":\"recruitment:recruitment:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:46:27', 10);
+INSERT INTO `sys_oper_log` VALUES (447, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"recruitment/recruitment/index\",\"createTime\":\"2023-06-20 18:37:50\",\"icon\":\"#\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2033,\"menuName\":\"招聘公告\",\"menuType\":\"C\",\"orderNum\":2,\"params\":{},\"parentId\":2029,\"path\":\"recruitment\",\"perms\":\"recruitment:recruitment:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:46:35', 7);
+INSERT INTO `sys_oper_log` VALUES (448, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"recruitment/recruitment/index\",\"createTime\":\"2023-06-20 18:37:50\",\"icon\":\"button\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2033,\"menuName\":\"招聘公告\",\"menuType\":\"C\",\"orderNum\":2,\"params\":{},\"parentId\":2029,\"path\":\"recruitment\",\"perms\":\"recruitment:recruitment:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:47:03', 6);
+INSERT INTO `sys_oper_log` VALUES (449, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"crew/recruitment/index\",\"createTime\":\"2023-06-20 18:37:50\",\"icon\":\"button\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2033,\"menuName\":\"招聘公告\",\"menuType\":\"C\",\"orderNum\":2,\"params\":{},\"parentId\":2029,\"path\":\"recruitment\",\"perms\":\"recruitment:recruitment:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 18:47:45', 8);
+INSERT INTO `sys_oper_log` VALUES (450, '招聘公告', 1, 'com.ruoyi.web.controller.crew.RecruitmentController.add()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":15069823561,\"itemContent\":\"建立智慧村建\",\"itemFinishTime\":\"2023-12-21\",\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"0\",\"params\":{},\"requireCorporation\":\"海天公司\",\"requireNum\":5,\"workerRequire\":\"水泥工\"}', NULL, 1, '\r\n### Error updating database.  Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'contact_phone\' at row 1\r\n### The error may exist in file [D:\\SourceCode\\smart_site\\RuoYi-Vue-master\\ruoyi-crew\\target\\classes\\mapper\\recruitment\\RecruitmentMapper.xml]\r\n### The error may involve com.ruoyi.recruitment.mapper.RecruitmentMapper.insertRecruitment-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into tb_recruitment          ( item_name,             require_corporation,             item_content,             item_location,             worker_require,             require_num,             item_finish_time,             contact_phone,             item_status )           values ( ?,             ?,             ?,             ?,             ?,             ?,             ?,             ?,             ? )\r\n### Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'contact_phone\' at row 1\n; Data truncation: Out of range value for column \'contact_phone\' at row 1; nested exception is com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'contact_phone\' at row 1', '2023-06-20 18:55:08', 71);
+INSERT INTO `sys_oper_log` VALUES (451, '招聘公告', 1, 'com.ruoyi.web.controller.crew.RecruitmentController.add()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":15986352687,\"itemContent\":\"建立智慧农村\",\"itemFinishTime\":\"2023-12-20\",\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"0\",\"params\":{},\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"}', NULL, 1, '\r\n### Error updating database.  Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'contact_phone\' at row 1\r\n### The error may exist in file [D:\\SourceCode\\smart_site\\RuoYi-Vue-master\\ruoyi-crew\\target\\classes\\mapper\\recruitment\\RecruitmentMapper.xml]\r\n### The error may involve com.ruoyi.recruitment.mapper.RecruitmentMapper.insertRecruitment-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into tb_recruitment          ( item_name,             require_corporation,             item_content,             item_location,             worker_require,             require_num,             item_finish_time,             contact_phone,             item_status )           values ( ?,             ?,             ?,             ?,             ?,             ?,             ?,             ?,             ? )\r\n### Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'contact_phone\' at row 1\n; Data truncation: Out of range value for column \'contact_phone\' at row 1; nested exception is com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'contact_phone\' at row 1', '2023-06-20 19:06:29', 50);
+INSERT INTO `sys_oper_log` VALUES (452, '招聘公告', 1, 'com.ruoyi.web.controller.crew.RecruitmentController.add()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":15986352687,\"itemContent\":\"建立智慧农村\",\"itemFinishTime\":\"2023-12-20\",\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"0\",\"params\":{},\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"}', NULL, 1, '\r\n### Error updating database.  Cause: java.sql.SQLException: Field \'release_time\' doesn\'t have a default value\r\n### The error may exist in file [D:\\SourceCode\\smart_site\\RuoYi-Vue-master\\ruoyi-crew\\target\\classes\\mapper\\recruitment\\RecruitmentMapper.xml]\r\n### The error may involve com.ruoyi.recruitment.mapper.RecruitmentMapper.insertRecruitment-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into tb_recruitment          ( item_name,             require_corporation,             item_content,             item_location,             worker_require,             require_num,             item_finish_time,             contact_phone,             item_status )           values ( ?,             ?,             ?,             ?,             ?,             ?,             ?,             ?,             ? )\r\n### Cause: java.sql.SQLException: Field \'release_time\' doesn\'t have a default value\n; Field \'release_time\' doesn\'t have a default value; nested exception is java.sql.SQLException: Field \'release_time\' doesn\'t have a default value', '2023-06-20 19:08:30', 17);
+INSERT INTO `sys_oper_log` VALUES (453, '招聘公告', 1, 'com.ruoyi.web.controller.crew.RecruitmentController.add()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":15986352687,\"itemContent\":\"建立智慧农村\",\"itemFinishTime\":\"2023-12-20\",\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"0\",\"params\":{},\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"}', NULL, 1, '\r\n### Error updating database.  Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'contact_phone\' at row 1\r\n### The error may exist in file [D:\\SourceCode\\smart_site\\RuoYi-Vue-master\\ruoyi-crew\\target\\classes\\mapper\\recruitment\\RecruitmentMapper.xml]\r\n### The error may involve com.ruoyi.recruitment.mapper.RecruitmentMapper.insertRecruitment-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into tb_recruitment          ( item_name,             require_corporation,             item_content,             item_location,             worker_require,             require_num,             item_finish_time,             contact_phone,             item_status )           values ( ?,             ?,             ?,             ?,             ?,             ?,             ?,             ?,             ? )\r\n### Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'contact_phone\' at row 1\n; Data truncation: Out of range value for column \'contact_phone\' at row 1; nested exception is com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column \'contact_phone\' at row 1', '2023-06-20 19:08:51', 7);
+INSERT INTO `sys_oper_log` VALUES (454, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.synchDb()', 'GET', 1, 'admin', NULL, '/tool/gen/synchDb/tb_recruitment', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:10:19', 88);
+INSERT INTO `sys_oper_log` VALUES (455, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":98,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:39:36\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":99,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:39:36\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":100,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"requireCorporation\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-06-20 18:39:36\",\"usableColumn\":false},{\"capJavaField\":\"ItemContent\",\"columnComment\":\"项目内容\",\"columnId\":101,\"columnName\":\"item_content\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlT', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:10:42', 44);
+INSERT INTO `sys_oper_log` VALUES (456, '招聘公告', 1, 'com.ruoyi.recruitment.controller.RecruitmentController.add()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15269853654\",\"itemContent\":\"建设智慧村建\",\"itemFinishTime\":\"2023-12-20\",\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"0\",\"params\":{},\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"}', NULL, 1, '\r\n### Error updating database.  Cause: java.sql.SQLException: Field \'release_time\' doesn\'t have a default value\r\n### The error may exist in file [D:\\SourceCode\\smart_site\\RuoYi-Vue-master\\ruoyi-crew\\target\\classes\\mapper\\recruitment\\RecruitmentMapper.xml]\r\n### The error may involve com.ruoyi.recruitment.mapper.RecruitmentMapper.insertRecruitment-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into tb_recruitment          ( item_name,             require_corporation,             item_content,             item_location,             worker_require,             require_num,             item_finish_time,             contact_phone,             item_status )           values ( ?,             ?,             ?,             ?,             ?,             ?,             ?,             ?,             ? )\r\n### Cause: java.sql.SQLException: Field \'release_time\' doesn\'t have a default value\n; Field \'release_time\' doesn\'t have a default value; nested exception is java.sql.SQLException: Field \'release_time\' doesn\'t have a default value', '2023-06-20 19:14:18', 55);
+INSERT INTO `sys_oper_log` VALUES (457, '招聘公告', 1, 'com.ruoyi.recruitment.controller.RecruitmentController.add()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15269853654\",\"itemContent\":\"建设智慧村建\",\"itemFinishTime\":\"2023-12-20\",\"itemId\":1,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:16:19', 28);
+INSERT INTO `sys_oper_log` VALUES (458, '招聘公告', 2, 'com.ruoyi.web.controller.crew.RecruitmentController.edit()', 'PUT', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15269853654\",\"itemContent\":\"建设智慧村建\",\"itemFinishTime\":\"2023-12-20\",\"itemId\":1,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"1\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:21:07', 25);
+INSERT INTO `sys_oper_log` VALUES (459, '招聘公告', 2, 'com.ruoyi.web.controller.crew.RecruitmentController.edit()', 'PUT', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15269853654\",\"itemContent\":\"建设智慧村建\",\"itemFinishTime\":\"2023-12-20\",\"itemId\":1,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:21:11', 7);
+INSERT INTO `sys_oper_log` VALUES (460, '招聘公告', 1, 'com.ruoyi.web.controller.crew.RecruitmentController.add()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15859635475\",\"itemContent\":\"建设智慧美丽乡村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":2,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧村建\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":8,\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:22:53', 16);
+INSERT INTO `sys_oper_log` VALUES (461, '招聘公告', 2, 'com.ruoyi.web.controller.crew.RecruitmentController.edit()', 'PUT', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15859635475\",\"itemContent\":\"建设智慧美丽乡村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":2,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧村建\",\"itemStatus\":\"1\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":8,\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:22:57', 5);
+INSERT INTO `sys_oper_log` VALUES (462, '招聘公告', 2, 'com.ruoyi.web.controller.crew.RecruitmentController.edit()', 'PUT', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15859635475\",\"itemContent\":\"建设智慧美丽乡村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":2,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧村建\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":8,\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:23:00', 8);
+INSERT INTO `sys_oper_log` VALUES (463, '招聘公告', 5, 'com.ruoyi.web.controller.crew.RecruitmentController.export()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment/export', '127.0.0.1', '内网IP', '{\"pageSize\":\"10\",\"pageNum\":\"1\"}', NULL, 0, NULL, '2023-06-20 19:23:53', 728);
+INSERT INTO `sys_oper_log` VALUES (464, '招聘公告', 2, 'com.ruoyi.web.controller.crew.RecruitmentController.edit()', 'PUT', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15269853654\",\"itemContent\":\"建设智慧村建\",\"itemFinishTime\":\"2023-12-20\",\"itemId\":1,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"1\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:26:12', 8);
+INSERT INTO `sys_oper_log` VALUES (465, '招聘公告', 2, 'com.ruoyi.web.controller.crew.RecruitmentController.edit()', 'PUT', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15859635475\",\"itemContent\":\"建设智慧美丽乡村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":2,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧村建\",\"itemStatus\":\"1\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":8,\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:29:20', 23);
+INSERT INTO `sys_oper_log` VALUES (466, '招聘公告', 2, 'com.ruoyi.web.controller.crew.RecruitmentController.edit()', 'PUT', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15859635475\",\"itemContent\":\"建设智慧美丽乡村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":2,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧村建\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":8,\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:29:23', 8);
+INSERT INTO `sys_oper_log` VALUES (467, '招聘公告', 1, 'com.ruoyi.web.controller.crew.RecruitmentController.add()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15986325485\",\"itemContent\":\"智慧建设农村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":3,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧建设农村\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":7,\"workerRequire\":\"钢筋工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:30:16', 10);
+INSERT INTO `sys_oper_log` VALUES (468, '招聘公告', 1, 'com.ruoyi.web.controller.crew.RecruitmentController.add()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment', '127.0.0.1', '内网IP', '{\"contactPhone\":\"1586953647\",\"itemContent\":\"智慧村建\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":4,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧建设\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":15,\"workerRequire\":\"壮工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-20 19:33:04', 27);
+INSERT INTO `sys_oper_log` VALUES (469, '招聘公告', 5, 'com.ruoyi.web.controller.crew.RecruitmentController.export()', 'POST', 1, 'admin', NULL, '/recruitment/recruitment/export', '127.0.0.1', '内网IP', '{\"pageSize\":\"10\",\"pageNum\":\"1\"}', NULL, 0, NULL, '2023-06-20 19:33:10', 451);
+INSERT INTO `sys_oper_log` VALUES (470, '代码生成', 6, 'com.ruoyi.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', NULL, '/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":\"tb_apply\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 09:43:04', 65);
+INSERT INTO `sys_oper_log` VALUES (471, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"apply\",\"className\":\"Apply\",\"columns\":[{\"capJavaField\":\"ApplyId\",\"columnComment\":\"应聘id\",\"columnId\":109,\"columnName\":\"apply_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"applyId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":110,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"EQ\",\"required\":true,\"sort\":2,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":111,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"WorkerRequire\",\"columnComment\":\"应聘工种\",\"columnId\":112,\"columnName\":\"worker_require\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaF', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 09:43:28', 38);
+INSERT INTO `sys_oper_log` VALUES (472, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"apply\",\"className\":\"Apply\",\"columns\":[{\"capJavaField\":\"ApplyId\",\"columnComment\":\"应聘id\",\"columnId\":109,\"columnName\":\"apply_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"applyId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"updateTime\":\"2023-06-21 09:43:28\",\"usableColumn\":false},{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":110,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":false,\"insert\":false,\"isEdit\":\"0\",\"isIncrement\":\"0\",\"isInsert\":\"0\",\"isList\":\"0\",\"isPk\":\"0\",\"isQuery\":\"0\",\"isRequired\":\"0\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":false,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":2,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"updateTime\":\"2023-06-21 09:43:28\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":111,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":false,\"insert\":false,\"isEdit\":\"0\",\"isIncrement\":\"0\",\"isInsert\":\"0\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"0\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":false,\"sort\":3,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"updateTime\":\"2023-06-21 09:43:28\",\"usableColumn\":false},{\"capJavaField\":\"WorkerRequire\",\"columnComment\":\"应聘工种\",\"columnId\":112,\"columnName\":\"worker_require\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":false,\"insert', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 09:46:07', 31);
+INSERT INTO `sys_oper_log` VALUES (473, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"tb_apply\"}', NULL, 0, NULL, '2023-06-21 09:46:10', 151);
+INSERT INTO `sys_oper_log` VALUES (474, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"apply\",\"className\":\"Apply\",\"columns\":[{\"capJavaField\":\"ApplyId\",\"columnComment\":\"应聘id\",\"columnId\":109,\"columnName\":\"apply_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"applyId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"updateTime\":\"2023-06-21 09:46:07\",\"usableColumn\":false},{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":110,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":false,\"insert\":false,\"isEdit\":\"0\",\"isIncrement\":\"0\",\"isInsert\":\"0\",\"isList\":\"0\",\"isPk\":\"0\",\"isQuery\":\"0\",\"isRequired\":\"0\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":false,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":2,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"updateTime\":\"2023-06-21 09:46:07\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":111,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":false,\"insert\":false,\"isEdit\":\"0\",\"isIncrement\":\"0\",\"isInsert\":\"0\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"0\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":false,\"sort\":3,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"updateTime\":\"2023-06-21 09:46:07\",\"usableColumn\":false},{\"capJavaField\":\"WorkerRequire\",\"columnComment\":\"应聘工种\",\"columnId\":112,\"columnName\":\"worker_require\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":false,\"insert', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 09:49:55', 32);
+INSERT INTO `sys_oper_log` VALUES (475, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"crew/apply/index\",\"createTime\":\"2023-06-21 09:48:29\",\"icon\":\"component\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2051,\"menuName\":\"应聘人信息\",\"menuType\":\"C\",\"orderNum\":3,\"params\":{},\"parentId\":2029,\"path\":\"apply\",\"perms\":\"apply:apply:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 09:50:30', 11);
+INSERT INTO `sys_oper_log` VALUES (476, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2053', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 09:55:05', 21);
+INSERT INTO `sys_oper_log` VALUES (477, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2054', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 09:55:12', 15);
+INSERT INTO `sys_oper_log` VALUES (478, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"params\":{}}', NULL, 1, '\r\n### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\' at line 1\r\n### The error may exist in file [D:\\SourceCode\\smart_site\\RuoYi-Vue-master\\ruoyi-crew\\target\\classes\\mapper\\apply\\ApplyMapper.xml]\r\n### The error may involve com.ruoyi.apply.mapper.ApplyMapper.insertApply-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into tb_apply\r\n### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\' at line 1\n; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\' at line 1', '2023-06-21 09:55:23', 49);
+INSERT INTO `sys_oper_log` VALUES (479, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2023-05-07 10:41:24\",\"dataScope\":\"2\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2001,2022,2024,2019,2020,2021,2023,2012,2013,2014,2015,2016,2017,2018,2029,2030,2033,2034,2035,2036,2037,2038,2051,2052,2055,2056],\"params\":{},\"remark\":\"普通角色\",\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:01:29', 38);
+INSERT INTO `sys_oper_log` VALUES (480, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2023-06-07 11:03:11\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[1,2,2025,2022,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,2000,2001,2002,2008,2009,2010,2011,2024,2026,2019,2020,2021,2023,2012,2013,2014,2015,2016,2017,2018,2029,2030,2033,2034,2035,2036,2037,2038,2051,2052,2055,2056],\"params\":{},\"roleId\":100,\"roleKey\":\"system\",\"roleName\":\"总监\",\"roleSort\":2,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:01:34', 22);
+INSERT INTO `sys_oper_log` VALUES (481, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2023-05-07 10:41:24\",\"dataScope\":\"2\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2001,2022,2029,2033,2024,2019,2020,2021,2023,2012,2013,2014,2015,2016,2017,2018,2034],\"params\":{},\"remark\":\"普通角色\",\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:01:53', 23);
+INSERT INTO `sys_oper_log` VALUES (482, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiaoxiao', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15269853654\",\"itemContent\":\"建设智慧村建\",\"itemFinishTime\":\"2023-12-20\",\"itemId\":1,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"1\",\"params\":{},\"releaseTime\":\"2023-06-19\",\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"} {\"applyId\":3,\"applyPhone\":\"213\",\"applyUser\":\"里斯\",\"itemId\":1,\"itemName\":\"村建项目\",\"params\":{},\"workerRequire\":\"水泥工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:22:43', 39);
+INSERT INTO `sys_oper_log` VALUES (483, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiaoxiao', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15269853654\",\"itemContent\":\"建设智慧村建\",\"itemFinishTime\":\"2023-12-20\",\"itemId\":1,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"1\",\"params\":{},\"releaseTime\":\"2023-06-19\",\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"} {\"params\":{}}', '{\"msg\":\"改项目已停止招聘\",\"code\":200}', 0, NULL, '2023-06-21 10:25:22', 10);
+INSERT INTO `sys_oper_log` VALUES (484, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiaoxiao', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15269853654\",\"itemContent\":\"建设智慧村建\",\"itemFinishTime\":\"2023-12-20\",\"itemId\":1,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"1\",\"params\":{},\"releaseTime\":\"2023-06-19\",\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"} {\"params\":{}}', '{\"msg\":\"改项目已停止招聘\",\"code\":200}', 0, NULL, '2023-06-21 10:25:47', 1);
+INSERT INTO `sys_oper_log` VALUES (485, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiaoxiao', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15269853654\",\"itemContent\":\"建设智慧村建\",\"itemFinishTime\":\"2023-12-20\",\"itemId\":1,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"村建项目\",\"itemStatus\":\"1\",\"params\":{},\"releaseTime\":\"2023-06-19\",\"requireCorporation\":\"海天集团\",\"requireNum\":10,\"workerRequire\":\"水泥工\"} {\"params\":{}}', '{\"msg\":\"改项目已停止招聘\",\"code\":200}', 0, NULL, '2023-06-21 10:26:01', 1);
+INSERT INTO `sys_oper_log` VALUES (486, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiaoxiao', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15859635475\",\"itemContent\":\"建设智慧美丽乡村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":2,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧村建\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":8,\"workerRequire\":\"瓦工\"} {\"applyId\":4,\"applyPhone\":\"213\",\"applyUser\":\"里斯\",\"itemId\":2,\"itemName\":\"智慧村建\",\"params\":{},\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:26:26', 11);
+INSERT INTO `sys_oper_log` VALUES (487, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiaoxiao', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15986325485\",\"itemContent\":\"智慧建设农村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":3,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧建设农村\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":7,\"workerRequire\":\"钢筋工\"} {\"applyId\":5,\"applyPhone\":\"213\",\"applyUser\":\"里斯\",\"itemId\":3,\"itemName\":\"智慧建设农村\",\"params\":{},\"workerRequire\":\"钢筋工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:26:39', 8);
+INSERT INTO `sys_oper_log` VALUES (488, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiaoxiao', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"1586953647\",\"itemContent\":\"智慧村建\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":4,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧建设\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":15,\"workerRequire\":\"壮工\"} {\"applyId\":6,\"applyPhone\":\"213\",\"applyUser\":\"里斯\",\"itemId\":4,\"itemName\":\"智慧建设\",\"params\":{},\"workerRequire\":\"壮工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:26:51', 8);
+INSERT INTO `sys_oper_log` VALUES (489, '用户管理', 4, 'com.ruoyi.web.controller.system.SysUserController.insertAuthRole()', 'PUT', 1, 'admin', NULL, '/system/user/authRole', '127.0.0.1', '内网IP', '{\"roleIds\":\"2\",\"userId\":\"10\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:32:20', 25);
+INSERT INTO `sys_oper_log` VALUES (490, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiacoccc', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"1586953647\",\"itemContent\":\"智慧村建\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":4,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧建设\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":15,\"workerRequire\":\"壮工\"} {\"applyId\":7,\"applyPhone\":\"17367890876\",\"applyUser\":\"王五\",\"itemId\":4,\"itemName\":\"智慧建设\",\"params\":{},\"workerRequire\":\"壮工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:32:51', 13);
+INSERT INTO `sys_oper_log` VALUES (491, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2023-05-16 15:57:05\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":107,\"deptName\":\"工地五\",\"leader\":\"若依\",\"orderNum\":5,\"params\":{},\"parentId\":101,\"status\":\"0\"},\"deptId\":107,\"email\":\"1231@qq.com\",\"idNumber\":\"370811200210289020\",\"loginDate\":\"2023-06-21 09:59:13\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"里斯\",\"params\":{},\"phonenumber\":\"15986578532\",\"postIds\":[],\"roleIds\":[2],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"1\",\"status\":\"0\",\"userId\":4,\"userName\":\"xiaoxiao\"}', '{\"msg\":\"修改用户\'xiaoxiao\'失败，邮箱账号已存在\",\"code\":500}', 0, NULL, '2023-06-21 10:33:22', 10);
+INSERT INTO `sys_oper_log` VALUES (492, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2023-05-16 15:57:05\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":107,\"deptName\":\"工地五\",\"leader\":\"若依\",\"orderNum\":5,\"params\":{},\"parentId\":101,\"status\":\"0\"},\"deptId\":107,\"email\":\"1231@qq.com\",\"idNumber\":\"370811200210289020\",\"loginDate\":\"2023-06-21 09:59:13\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"里斯\",\"params\":{},\"phonenumber\":\"15986578532\",\"postIds\":[],\"roleIds\":[2],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"1\",\"status\":\"0\",\"userId\":4,\"userName\":\"xiaoxiao\"}', '{\"msg\":\"修改用户\'xiaoxiao\'失败，邮箱账号已存在\",\"code\":500}', 0, NULL, '2023-06-21 10:33:25', 8);
+INSERT INTO `sys_oper_log` VALUES (493, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2023-05-16 15:57:05\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":107,\"deptName\":\"工地五\",\"leader\":\"若依\",\"orderNum\":5,\"params\":{},\"parentId\":101,\"status\":\"0\"},\"deptId\":107,\"email\":\"1231@qq.com\",\"idNumber\":\"370811200210289020\",\"loginDate\":\"2023-06-21 09:59:13\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"里斯\",\"params\":{},\"phonenumber\":\"15986578532\",\"postIds\":[],\"roleIds\":[2],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"1\",\"status\":\"0\",\"userId\":4,\"userName\":\"xiaoxiao\"}', '{\"msg\":\"修改用户\'xiaoxiao\'失败，邮箱账号已存在\",\"code\":500}', 0, NULL, '2023-06-21 10:33:27', 9);
+INSERT INTO `sys_oper_log` VALUES (494, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiacoccc', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15986325485\",\"itemContent\":\"智慧建设农村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":3,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧建设农村\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":7,\"workerRequire\":\"钢筋工\"} {\"applyId\":8,\"applyPhone\":\"17367890876\",\"applyUser\":\"王五\",\"itemId\":3,\"itemName\":\"智慧建设农村\",\"params\":{},\"workerRequire\":\"钢筋工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:34:41', 9);
+INSERT INTO `sys_oper_log` VALUES (495, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiacoccc', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15859635475\",\"itemContent\":\"建设智慧美丽乡村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":2,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧村建\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":8,\"workerRequire\":\"瓦工\"} {\"applyId\":9,\"applyPhone\":\"17367890876\",\"applyUser\":\"王五\",\"itemId\":2,\"itemName\":\"智慧村建\",\"params\":{},\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:34:52', 9);
+INSERT INTO `sys_oper_log` VALUES (496, '字典类型', 1, 'com.ruoyi.web.controller.system.SysDictTypeController.add()', 'POST', 1, 'admin', NULL, '/system/dict/type', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"dictName\":\"审核\",\"dictType\":\"audit\",\"params\":{},\"remark\":\"审核\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:41:21', 13);
+INSERT INTO `sys_oper_log` VALUES (497, '字典数据', 1, 'com.ruoyi.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"审核通过\",\"dictSort\":1,\"dictType\":\"audit\",\"dictValue\":\"0\",\"listClass\":\"success\",\"params\":{},\"remark\":\"审核通过\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:41:54', 12);
+INSERT INTO `sys_oper_log` VALUES (498, '字典数据', 1, 'com.ruoyi.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"待处理\",\"dictSort\":1,\"dictType\":\"audit\",\"dictValue\":\"1\",\"listClass\":\"primary\",\"params\":{},\"remark\":\"待处理\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:42:13', 10);
+INSERT INTO `sys_oper_log` VALUES (499, '字典数据', 1, 'com.ruoyi.web.controller.system.SysDictDataController.add()', 'POST', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"default\":false,\"dictLabel\":\"审核未通过\",\"dictSort\":3,\"dictType\":\"audit\",\"dictValue\":\"2\",\"listClass\":\"warning\",\"params\":{},\"remark\":\"审核未通过\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:42:38', 12);
+INSERT INTO `sys_oper_log` VALUES (500, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2023-06-21 10:42:13\",\"default\":false,\"dictCode\":110,\"dictLabel\":\"待处理\",\"dictSort\":2,\"dictType\":\"audit\",\"dictValue\":\"1\",\"isDefault\":\"N\",\"listClass\":\"primary\",\"params\":{},\"remark\":\"待处理\",\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:42:44', 11);
+INSERT INTO `sys_oper_log` VALUES (501, '字典数据', 2, 'com.ruoyi.web.controller.system.SysDictDataController.edit()', 'PUT', 1, 'admin', NULL, '/system/dict/data', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2023-06-21 10:42:38\",\"default\":false,\"dictCode\":111,\"dictLabel\":\"审核未通过\",\"dictSort\":3,\"dictType\":\"audit\",\"dictValue\":\"2\",\"isDefault\":\"N\",\"listClass\":\"info\",\"params\":{},\"remark\":\"审核未通过\",\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:42:48', 10);
+INSERT INTO `sys_oper_log` VALUES (502, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.synchDb()', 'GET', 1, 'admin', NULL, '/tool/gen/synchDb/tb_apply', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:42:56', 61);
+INSERT INTO `sys_oper_log` VALUES (503, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"apply\",\"className\":\"Apply\",\"columns\":[{\"capJavaField\":\"ApplyId\",\"columnComment\":\"应聘id\",\"columnId\":109,\"columnName\":\"apply_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"applyId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"updateTime\":\"2023-06-21 10:42:56\",\"usableColumn\":false},{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":110,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":false,\"insert\":false,\"isEdit\":\"0\",\"isIncrement\":\"0\",\"isInsert\":\"0\",\"isList\":\"0\",\"isPk\":\"0\",\"isQuery\":\"0\",\"isRequired\":\"0\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":false,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":2,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"updateTime\":\"2023-06-21 10:42:56\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":111,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":false,\"insert\":false,\"isEdit\":\"0\",\"isIncrement\":\"0\",\"isInsert\":\"0\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"0\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":false,\"sort\":3,\"superColumn\":false,\"tableId\":14,\"updateBy\":\"\",\"updateTime\":\"2023-06-21 10:42:56\",\"usableColumn\":false},{\"capJavaField\":\"WorkerRequire\",\"columnComment\":\"应聘工种\",\"columnId\":112,\"columnName\":\"worker_require\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-21 09:43:04\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":false,\"insert', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:44:17', 33);
+INSERT INTO `sys_oper_log` VALUES (504, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.batchGenCode()', 'GET', 1, 'admin', NULL, '/tool/gen/batchGenCode', '127.0.0.1', '内网IP', '{\"tables\":\"tb_apply\"}', NULL, 0, NULL, '2023-06-21 10:44:35', 148);
+INSERT INTO `sys_oper_log` VALUES (505, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2052', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"菜单已分配,不允许删除\",\"code\":601}', 0, NULL, '2023-06-21 10:44:47', 7);
+INSERT INTO `sys_oper_log` VALUES (506, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2055', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"菜单已分配,不允许删除\",\"code\":601}', 0, NULL, '2023-06-21 10:44:50', 6);
+INSERT INTO `sys_oper_log` VALUES (507, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2023-06-07 11:03:11\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[1,2,2025,2022,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,2000,2001,2002,2008,2009,2010,2011,2024,2026,2019,2020,2021,2023,2012,2013,2014,2015,2016,2017,2018],\"params\":{},\"roleId\":100,\"roleKey\":\"system\",\"roleName\":\"总监\",\"roleSort\":2,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:45:02', 36);
+INSERT INTO `sys_oper_log` VALUES (508, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2056', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:45:08', 10);
+INSERT INTO `sys_oper_log` VALUES (509, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2055', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:45:10', 10);
+INSERT INTO `sys_oper_log` VALUES (510, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2052', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:45:12', 9);
+INSERT INTO `sys_oper_log` VALUES (511, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2051', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:46:18', 11);
+INSERT INTO `sys_oper_log` VALUES (512, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"crew/apply/index\",\"createTime\":\"2023-06-21 10:45:42\",\"icon\":\"component\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2057,\"menuName\":\"应聘人信息\",\"menuType\":\"C\",\"orderNum\":3,\"params\":{},\"parentId\":2029,\"path\":\"apply\",\"perms\":\"apply:apply:list\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:46:29', 10);
+INSERT INTO `sys_oper_log` VALUES (513, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2059', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:46:35', 20);
+INSERT INTO `sys_oper_log` VALUES (514, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2060', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:46:39', 12);
+INSERT INTO `sys_oper_log` VALUES (515, '应聘人信息', 1, 'com.ruoyi.web.controller.crew.ApplyController.add()', 'POST', 1, 'xiacoccc', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"contactPhone\":\"15859635475\",\"itemContent\":\"建设智慧美丽乡村\",\"itemFinishTime\":\"2023-11-20\",\"itemId\":2,\"itemLocation\":\"德州市陵城区前孙镇\",\"itemName\":\"智慧村建\",\"itemStatus\":\"0\",\"params\":{},\"releaseTime\":\"2023-06-20\",\"requireCorporation\":\"海天集团\",\"requireNum\":8,\"workerRequire\":\"瓦工\"} {\"applyId\":10,\"applyPhone\":\"17367890876\",\"applyUser\":\"王五\",\"itemId\":2,\"itemName\":\"智慧村建\",\"params\":{},\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:52:25', 27);
+INSERT INTO `sys_oper_log` VALUES (516, '应聘人信息', 3, 'com.ruoyi.web.controller.crew.ApplyController.remove()', 'DELETE', 1, 'admin', NULL, '/apply/apply/10', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 10:52:45', 12);
+INSERT INTO `sys_oper_log` VALUES (517, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"0\",\"applyId\":4,\"applyPhone\":\"15986578532\",\"applyTime\":\"2023-06-03\",\"applyUser\":\"里斯\",\"itemId\":2,\"itemName\":\"智慧村建\",\"params\":{},\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 11:55:43', 26);
+INSERT INTO `sys_oper_log` VALUES (518, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"2\",\"applyId\":5,\"applyPhone\":\"15986578532\",\"applyTime\":\"2023-06-15\",\"applyUser\":\"里斯\",\"itemId\":3,\"itemName\":\"智慧建设农村\",\"params\":{},\"workerRequire\":\"钢筋工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 11:55:49', 5);
+INSERT INTO `sys_oper_log` VALUES (519, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"2\",\"applyId\":4,\"applyPhone\":\"15986578532\",\"applyTime\":\"2023-06-03\",\"applyUser\":\"里斯\",\"itemId\":2,\"itemName\":\"智慧村建\",\"params\":{},\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 11:56:00', 5);
+INSERT INTO `sys_oper_log` VALUES (520, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"0\",\"applyId\":4,\"applyPhone\":\"15986578532\",\"applyTime\":\"2023-06-03\",\"applyUser\":\"里斯\",\"itemId\":2,\"itemName\":\"智慧村建\",\"params\":{},\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-21 11:56:01', 6);
+INSERT INTO `sys_oper_log` VALUES (521, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"0\",\"applyId\":4,\"applyPhone\":\"15986578532\",\"applyTime\":\"2023-06-03\",\"applyUser\":\"里斯\",\"itemId\":2,\"itemName\":\"智慧村建\",\"params\":{},\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-22 14:44:45', 10);
+INSERT INTO `sys_oper_log` VALUES (522, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"2\",\"applyId\":4,\"applyPhone\":\"15986578532\",\"applyTime\":\"2023-06-03\",\"applyUser\":\"里斯\",\"itemId\":2,\"itemName\":\"智慧村建\",\"params\":{},\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-22 14:44:47', 8);
+INSERT INTO `sys_oper_log` VALUES (523, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"0\",\"applyId\":4,\"applyPhone\":\"15986578532\",\"applyTime\":\"2023-06-03\",\"applyUser\":\"里斯\",\"itemId\":2,\"itemName\":\"智慧村建\",\"params\":{},\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-22 14:44:49', 7);
+INSERT INTO `sys_oper_log` VALUES (524, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"2\",\"applyId\":7,\"applyPhone\":\"17367890876\",\"applyTime\":\"2023-06-21\",\"applyUser\":\"王五\",\"itemId\":4,\"itemName\":\"智慧建设\",\"params\":{},\"workerRequire\":\"壮工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-22 14:44:52', 5);
+INSERT INTO `sys_oper_log` VALUES (525, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"0\",\"applyId\":7,\"applyPhone\":\"17367890876\",\"applyTime\":\"2023-06-21\",\"applyUser\":\"王五\",\"itemId\":4,\"itemName\":\"智慧建设\",\"params\":{},\"workerRequire\":\"壮工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-22 14:44:53', 6);
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -1295,7 +1457,7 @@ CREATE TABLE `sys_post`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`post_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '岗位信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '岗位信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_post
@@ -1331,8 +1493,8 @@ CREATE TABLE `sys_role`  (
 -- Records of sys_role
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 'admin', '2023-05-07 10:41:24', '', NULL, '超级管理员');
-INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', 1, 1, '0', '0', 'admin', '2023-05-07 10:41:24', 'admin', '2023-06-10 16:33:20', '普通角色');
-INSERT INTO `sys_role` VALUES (100, '总监', 'system', 2, '1', 1, 1, '0', '0', 'admin', '2023-06-07 11:03:11', 'admin', '2023-06-11 16:54:16', NULL);
+INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', 1, 1, '0', '0', 'admin', '2023-05-07 10:41:24', 'admin', '2023-06-21 10:01:53', '普通角色');
+INSERT INTO `sys_role` VALUES (100, '总监', 'system', 2, '1', 1, 1, '0', '0', 'admin', '2023-06-07 11:03:11', 'admin', '2023-06-21 10:45:02', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role_dept
@@ -1378,6 +1540,9 @@ INSERT INTO `sys_role_menu` VALUES (2, 2021);
 INSERT INTO `sys_role_menu` VALUES (2, 2022);
 INSERT INTO `sys_role_menu` VALUES (2, 2023);
 INSERT INTO `sys_role_menu` VALUES (2, 2024);
+INSERT INTO `sys_role_menu` VALUES (2, 2029);
+INSERT INTO `sys_role_menu` VALUES (2, 2033);
+INSERT INTO `sys_role_menu` VALUES (2, 2034);
 INSERT INTO `sys_role_menu` VALUES (100, 1);
 INSERT INTO `sys_role_menu` VALUES (100, 2);
 INSERT INTO `sys_role_menu` VALUES (100, 100);
@@ -1475,12 +1640,12 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '/profile/avatar/2023/05/17/blob_20230517125046A003.png', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-06-20 16:39:30', 'admin', '2023-05-07 10:41:24', '', '2023-06-20 16:39:30', '管理员', '370811200210286013');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '/profile/avatar/2023/05/17/blob_20230517125046A003.png', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-06-22 17:25:23', 'admin', '2023-05-07 10:41:24', '', '2023-06-22 17:25:22', '管理员', '370811200210286013');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$npQBtNRViJvAsCFtzj83D.ZsjSHPORKtC8m9bzlzwFYsPo.PgtiWu', '0', '0', '127.0.0.1', '2023-05-17 19:37:09', 'admin', '2023-05-07 10:41:24', 'admin', '2023-05-17 19:37:08', '测试员', '');
 INSERT INTO `sys_user` VALUES (3, 106, 'xixixi', '张三', '00', '1231@qq.com', '17367890876', '0', '', '$2a$10$CWKNoz8/1syxteHNvJcbweabP/rlDi8O3b7rowLyNJ8CVOs2SGWWe', '0', '0', '127.0.0.1', '2023-06-11 17:23:30', 'admin', '2023-05-16 15:54:26', 'admin', '2023-06-11 17:23:29', NULL, '370811200210289020');
-INSERT INTO `sys_user` VALUES (4, 107, 'xiaoxiao', '里斯', '00', '1231@qq.com', '213', '1', '', '$2a$10$IpeFk8XMZ.pckULRyk3cdO31LmJOn5GKpJgj8fwOmAE6zmuSCNgTa', '0', '0', '127.0.0.1', '2023-06-07 10:40:33', 'admin', '2023-05-16 15:57:05', 'admin', '2023-06-07 14:51:03', NULL, '370811200210289020');
+INSERT INTO `sys_user` VALUES (4, 107, 'xiaoxiao', '里斯', '00', '1231@qq.com', '15986578532', '1', '', '$2a$10$IpeFk8XMZ.pckULRyk3cdO31LmJOn5GKpJgj8fwOmAE6zmuSCNgTa', '0', '0', '127.0.0.1', '2023-06-21 09:59:13', 'admin', '2023-05-16 15:57:05', 'admin', '2023-06-21 09:59:13', NULL, '370811200210289020');
 INSERT INTO `sys_user` VALUES (5, 108, 'xiao1', '王五', '00', '1231@qq.com', '12312334534', '1', '', '$2a$10$UNYmDlgIIX0Wt/U5ZrjTruEALYGgylaKy.EpyGHiIdFjElhTBSI3G', '0', '2', '127.0.0.1', '2023-06-06 09:23:59', 'admin', '2023-06-05 18:49:01', 'admin', '2023-06-06 09:23:59', NULL, '370811200210289020');
-INSERT INTO `sys_user` VALUES (10, 107, 'xiacoccc', '王五', '00', '1231@qq.com', '17367890876', '1', '', '$2a$10$Qt5vEzjJ3BCzEWA8Wbs3eulLCY24tmyPN1x0npDvpAI5vt/Egql56', '0', '0', '', NULL, 'admin', '2023-06-07 14:51:03', '', NULL, NULL, '370811200210289020');
+INSERT INTO `sys_user` VALUES (10, 107, 'xiacoccc', '王五', '00', '1231@qq.com', '17367890876', '1', '', '$2a$10$Qt5vEzjJ3BCzEWA8Wbs3eulLCY24tmyPN1x0npDvpAI5vt/Egql56', '0', '0', '127.0.0.1', '2023-06-21 10:32:07', 'admin', '2023-06-07 14:51:03', '', '2023-06-21 10:32:07', NULL, '370811200210289020');
 INSERT INTO `sys_user` VALUES (100, 106, 'xiaoc', 'xiaoc', '00', '', '', '0', '', '$2a$10$ffmEwyTopgMlhxii2f0eWuSf13TNFbL84PE4SiYjutvdBs0q6U1P.', '0', '2', '127.0.0.1', '2023-06-06 09:39:06', '', '2023-05-14 11:26:05', '', '2023-06-06 09:39:05', NULL, '');
 INSERT INTO `sys_user` VALUES (101, NULL, 'xiaocc', 'xiaocc', '00', '', '', '0', '', '$2a$10$3QU.lpayCdPDhbN1NKk83ui8JgTS/OeGd1sQ1eJ7UA/qxNYg.1AbS', '0', '2', '127.0.0.1', '2023-06-06 09:25:35', '', '2023-06-04 11:33:39', '', '2023-06-06 09:25:34', NULL, NULL);
 
@@ -1517,6 +1682,33 @@ INSERT INTO `sys_user_role` VALUES (1, 1);
 INSERT INTO `sys_user_role` VALUES (2, 2);
 INSERT INTO `sys_user_role` VALUES (3, 100);
 INSERT INTO `sys_user_role` VALUES (4, 2);
+INSERT INTO `sys_user_role` VALUES (10, 2);
+
+-- ----------------------------
+-- Table structure for tb_apply
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_apply`;
+CREATE TABLE `tb_apply`  (
+  `apply_id` bigint NOT NULL AUTO_INCREMENT COMMENT '应聘id',
+  `item_id` bigint NULL DEFAULT NULL COMMENT '项目id',
+  `item_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '项目名称',
+  `worker_require` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '应聘工种',
+  `apply_user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '应聘人',
+  `apply_phone` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '应聘人联系方式',
+  `apply_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '应聘时间',
+  `apply_audit` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '审核结果',
+  PRIMARY KEY (`apply_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '应聘人信息表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tb_apply
+-- ----------------------------
+INSERT INTO `tb_apply` VALUES (4, 2, '智慧村建', '瓦工', '里斯', '15986578532', '2023-06-03 00:00:00', '0');
+INSERT INTO `tb_apply` VALUES (5, 3, '智慧建设农村', '钢筋工', '里斯', '15986578532', '2023-06-15 00:00:00', '2');
+INSERT INTO `tb_apply` VALUES (6, 4, '智慧建设', '壮工', '里斯', '15986578532', '2023-06-09 10:26:50', '1');
+INSERT INTO `tb_apply` VALUES (7, 4, '智慧建设', '壮工', '王五', '17367890876', '2023-06-21 00:00:00', '0');
+INSERT INTO `tb_apply` VALUES (8, 3, '智慧建设农村', '钢筋工', '王五', '17367890876', '2023-06-21 10:34:41', '1');
+INSERT INTO `tb_apply` VALUES (9, 2, '智慧村建', '瓦工', '王五', '17367890876', '2023-06-21 10:34:52', '1');
 
 -- ----------------------------
 -- Table structure for tb_assets_total
@@ -1530,7 +1722,7 @@ CREATE TABLE `tb_assets_total`  (
   `total_revenue` decimal(15, 2) NULL DEFAULT NULL COMMENT '总税收',
   `site_id` int NULL DEFAULT NULL COMMENT '所属工地',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工地资产统计表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工地资产统计表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_assets_total
@@ -1548,7 +1740,7 @@ CREATE TABLE `tb_check_point`  (
   `status` tinyint NULL DEFAULT NULL COMMENT '检测点状态 0:正常 1:未启用  2:维修中',
   `site_id` int NULL DEFAULT NULL COMMENT '所属工地',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '监测点信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '监测点信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_check_point
@@ -1567,7 +1759,7 @@ CREATE TABLE `tb_company`  (
   `company_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '公司名称',
   `type` int NULL DEFAULT NULL COMMENT '公司类型',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '公司信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '公司信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_company
@@ -1601,7 +1793,7 @@ CREATE TABLE `tb_company_type`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
   `type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '类型',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '公司类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '公司类型表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_company_type
@@ -1625,7 +1817,7 @@ CREATE TABLE `tb_environment_detection`  (
   `wind_speed` double NULL DEFAULT NULL COMMENT '风速(m/s)',
   `check_time` datetime NULL DEFAULT NULL COMMENT '检测时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '环境监测' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '环境监测' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_environment_detection
@@ -1659,7 +1851,7 @@ CREATE TABLE `tb_inform`  (
   `update_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`inform_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_inform
@@ -1673,20 +1865,6 @@ INSERT INTO `tb_inform` VALUES (22, '智慧工地通知6', '1', '0', '<p>智慧�
 INSERT INTO `tb_inform` VALUES (23, 'zhihui', '1', '0', NULL, '/profile/upload/2023/06/06/智慧工地_20230606094413A002.doc', 'admin', '2023-06-06 09:44:16', NULL, NULL);
 
 -- ----------------------------
--- Table structure for tb_introduce
--- ----------------------------
-DROP TABLE IF EXISTS `tb_introduce`;
-CREATE TABLE `tb_introduce`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '商家介绍信息',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商家介绍' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_introduce
--- ----------------------------
-
--- ----------------------------
 -- Table structure for tb_lingcheng_map
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_lingcheng_map`;
@@ -1695,7 +1873,7 @@ CREATE TABLE `tb_lingcheng_map`  (
   `area_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '区域名',
   `population` bigint NULL DEFAULT NULL COMMENT '人口',
   PRIMARY KEY (`map_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '陵城区区域' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '陵城区区域' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_lingcheng_map
@@ -1715,55 +1893,6 @@ INSERT INTO `tb_lingcheng_map` VALUES (12, '宋家镇', NULL);
 INSERT INTO `tb_lingcheng_map` VALUES (13, '滋镇', NULL);
 
 -- ----------------------------
--- Table structure for tb_menu
--- ----------------------------
-DROP TABLE IF EXISTS `tb_menu`;
-CREATE TABLE `tb_menu`  (
-  `menu_id` int NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
-  `menu_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '菜单名',
-  `menu_content` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '菜单简介',
-  `menu_price` double(5, 2) NOT NULL DEFAULT 0.00 COMMENT '菜单单价',
-  `menu_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '菜单图片名称',
-  PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_menu
--- ----------------------------
-
--- ----------------------------
--- Table structure for tb_menu_top
--- ----------------------------
-DROP TABLE IF EXISTS `tb_menu_top`;
-CREATE TABLE `tb_menu_top`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `menu_id` int NOT NULL DEFAULT 0 COMMENT '菜单ID，参考菜单表',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '推荐的菜品' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_menu_top
--- ----------------------------
-
--- ----------------------------
--- Table structure for tb_message
--- ----------------------------
-DROP TABLE IF EXISTS `tb_message`;
-CREATE TABLE `tb_message`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '留言ID',
-  `user_id` int NOT NULL DEFAULT 0 COMMENT '用户ID，参照用户表',
-  `menu_id` int NOT NULL DEFAULT 0 COMMENT '菜品ID，参照菜单表',
-  `content` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容',
-  `mg_date` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '留言时间',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `foreign_key_msg_userId`(`user_id` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '留言信息表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_message
--- ----------------------------
-
--- ----------------------------
 -- Table structure for tb_news
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_news`;
@@ -1779,7 +1908,7 @@ CREATE TABLE `tb_news`  (
   `mask` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '备注',
   `site_id` int NULL DEFAULT NULL COMMENT '所属工地',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_news
@@ -1793,66 +1922,6 @@ INSERT INTO `tb_news` VALUES (6, '安防信息6', '2022-07-05', '11:21:11', 0, 1
 INSERT INTO `tb_news` VALUES (7, '培训信息', '2022-06-01', '15:12:12', 1, 2, '全体人员进行安全培训', '2022-06-02 11:53:19', '已培训完成', 1);
 INSERT INTO `tb_news` VALUES (8, '卫生检查', '2022-06-23', '10:12:21', 1, 2, '工地环境靠大家, 下午3点进行工地卫生大检查', '2022-06-23 16:54:57', '已完成检查', 1);
 INSERT INTO `tb_news` VALUES (9, '安全检查', '2022-07-01', '09:12:22', 1, 2, '对工地的各个角落进行安全隐患的排除', '2022-07-02 11:56:18', '已排查完成', 1);
-
--- ----------------------------
--- Table structure for tb_orders
--- ----------------------------
-DROP TABLE IF EXISTS `tb_orders`;
-CREATE TABLE `tb_orders`  (
-  `order_id` int NOT NULL AUTO_INCREMENT COMMENT '订单ID',
-  `user_id` int NOT NULL DEFAULT 0 COMMENT '用户ID，参照用户表',
-  `menu_id` int NOT NULL DEFAULT 0 COMMENT '菜单ID，参照菜单表',
-  `order_num` int NOT NULL DEFAULT 0 COMMENT '订购菜品数量',
-  `order_notice` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '口味要求',
-  `other_notice` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '其他要求',
-  `states` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '订单付款状态',
-  PRIMARY KEY (`order_id`) USING BTREE,
-  INDEX `foreign_key_userId`(`user_id` ASC) USING BTREE,
-  INDEX `foreign_key_menuId`(`menu_id` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '订单表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_orders
--- ----------------------------
-
--- ----------------------------
--- Table structure for tb_parking
--- ----------------------------
-DROP TABLE IF EXISTS `tb_parking`;
-CREATE TABLE `tb_parking`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '车位Id',
-  `parking_number` int NULL DEFAULT NULL COMMENT '车场数',
-  `gates_number` int NULL DEFAULT NULL COMMENT '道闸数',
-  `parking_space` int NULL DEFAULT NULL COMMENT '车位数',
-  `site_id` int NULL DEFAULT NULL COMMENT '所属工地',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '停车场表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_parking
--- ----------------------------
-INSERT INTO `tb_parking` VALUES (1, 67, 212, 14210, 1);
-
--- ----------------------------
--- Table structure for tb_parking_real_time
--- ----------------------------
-DROP TABLE IF EXISTS `tb_parking_real_time`;
-CREATE TABLE `tb_parking_real_time`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `remaining_number` int NULL DEFAULT NULL COMMENT '剩余车位数',
-  `entry_number` int NULL DEFAULT NULL COMMENT '当日进场数',
-  `out_number` int NULL DEFAULT NULL COMMENT '当日出场数',
-  `vehicles_number` int NULL DEFAULT NULL COMMENT '场内车辆数',
-  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
-  `parkId` int NULL DEFAULT NULL COMMENT '所属停车场',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '停车场实时数据' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_parking_real_time
--- ----------------------------
-INSERT INTO `tb_parking_real_time` VALUES (1, 5321, 20123, 19862, 9132, '2022-07-04 00:08:54', '2022-07-05 09:09:24', 1);
 
 -- ----------------------------
 -- Table structure for tb_project
@@ -1889,22 +1958,27 @@ INSERT INTO `tb_project` VALUES (21, '新世界', NULL, 11, '2023-06-14 00:00:00
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_recruitment`;
 CREATE TABLE `tb_recruitment`  (
-  `item_id` bigint NOT NULL COMMENT '项目id',
+  `item_id` bigint NOT NULL AUTO_INCREMENT COMMENT '项目id',
   `item_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '项目名称',
+  `require_corporation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '招聘公司',
   `item_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '项目内容',
   `item_location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '项目所在地',
   `worker_require` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '工种需求',
   `require_num` int NOT NULL COMMENT '招聘人数',
-  `item_finish_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '预计完成时间',
-  `contact_phone` int NOT NULL COMMENT '联系电话',
+  `item_finish_time` datetime NOT NULL COMMENT '预计完成时间',
+  `contact_phone` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '联系电话',
   `item_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '项目招聘状态',
-  `release_time` datetime NOT NULL COMMENT '发布时间',
+  `release_time` datetime NULL DEFAULT NULL COMMENT '发布时间',
   PRIMARY KEY (`item_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '招聘公告表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '招聘公告表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_recruitment
 -- ----------------------------
+INSERT INTO `tb_recruitment` VALUES (1, '村建项目', '海天集团', '建设智慧村建', '德州市陵城区前孙镇', '水泥工', 10, '2023-12-20 00:00:00', '15269853654', '1', '2023-06-19 00:00:00');
+INSERT INTO `tb_recruitment` VALUES (2, '智慧村建', '海天集团', '建设智慧美丽乡村', '德州市陵城区前孙镇', '瓦工', 8, '2023-11-20 00:00:00', '15859635475', '0', '2023-06-20 00:00:00');
+INSERT INTO `tb_recruitment` VALUES (3, '智慧建设农村', '海天集团', '智慧建设农村', '德州市陵城区前孙镇', '钢筋工', 7, '2023-11-20 00:00:00', '15986325485', '0', '2023-06-20 00:00:00');
+INSERT INTO `tb_recruitment` VALUES (4, '智慧建设', '海天集团', '智慧村建', '德州市陵城区前孙镇', '壮工', 15, '2023-11-20 00:00:00', '1586953647', '0', '2023-06-20 00:00:00');
 
 -- ----------------------------
 -- Table structure for tb_ruoyi_crew
@@ -1945,17 +2019,18 @@ DROP TABLE IF EXISTS `tb_ruoyi_type`;
 CREATE TABLE `tb_ruoyi_type`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '工种id',
   `name` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '工种名',
+  `brief` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '工种简介',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_ruoyi_type
 -- ----------------------------
-INSERT INTO `tb_ruoyi_type` VALUES (1, '钢筋工');
-INSERT INTO `tb_ruoyi_type` VALUES (2, '水泥工');
-INSERT INTO `tb_ruoyi_type` VALUES (3, '瓦工');
-INSERT INTO `tb_ruoyi_type` VALUES (4, '水电工');
-INSERT INTO `tb_ruoyi_type` VALUES (5, '壮工');
+INSERT INTO `tb_ruoyi_type` VALUES (1, '钢筋工', '为建筑结构提供必要的支撑和强度。');
+INSERT INTO `tb_ruoyi_type` VALUES (2, '水泥工', '为建筑提供稳固的基础和坚实的支撑。');
+INSERT INTO `tb_ruoyi_type` VALUES (3, '瓦工', '为建筑物的结构和外观提供美观、耐用的瓦面覆盖。');
+INSERT INTO `tb_ruoyi_type` VALUES (4, '水电工', '负责安装和维护建筑物内的各种水电管道设施。');
+INSERT INTO `tb_ruoyi_type` VALUES (5, '壮工', '他们承担着建筑现场的重体力活，为其他工种提供必要的支持和保障。');
 
 -- ----------------------------
 -- Table structure for tb_ruoyi_worker
@@ -1975,23 +2050,23 @@ CREATE TABLE `tb_ruoyi_worker`  (
   `authentication` int NULL DEFAULT NULL COMMENT '是否认证',
   `id_number` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证号',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11217 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_ruoyi_worker
 -- ----------------------------
-INSERT INTO `tb_ruoyi_worker` VALUES (3, '方伟洋', 0, 42, '19010996062', '江西省九江市德安县爱民乡', '', 1, 5, NULL, 1, '');
-INSERT INTO `tb_ruoyi_worker` VALUES (4, '郭文轩', 0, 11, '17676611492', '四川省广元市昭化区太公镇', '', 1, 4, NULL, 1, '');
-INSERT INTO `tb_ruoyi_worker` VALUES (5, '范昕蕊', 1, 33, '13851033537', '湖南省怀化市辰溪县船溪乡', '你好', 1, 2, NULL, 0, '111111111111');
-INSERT INTO `tb_ruoyi_worker` VALUES (7, '沈文杰', 1, 25, '15087627145', '广东省云浮市云安区都杨镇', '你好', 0, 3, NULL, 1, '');
-INSERT INTO `tb_ruoyi_worker` VALUES (1123, 'qs', 0, 2, '1231231231', '山东', '', 1, 2, NULL, 1, '');
-INSERT INTO `tb_ruoyi_worker` VALUES (3572, '露西', 1, 23, '15253451111', '山东省', '', 1, 2, NULL, 1, '');
-INSERT INTO `tb_ruoyi_worker` VALUES (3573, '刘延旭', 0, 12, '221312213', '1qsdsdf', '', 0, 2, NULL, 1, '');
-INSERT INTO `tb_ruoyi_worker` VALUES (3578, '张宇', 0, 88, '1231231231', '山东', '', 1, 2, NULL, 1, '');
-INSERT INTO `tb_ruoyi_worker` VALUES (3579, 'ads', 0, 123, '1241241241', '山东', '', 0, 2, NULL, 1, '');
-INSERT INTO `tb_ruoyi_worker` VALUES (11213, 'qs', 0, 2, '1231231231', '山东', '', 1, 2, NULL, 1, '');
-INSERT INTO `tb_ruoyi_worker` VALUES (11214, 'lis', 0, 23, '123152121', '阿萨德', '', 1, 2, NULL, 1, '');
-INSERT INTO `tb_ruoyi_worker` VALUES (11216, '武兵', 0, 12, '1231231231', '山东省', '', 0, 2, NULL, 1, '');
+INSERT INTO `tb_ruoyi_worker` VALUES (3, '方伟洋', 0, 42, '19010996062', '江西省九江市德安县爱民乡', '西藏自治区日喀则市康马县涅如麦乡', 1, 5, 1, 1, '330201199607081324');
+INSERT INTO `tb_ruoyi_worker` VALUES (4, '郭文轩', 0, 33, '17676611492', '四川省广元市昭化区太公镇', '陕西省汉中市留坝县玉皇庙镇', 1, 4, 2, 1, '310101199508191406');
+INSERT INTO `tb_ruoyi_worker` VALUES (5, '范昕蕊', 1, 33, '13851033537', '湖南省怀化市辰溪县船溪乡', '河南省商丘市豫东综合物流产业聚集区中州街道', 1, 2, 3, 0, '430101200002216998');
+INSERT INTO `tb_ruoyi_worker` VALUES (7, '沈文杰', 1, 25, '15087627145', '广东省云浮市云安区都杨镇', '安徽省芜湖市弋江区龙湖街道', 0, 3, 4, 1, '120201200111093192');
+INSERT INTO `tb_ruoyi_worker` VALUES (1123, '任子璇', 0, 34, '1231231231', '河南省漯河市召陵区召陵区召陵镇', '云南省昆明市西山区昆明滇池国家旅游度假区', 1, 2, 5, 1, '450101199306011957');
+INSERT INTO `tb_ruoyi_worker` VALUES (3572, '黄苒溪', 1, 23, '15253451111', '江苏省扬州市广陵区沙头镇', '新疆维吾尔自治区巴音郭楞蒙古自治州尉犁县兴平镇', 1, 2, 6, 1, '320201197801174857');
+INSERT INTO `tb_ruoyi_worker` VALUES (3573, '刘延旭', 0, 51, '221312213', '海南省省直辖县级行政区划文昌市翁田镇', '青海省海南藏族自治州兴海县龙藏乡', 0, 2, 7, 1, '350101199405246408');
+INSERT INTO `tb_ruoyi_worker` VALUES (3578, '金慧嘉', 0, 88, '1231231231', '湖南省益阳市益阳市大通湖管理区金盆镇', '河南省郑州市中牟县豫兴街道     北京市市辖区房山区南窖乡', 1, 2, 2, 1, '140201199207144327');
+INSERT INTO `tb_ruoyi_worker` VALUES (3579, '方天赫', 0, 46, '1241241241', '云南省昭通市威信县扎西镇', '西藏自治区那曲市索县若达乡', 0, 2, 3, 1, '460101197404039390');
+INSERT INTO `tb_ruoyi_worker` VALUES (11213, '孙淼', 0, 42, '1231231231', '北京市市辖区朝阳区黑庄户地区', '安徽省淮南市八公山区八公山镇', 1, 2, 4, 1, '620201199904017846');
+INSERT INTO `tb_ruoyi_worker` VALUES (11214, '谢晨璐', 0, 26, '123152121', '北京市市辖区海淀区北太平庄街道', '云南省红河哈尼族彝族自治州河口瑶族自治县莲花滩乡', 1, 2, 1, 1, '370101197312034486');
+INSERT INTO `tb_ruoyi_worker` VALUES (11216, '阎淑君', 0, 65, '1231231231', '陕西省宝鸡市扶风县午井镇     河北省秦皇岛市北戴河区西山街道', '辽宁省大连市普兰店区唐家房街道', 0, 2, 2, 1, '540201198703099940');
 
 -- ----------------------------
 -- Table structure for tb_ruoyi_worker_type
@@ -2036,7 +2111,7 @@ CREATE TABLE `tb_site_info`  (
   `Construction_erea` double(7, 2) NULL DEFAULT NULL COMMENT '建筑面积',
   `Construction_land_erea` double(7, 2) NULL DEFAULT NULL COMMENT '建设用地面积',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工地概览表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工地概览表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_site_info
@@ -2085,7 +2160,7 @@ CREATE TABLE `tb_user_inform_status`  (
   `status` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '已读状态',
   `time` datetime NULL DEFAULT NULL COMMENT '时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户通知状态信息' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 77 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户通知状态信息' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_user_inform_status

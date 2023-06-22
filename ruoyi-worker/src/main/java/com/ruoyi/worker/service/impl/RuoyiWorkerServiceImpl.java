@@ -11,6 +11,7 @@ import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.bean.BeanValidators;
 import com.ruoyi.crew.domain.RuoyiCrew;
 import com.ruoyi.crew.mapper.RuoyiCrewMapper;
+import com.ruoyi.project.mapper.ProjectMapper;
 import com.ruoyi.worker.domain.RuoyiWorker;
 import com.ruoyi.worker.domain.RuoyiWorkerType;
 import com.ruoyi.worker.mapper.RuoyiTypeMapper;
@@ -43,6 +44,9 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
 
     @Autowired
     private RuoyiWorkerTypeMapper ruoyiWorkerTypeMapper;
+
+    @Autowired
+    private ProjectMapper projectMapper;
 
     private static final Logger log = LoggerFactory.getLogger(RuoyiWorkerServiceImpl.class);
 
@@ -102,6 +106,12 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
             typeIdList = ruoyiWorkerTypeMapper.selectTypeId(worker.getId());
             if(typeIdList == null)
                 continue;
+
+            try{
+                worker.setProjectName(projectMapper.selectProjectByProjectId(worker.getProjectNow()).getProjectName());
+            } catch (NullPointerException e){
+                worker.setProjectName("无");
+            }
 
             for(Long typeId : typeIdList){
                 str.append(ruoyiTypeMapper.selectTypeName(typeId)).append(',');
@@ -287,6 +297,23 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
         }
         if(str.length() != 0)
             worker.setWorkerTypeName(str.deleteCharAt(str.length() - 1).toString());
+        str = new StringBuilder(worker.getIdNumber());
+        try{
+            worker.setIdNumber(str.replace(8,14,"******").toString());
+        } catch (Exception e){
+            worker.setIdNumber("无信息");
+        }
+        str = new StringBuilder(worker.getPhone());
+        try{
+            worker.setPhone(str.replace(3,7,"****").toString());
+        } catch (Exception e){
+            worker.setPhone("无信息");
+        }
+        try{
+            worker.setProjectName(projectMapper.selectProjectByProjectId(worker.getProjectNow()).getProjectName());
+        } catch (NullPointerException e){
+            worker.setProjectName("无");
+        }
         return worker;
     }
 }

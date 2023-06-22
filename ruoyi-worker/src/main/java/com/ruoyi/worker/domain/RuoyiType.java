@@ -20,6 +20,28 @@ public class RuoyiType extends BaseEntity {
     @Excel(name = "工种名")
     private String name;
 
+    @Excel(name = "工匠人数")
+    private Long numberOfPeople;
+
+    @Excel(name = "工种简介")
+    private String brief;
+
+    public Long getNumberOfPeople() {
+        return numberOfPeople;
+    }
+
+    public void setNumberOfPeople(Long numberOfPeople) {
+        this.numberOfPeople = numberOfPeople;
+    }
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
+
     public void setId(Integer id)
     {
         this.id = id;

@@ -27,7 +27,6 @@
             <artifactId>ruoyi-system</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>ruoyi-crew</artifactId>
