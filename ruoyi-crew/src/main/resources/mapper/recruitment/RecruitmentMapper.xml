@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.recruitment.mapper.RecruitmentMapper">
+
+    <resultMap type="Recruitment" id="RecruitmentResult">
+        <result property="itemId"    column="item_id"    />
+        <result property="itemName"    column="item_name"    />
+        <result property="requireCorporation"    column="require_corporation"    />
+        <result property="itemContent"    column="item_content"    />
+        <result property="itemLocation"    column="item_location"    />
+        <result property="workerRequire"    column="worker_require"    />
+        <result property="requireNum"    column="require_num"    />
+        <result property="itemFinishTime"    column="item_finish_time"    />
+        <result property="contactPhone"    column="contact_phone"    />
+        <result property="itemStatus"    column="item_status"    />
+        <result property="releaseTime"    column="release_time"    />
+    </resultMap>
+
+    <sql id="selectRecruitmentVo">
+        select item_id, item_name, require_corporation, item_content, item_location, worker_require, require_num, item_finish_time, contact_phone, item_status, release_time from tb_recruitment
+    </sql>
+
+    <select id="selectRecruitmentList" parameterType="Recruitment" resultMap="RecruitmentResult">
+        <include refid="selectRecruitmentVo"/>
+        <where>
+            <if test="itemName != null  and itemName != ''"> and item_name like concat('%', #{itemName}, '%')</if>
+            <if test="requireCorporation != null  and requireCorporation != ''"> and require_corporation = #{requireCorporation}</if>
+            <if test="itemLocation != null  and itemLocation != ''"> and item_location = #{itemLocation}</if>
+            <if test="workerRequire != null  and workerRequire != ''"> and worker_require = #{workerRequire}</if>
+            <if test="itemStatus != null  and itemStatus != ''"> and item_status = #{itemStatus}</if>
+        </where>
+    </select>
+
+    <select id="selectRecruitmentByItemId" parameterType="Long" resultMap="RecruitmentResult">
+        <include refid="selectRecruitmentVo"/>
+        where item_id = #{itemId}
+    </select>
+
+    <insert id="insertRecruitment" parameterType="Recruitment" useGeneratedKeys="true" keyProperty="itemId">
+        insert into tb_recruitment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="itemName != null and itemName != ''">item_name,</if>
+            <if test="requireCorporation != null and requireCorporation != ''">require_corporation,</if>
+            <if test="itemContent != null and itemContent != ''">item_content,</if>
+            <if test="itemLocation != null and itemLocation != ''">item_location,</if>
+            <if test="workerRequire != null and workerRequire != ''">worker_require,</if>
+            <if test="requireNum != null">require_num,</if>
+            <if test="itemFinishTime != null">item_finish_time,</if>
+            <if test="contactPhone != null and contactPhone != ''">contact_phone,</if>
+            <if test="itemStatus != null and itemStatus != ''">item_status,</if>
+            <if test="releaseTime != null">release_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="itemName != null and itemName != ''">#{itemName},</if>
+            <if test="requireCorporation != null and requireCorporation != ''">#{requireCorporation},</if>
+            <if test="itemContent != null and itemContent != ''">#{itemContent},</if>
+            <if test="itemLocation != null and itemLocation != ''">#{itemLocation},</if>
+            <if test="workerRequire != null and workerRequire != ''">#{workerRequire},</if>
+            <if test="requireNum != null">#{requireNum},</if>
+            <if test="itemFinishTime != null">#{itemFinishTime},</if>
+            <if test="contactPhone != null and contactPhone != ''">#{contactPhone},</if>
+            <if test="itemStatus != null and itemStatus != ''">#{itemStatus},</if>
+            <if test="releaseTime != null">#{releaseTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updateRecruitment" parameterType="Recruitment">
+        update tb_recruitment
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="itemName != null and itemName != ''">item_name = #{itemName},</if>
+            <if test="requireCorporation != null and requireCorporation != ''">require_corporation = #{requireCorporation},</if>
+            <if test="itemContent != null and itemContent != ''">item_content = #{itemContent},</if>
+            <if test="itemLocation != null and itemLocation != ''">item_location = #{itemLocation},</if>
+            <if test="workerRequire != null and workerRequire != ''">worker_require = #{workerRequire},</if>
+            <if test="requireNum != null">require_num = #{requireNum},</if>
+            <if test="itemFinishTime != null">item_finish_time = #{itemFinishTime},</if>
+            <if test="contactPhone != null and contactPhone != ''">contact_phone = #{contactPhone},</if>
+            <if test="itemStatus != null and itemStatus != ''">item_status = #{itemStatus},</if>
+            <if test="releaseTime != null">release_time = #{releaseTime},</if>
+        </trim>
+        where item_id = #{itemId}
+    </update>
+
+    <delete id="deleteRecruitmentByItemId" parameterType="Long">
+        delete from tb_recruitment where item_id = #{itemId}
+    </delete>
+
+    <delete id="deleteRecruitmentByItemIds" parameterType="String">
+        delete from tb_recruitment where item_id in
+        <foreach item="itemId" collection="array" open="(" separator="," close=")">
+            #{itemId}
+        </foreach>
+    </delete>
+</mapper>

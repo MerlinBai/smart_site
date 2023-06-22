@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.apply.mapper.ApplyMapper">
+    
+    <resultMap type="Apply" id="ApplyResult">
+        <result property="applyId"    column="apply_id"    />
+        <result property="itemId"    column="item_id"    />
+        <result property="itemName"    column="item_name"    />
+        <result property="workerRequire"    column="worker_require"    />
+        <result property="applyUser"    column="apply_user"    />
+        <result property="applyPhone"    column="apply_phone"    />
+        <result property="applyTime"    column="apply_time"    />
+        <result property="applyAudit"    column="apply_audit"    />
+    </resultMap>
+
+    <sql id="selectApplyVo">
+        select apply_id, item_id, item_name, worker_require, apply_user, apply_phone, apply_time, apply_audit from tb_apply
+    </sql>
+
+    <select id="selectApplyList" parameterType="Apply" resultMap="ApplyResult">
+        <include refid="selectApplyVo"/>
+        <where>  
+            <if test="itemName != null  and itemName != ''"> and item_name like concat('%', #{itemName}, '%')</if>
+            <if test="workerRequire != null  and workerRequire != ''"> and worker_require = #{workerRequire}</if>
+            <if test="params.beginApplyTime != null and params.beginApplyTime != '' and params.endApplyTime != null and params.endApplyTime != ''"> and apply_time between #{params.beginApplyTime} and #{params.endApplyTime}</if>
+            <if test="applyAudit != null  and applyAudit != ''"> and apply_audit = #{applyAudit}</if>
+        </where>
+    </select>
+    
+    <select id="selectApplyByApplyId" parameterType="Long" resultMap="ApplyResult">
+        <include refid="selectApplyVo"/>
+        where apply_id = #{applyId}
+    </select>
+        
+    <insert id="insertApply" parameterType="Apply" useGeneratedKeys="true" keyProperty="applyId">
+        insert into tb_apply
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="itemId != null">item_id,</if>
+            <if test="itemName != null">item_name,</if>
+            <if test="workerRequire != null">worker_require,</if>
+            <if test="applyUser != null">apply_user,</if>
+            <if test="applyPhone != null">apply_phone,</if>
+            <if test="applyTime != null">apply_time,</if>
+            <if test="applyAudit != null">apply_audit,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="itemId != null">#{itemId},</if>
+            <if test="itemName != null">#{itemName},</if>
+            <if test="workerRequire != null">#{workerRequire},</if>
+            <if test="applyUser != null">#{applyUser},</if>
+            <if test="applyPhone != null">#{applyPhone},</if>
+            <if test="applyTime != null">#{applyTime},</if>
+            <if test="applyAudit != null">#{applyAudit},</if>
+         </trim>
+    </insert>
+
+    <update id="updateApply" parameterType="Apply">
+        update tb_apply
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="itemId != null">item_id = #{itemId},</if>
+            <if test="itemName != null">item_name = #{itemName},</if>
+            <if test="workerRequire != null">worker_require = #{workerRequire},</if>
+            <if test="applyUser != null">apply_user = #{applyUser},</if>
+            <if test="applyPhone != null">apply_phone = #{applyPhone},</if>
+            <if test="applyTime != null">apply_time = #{applyTime},</if>
+            <if test="applyAudit != null">apply_audit = #{applyAudit},</if>
+        </trim>
+        where apply_id = #{applyId}
+    </update>
+
+    <delete id="deleteApplyByApplyId" parameterType="Long">
+        delete from tb_apply where apply_id = #{applyId}
+    </delete>
+
+    <delete id="deleteApplyByApplyIds" parameterType="String">
+        delete from tb_apply where apply_id in 
+        <foreach item="applyId" collection="array" open="(" separator="," close=")">
+            #{applyId}
+        </foreach>
+    </delete>
+</mapper>
