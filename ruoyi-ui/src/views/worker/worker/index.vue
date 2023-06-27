@@ -98,7 +98,7 @@
         </template>
       </el-table-column>
       <el-table-column label="所属施工队" align="center" prop="crewName" />
-      <el-table-column label="正在进行的项目" align="center" prop="projectNow" />
+      <el-table-column label="正在进行的项目" align="center" prop="projectName" />
 
       <el-table-column label="是否认证" align="center" prop="authentication" >
         <template v-slot:header>
@@ -160,7 +160,7 @@
 
     <!-- 添加或修改员工管理对话框 -->
 
-    </el-dialog>
+
 <!--     员工导入对话框-->
     <el-dialog :title="upload.title" :visible.sync="upload.open" width="400px" append-to-body>
       <el-upload
