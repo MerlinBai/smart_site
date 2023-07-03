@@ -88,7 +88,8 @@ export default {
         index() {
             return index
         }, limitedNumbers() {
-        return this.box.slice(0, 5); // 限制循环次数为 5 次
+        
+        return this.box.slice(0,5); // 限制循环次数为 5 次
       }
     },
     data() {
@@ -97,7 +98,7 @@ export default {
             img: 'https://img.zcool.cn/community/0167a75c0a2c23a801209252d0a271.jpg@1280w_1l_2o_100sh.jpg'
         }
     } , async mounted() {
-      const res = await axios.get('http://localhost/dev-api/systevideom/detail/list');
+      const res = await axios.get('http://localhost:81/dev-api/systevideom/detail/list');
       if(res.data.code === 200) {
         this.box = res.data.rows;
 

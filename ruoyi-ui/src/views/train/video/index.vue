@@ -103,7 +103,7 @@ export default {
       console.log("666")
       console.log(token) */
       const resp = await axios({
-        url: 'http://localhost/dev-api/common/upload',
+        url: 'http://localhost:81/dev-api/common/upload',
         method: 'post',
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -122,7 +122,7 @@ export default {
        console.log("666")
        console.log(token) */
       const resp = await axios({
-        url: 'http://localhost/dev-api/common/upload',
+        url: 'http://localhost:81/dev-api/common/upload',
         method: 'post',
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -139,7 +139,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(async () => {
-        const resp = await axios.post('http://localhost/dev-api/systevideom/detail', {
+        const resp = await axios.post('http://localhost:81/dev-api/systevideom/detail', {
           userId: this.form.userId,
           createBy: this.form.createBy,
           videoLink: this.form.videoLink,
@@ -174,7 +174,7 @@ export default {
 
     }, beforeimg(file) {
       var testmsg = file.name.substring(file.name.lastIndexOf(".") + 1);
-      const extension = (testmsg === "jpg") || (testmsg === jpeg) || (testmsg === png);
+      const extension = (testmsg === "jpg") || (testmsg === "jpeg") || (testmsg === "png");
       if (!extension ) {
         this.$message({
           message: "上传文件只能是jpg/png/jpeg格式!",

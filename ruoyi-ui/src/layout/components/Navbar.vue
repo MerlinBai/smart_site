@@ -9,8 +9,15 @@
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
+
+        <a href="static/echarts/index.html" target="_blank" class="nabbar-a">
+          <img src="./navbar1.jpg" alt="">
+        </a>
+
+
         <search id="header-search" class="right-menu-item" />
         
+
         <el-tooltip content="源码地址" effect="dark" placement="bottom">
           <ruo-yi-git id="ruoyi-git" class="right-menu-item hover-effect" />
         </el-tooltip>
@@ -113,6 +120,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.nabbar-a{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  // background-color: #11111148;
+  top: 6px;
+  right: 260px;
+}
+.nabbar-a>img{
+  width: 100%;
+  height: 100%;
+
+}
 .navbar {
   height: 50px;
   overflow: hidden;

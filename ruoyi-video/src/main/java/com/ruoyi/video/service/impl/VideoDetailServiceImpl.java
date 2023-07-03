@@ -2,6 +2,8 @@ package com.ruoyi.video.service.impl;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -48,7 +50,16 @@ public class VideoDetailServiceImpl implements IVideoDetailService
     @Override
     public List<VideoDetail> selectVideoDetailList(VideoDetail videoDetail)
     {
-        return videoDetailMapper.selectVideoDetailList(videoDetail);
+        List<VideoDetail> videoDetails = videoDetailMapper.selectVideoDetailList(videoDetail);
+
+        Collections.sort(videoDetails, new Comparator<VideoDetail>() {
+            @Override
+            public int compare(VideoDetail o1, VideoDetail o2) {
+                return o2.getCreateTime().compareTo(o1.getCreateTime());
+            }
+        });
+
+        return videoDetails;
     }
 
     /**

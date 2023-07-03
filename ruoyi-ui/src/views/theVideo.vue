@@ -367,8 +367,8 @@ export default {
     console.log(this.id);
     localStorage.removeItem('videoId');
     //this.$refs.videoPlayer.$el.firstChild.getElementsByClassName('vjs-custom-skin')[0].getElementsByClassName('vjs-progress-control')[0].style.pointerEvents = 'none'
-    const resp = await axios.get('http://localhost/dev-api/systevideom/detail/' + this.id);
-    const res = await axios.get('http://localhost/dev-api/systevideom/detail/gl', {
+    const resp = await axios.get('http://localhost:81/dev-api/systevideom/detail/' + this.id);
+    const res = await axios.get('http://localhost:81/dev-api/systevideom/detail/gl', {
       params: {
         userId: localStorage.getItem('id'),
         videoId: this.id

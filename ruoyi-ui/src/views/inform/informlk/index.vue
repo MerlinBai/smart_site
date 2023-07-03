@@ -1,6 +1,6 @@
 <template>
   <div class="inform-shell">
-    <nav v-if="!boo" class="inform-unit">单位档案信息</nav>
+    <nav v-if="!boo" class="inform-unit">查看通知详情</nav>
     <div v-if="!boo" class="body-inform-unit">
       <el-table
         :data="InformList"
@@ -9,7 +9,9 @@
         stripe
         style="width: 100%"
       >
-        <el-table-column prop="informId" label="序号" width="80px" />
+        <el-table-column label="序号" width="80px">
+          <template slot-scope="scope">{{ scope.$index + 1 }}</template>
+        </el-table-column>
         <el-table-column prop="informTitle" label="通知标题" width="390" />
         <el-table-column
           prop="informType"
@@ -17,15 +19,13 @@
           :formatter="formatInformType"
           width="180"
         />
-        <el-table-column prop="createBy" label="发送者" width="220" />
+        <el-table-column prop="status" label="状态" :formatter="formatStatus" />
+        <el-table-column prop="createBy" label="发送者" />
         <el-table-column prop="createTime" label="发送时间" width="" />
         <el-table-column label="查看详情">
-          <template #default="{ row }">
+          <template #default="{ $index }">
             <div>
-              <button
-                class="particulars-inform"
-                @click="showInform(row.informId)"
-              >
+              <button class="particulars-inform" @click="showInform($index)">
                 详情
               </button>
             </div>
@@ -33,7 +33,7 @@
         </el-table-column>
       </el-table>
     </div>
-    <div v-show="boo" class="particulars-show">
+    <div v-if="boo" class="particulars-show">
       <nav class="pts-nav">{{ this.InformListCopy.informTitle }}</nav>
       <div class="pts-content">{{ this.InformListCopy.informContent }}</div>
       <div class="pts-time">发送时间：{{ this.InformListCopy.createTime }}</div>
@@ -51,7 +51,7 @@ export default {
     return {
       InformList: [],
       InformListCopy: [],
-      boo: true,
+      boo: false,
     };
   },
   created() {
@@ -60,12 +60,10 @@ export default {
   methods: {
     async getMessageList() {
       const { data: res } = await axios.get(
-        "http://localhost:81/dev-api/inform/inform/list?pageNum=1&pageSize=10"
+        "http://localhost/dev-api/inform/inform/list?pageNum=1&pageSize=10"
       );
       if (res.code != 200) console.log("数据获取失败！");
       this.InformList = res.rows;
-      // console.log(this.InformList);
-
     },
     formatInformType(row, column) {
       if (row.informType == 1) {
@@ -74,11 +72,15 @@ export default {
         return "公告";
       }
     },
+    formatStatus(row, column) {
+      if (row.status == 0) {
+        return "已读";
+      } else if (row.status == 1) {
+        return "未读";
+      }
+    },
     showInform(id) {
-      console.log(id);
-      id = id - 1;
       this.boo = true;
-      console.log(this.InformList);
       this.InformListCopy = this.InformList[id];
       console.log(this.InformListCopy);
     },

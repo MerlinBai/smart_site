@@ -31,7 +31,7 @@ public class RuoyiTypeController extends BaseController
     /**
      * 查询工种id与工种名的对应表列表
      */
-    @PreAuthorize("@ss.hasPermi('system:type:list')")
+//    @PreAuthorize("@ss.hasPermi('system:type:list')")
     @GetMapping("/list")
     public TableDataInfo list(RuoyiType ruoyiType)
     {
@@ -43,7 +43,7 @@ public class RuoyiTypeController extends BaseController
     /**
      * 导出工种id与工种名的对应表列表
      */
-    @PreAuthorize("@ss.hasPermi('system:type:export')")
+//    @PreAuthorize("@ss.hasPermi('system:type:export')")
     @Log(title = "工种id与工种名的对应表", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, RuoyiType ruoyiType)
@@ -56,7 +56,7 @@ public class RuoyiTypeController extends BaseController
     /**
      * 获取工种id与工种名的对应表详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:type:query')")
+//    @PreAuthorize("@ss.hasPermi('system:type:query')")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
     {
@@ -66,7 +66,7 @@ public class RuoyiTypeController extends BaseController
     /**
      * 新增工种id与工种名的对应表
      */
-    @PreAuthorize("@ss.hasPermi('system:type:add')")
+//    @PreAuthorize("@ss.hasPermi('system:type:add')")
     @Log(title = "工种id与工种名的对应表", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody RuoyiType ruoyiType)
@@ -77,7 +77,7 @@ public class RuoyiTypeController extends BaseController
     /**
      * 修改工种id与工种名的对应表
      */
-    @PreAuthorize("@ss.hasPermi('system:type:edit')")
+//    @PreAuthorize("@ss.hasPermi('system:type:edit')")
     @Log(title = "工种id与工种名的对应表", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody RuoyiType ruoyiType)
@@ -88,7 +88,7 @@ public class RuoyiTypeController extends BaseController
     /**
      * 删除工种id与工种名的对应表
      */
-    @PreAuthorize("@ss.hasPermi('system:type:remove')")
+//    @PreAuthorize("@ss.hasPermi('system:type:remove')")
     @Log(title = "工种id与工种名的对应表", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
