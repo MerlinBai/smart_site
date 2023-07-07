@@ -1,7 +1,7 @@
 package com.ruoyi.web.controller.inform;
 
 import javax.annotation.Resource;
-import javax.jws.soap.SOAPBinding;
+
 import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.common.annotation.Anonymous;

@@ -41,9 +41,18 @@ public class VideoDetailController extends BaseController
     /**
      * 查询记录视频观看时长列表
      */
-    //@PreAuthorize("@ss.hasPermi('systevideom:detail:list')")
     @GetMapping("/list")
     public TableDataInfo list(VideoDetail videoDetail)
+    {
+        startPage();
+        List<VideoDetail> list = videoDetailService.selectVideoDetailList(videoDetail);
+        return getDataTable(list);
+    }
+    /**
+     * 查询用户观看视频进度
+     */
+    @GetMapping("/list/{userId}")
+    public TableDataInfo listByUserId(VideoDetail videoDetail)
     {
         startPage();
         List<VideoDetail> list = videoDetailService.selectVideoDetailList(videoDetail);
