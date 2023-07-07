@@ -34,6 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="id != null ">id = #{id}</if>
             <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
             <if test="authentication != null "> and authentication = #{authentication}</if>
+            <if test="crewId != null "> and crew_id = #{crewId}</if>
         </where>
     </select>
 
@@ -43,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="id != null ">id = #{id}</if>
             <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
             <if test="authentication != null "> and authentication = #{authentication}</if>
-            <if test="crew_id != null "> and crew_id = #{crewId}</if>
+            <if test="crewId != null "> and crew_id = #{crewId}</if>
         </where>
     </select>
     
