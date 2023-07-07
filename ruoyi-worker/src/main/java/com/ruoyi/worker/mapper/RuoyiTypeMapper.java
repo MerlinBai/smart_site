@@ -11,7 +11,7 @@ import java.util.List;
  * @Date: 2023/06/08/20:16
  */
 public interface RuoyiTypeMapper {
-    @Select("select id from smart_site.tb_ruoyi_type where name like concat('%',#{name},'%')")
+    @Select("select id from tb_ruoyi_type where name like concat('%',#{name},'%')")
     public List<Long> selectTypeId(String name);
     @Select("select name from tb_ruoyi_type where id = #{id}")
     public String selectTypeName(Long id);

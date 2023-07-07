@@ -27,15 +27,12 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
     @Autowired
     private ProjectMapper projectMapper;
 
+
     @Override
     public void addfinsh(Integer CrewId, Integer ProjectId) {
         CrewProject crewProject = new CrewProject();
         crewProject.setCrewId(CrewId);
-
-
     }
-
-
 
     /**
      * 查询施工队信息
@@ -82,7 +79,7 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
     public List<RuoyiCrew> selectRuoyiCrewList(RuoyiCrew ruoyiCrew, Project project)
     {
         List<RuoyiCrew> crewList = ruoyiCrewMapper.selectRuoyiCrewList(ruoyiCrew);
-
+//        List<RuoyiWorker> workers =ruoyiWorkerMapper.selectRuoyiWorkerList(worker);
         crewList.forEach(s -> {
             s.setFinishProject(0L);
             s.setUnfinishProject(0L);
@@ -92,8 +89,8 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
       List<Integer>unfinishList=new ArrayList<>();
       List<String>finishNameList=new ArrayList<>();
       List<String>unfinishNameList=new ArrayList<>();
+      Long count=0L;
         List<Project> projects = projectMapper.selectProjectList(project);
-
         for( RuoyiCrew crew:crewList ) {
                    for(Project p:projects)
             {
@@ -133,21 +130,14 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
             finishNameList=new ArrayList<>();
             unfinishNameList=new ArrayList<>();
         }
-
-//        for (int i = 0; i < projects.size(); i++) {
-//            for (int j = 0; j < crewList.size(); j++) {
-//                if (projects.get(i).getCrewId().equals(crewList.get(j).getCrewId())) {
-//                    if (projects.get(i).getProjectEndTime() != null) {
-//
-//                        Long len =crewList.get(i).getFinishProject()+1;
-//                        crewList.get(i).setFinishProject(len);
-//                    }
-//                    else {
-//                        Long len2 =crewList.get(i).getUnfinishProject()+1;
-//                        crewList.get(i).setUnfinishProject(len2);
-//                    }
+//        for (RuoyiCrew crew:crewList){
+//            for (RuoyiWorker work: workers) {
+//                if(crew.getCrewId().equals(work.getCrewId()))
+//                {
+//                    crew.setPopualtion(count++);
 //                }
 //            }
+//            count=0L;
 //        }
 
 

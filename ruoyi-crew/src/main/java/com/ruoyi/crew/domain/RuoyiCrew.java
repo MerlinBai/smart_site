@@ -157,6 +157,52 @@ public class RuoyiCrew extends BaseEntity
     private List<String>unfinishProjectsName;
     private String FinSumName;
     private String UnFinSumName;
+    private String applyAudit;
+    private String crewNature;
+    private String area;
+    private String registeredCapital;
+    private String reason;
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public String getCrewNature() {
+        return crewNature;
+    }
+
+    public void setCrewNature(String crewNature) {
+        this.crewNature = crewNature;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getRegisteredCapital() {
+        return registeredCapital;
+    }
+
+    public void setRegisteredCapital(String registeredCapital) {
+        this.registeredCapital = registeredCapital;
+    }
+
+
+    public String getApplyAudit() {
+        return applyAudit;
+    }
+
+    public void setApplyAudit(String applyAudit) {
+        this.applyAudit = applyAudit;
+    }
 
     public String getFinSumName() {
         return FinSumName;

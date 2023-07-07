@@ -2285,3 +2285,60 @@ INSERT INTO `user_video_log` VALUES (2, 1, 5, 4.44512, NULL);
 INSERT INTO `user_video_log` VALUES (3, 10, 9, 12.39467, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
+ /*
+ Navicat Premium Data Transfer
+
+ Source Server         : first
+ Source Server Type    : MySQL
+ Source Server Version : 80033 (8.0.33)
+ Source Host           : localhost:3306
+ Source Schema         : ruoyi
+
+ Target Server Type    : MySQL
+ Target Server Version : 80033 (8.0.33)
+ File Encoding         : 65001
+
+ Date: 07/07/2023 20:20:12
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for tb_ruoyi_crew
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_ruoyi_crew`;
+CREATE TABLE `tb_ruoyi_crew`  (
+                                  `crew_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+                                  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '施工单位名称',
+                                  `res_person` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '负责人',
+                                  `phone` varchar(11) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '电话',
+                                  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '地址',
+                                  `qualification` int NULL DEFAULT NULL COMMENT '资质（特级，1，2，3级对应0，1，2，3）',
+                                  `finish_project` int NULL DEFAULT NULL COMMENT '已完成项目',
+                                  `unfinish_project` int NULL DEFAULT NULL COMMENT '未完成项目',
+                                  `popualtion` int NULL DEFAULT NULL COMMENT '员工数量',
+                                  `build_time` datetime NULL DEFAULT NULL COMMENT '成立时间',
+                                  `apply_audit` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT '1' COMMENT '审核结果',
+                                  `crew_nature` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '企业性质',
+                                  `area` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '占地面积',
+                                  `registered_capital` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '注册资金',
+                                  `reason` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '审核未通过原因',
+                                  PRIMARY KEY (`crew_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of tb_ruoyi_crew
+-- ----------------------------
+INSERT INTO `tb_ruoyi_crew` VALUES (1, '强盛集团', '高启强', '18239425875', '江苏省南通市启东市北新镇', 0, 0, 1, 11, '2023-06-07 00:00:00', '2', '民营', '1221', '1122', NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (2, '建军集团', 'mark', '15510907681', '甘肃省兰州市西固区西柳沟街道', 1, 3, 1, 22, '2021-02-25 00:00:00', '0', '12', '12', '2221', NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (3, '圣天集团', '陆雄霖  ', '02400164308', '山东省德州市德州运河经济开发区新区', 2, 1, 0, 11, '2023-06-13 00:00:00', '0', '121', '121', '112', NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (4, '华兴集团', ' 贾美欣   ', '02449899102', '上海市市辖区宝山区淞南镇', 2, 1, 0, 32, '2023-06-29 00:00:00', '2', '212', '1', '21', NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (5, '上天集团', '孔益帆', '08649464843', ' 河南省驻马店市遂平县凤鸣谷风景区', 2, 1, 0, 111, '2023-06-27 00:00:00', '0', '212', '212', '12', NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (6, '御园集团', '鱼皮', '06798770143', '四川省巴中市巴中经济开发区时新街道', 2, 1, 2, 123, '2023-06-26 00:00:00', '0', '12', '121', '12', NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (7, '建工集团', '胡润丽', '01784636828', '新疆维吾尔自治区乌鲁木齐市头屯河区兵团十二师三坪农场', 2, 0, 0, 167, '2023-06-28 00:00:00', '2', '12', '12', '21', NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (8, '海天集团', ' 袁文昊', '08525666205', '青海省西宁市湟中区甘河工业园 ', 2, 1, 2, 121, '2023-06-11 00:00:00', '0', '12', '12', '331', NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (9, '天海集团', '雷芳 ', '02542444789', '河南省驻马店市遂平县凤鸣谷风景区', 2, 1, 2, 121, '2023-06-01 00:00:00', '0', '12', '22', '33', NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (10, '东方集团', '雷芳   ', '18766542424', '西藏自治区昌都市洛隆县硕督镇', 1, 2, 1, 222, '2023-06-28 00:00:00', '2', '12', '31', '21', NULL);
+
+SET FOREIGN_KEY_CHECKS = 1;
