@@ -18,17 +18,7 @@
 
     <el-row :gutter="10" class="mb8">
 
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--          type="danger"-->
-<!--          plain-->
-<!--          icon="el-icon-delete"-->
-<!--          size="mini"-->
-<!--          :disabled="multiple"-->
-<!--          @click="handleDelete"-->
-<!--          v-hasPermi="['system:worker:remove']"-->
-<!--        >删除</el-button>-->
-<!--      </el-col>-->
+
       <el-col :span="1.5">
         <el-button
           type="info"
@@ -65,8 +55,6 @@
       </el-table-column>
 
       <el-table-column label="年龄" align="center" prop="age" />
-<!--      <el-table-column label="电话号" align="center" prop="phone" />-->
-<!--      <el-table-column label="现住址" align="center" prop="addressNow" />-->
       <el-table-column label="政治面貌" align="center" prop="polStatus">
         <template slot-scope="scope">
           <span v-if="scope.row.polStatus === 0">群众</span>
@@ -100,10 +88,10 @@
       <el-table-column label="所属施工队" align="center" prop="crewName" />
       <el-table-column label="正在进行的项目" align="center" prop="projectName" />
 
-      <el-table-column label="是否认证" align="center" prop="authentication" >
+      <el-table-column label="认证状态" align="center" prop="authentication" >
         <template v-slot:header>
           <div>
-            <span style="margin-right: 10px">是否认证</span>
+            <span style="margin-right: 10px">认证状态</span>
             <el-popover
               placement="right"
               width="200"
@@ -111,7 +99,7 @@
               style="text-align: center"
               >
               <template>
-                请选择是否已认证
+                请选择认证状态
                 <el-checkbox-group v-model="queryParams.authenticationList" @change="handleCheckedTypeChange">
                   <el-checkbox v-for="aut in authenticationList" :label="aut" :key="aut" style="padding-bottom: 10px;padding-top: 10px;padding-right: 10px"> {{aut}} </el-checkbox>
                 </el-checkbox-group>
@@ -122,32 +110,25 @@
           </div>
         </template>
         <template slot-scope="scope">
-          <span v-if="scope.row.authentication === 0">否</span>
-          <span v-else-if="scope.row.authentication === 1">是</span>
+          <span v-if="scope.row.authentication === 1">
+            <el-tag>待处理</el-tag>
+          </span>
+          <span v-else-if="scope.row.authentication === 2">
+            <el-tag type="success">已认证</el-tag>
+          </span>
         </template>
       </el-table-column>
-<!--      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">-->
-<!--        <template slot-scope="scope">-->
-<!--          <el-button-->
-<!--            size="mini"-->
-<!--            type="text"-->
-<!--            icon="el-icon-edit"-->
-<!--            @click="handleUpdate(scope.row)"-->
-<!--            v-hasPermi="['system:worker:edit']"-->
-<!--          >修改</el-button>-->
-<!--          <el-button-->
-<!--            size="mini"-->
-<!--            type="text"-->
-<!--            icon="el-icon-edit"-->
-<!--            @click="handleUpdateAut(scope.row)"-->
-<!--            v-hasPermi="['system:worker:remove']">-->
-
-<!--            <span v-if="scope.row.authentication === 0">认证</span>-->
-<!--            <span v-else-if="scope.row.authentication === 1">取消认证</span>-->
-
-<!--          </el-button>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
+      <el-table-column label="操作" align="center" prop="authentication">
+        <template slot-scope="scope">
+          <span v-if="scope.row.authentication === 1">
+            <el-button type="success" @click.native.stop="updateAuthentication(scope.row.id,2)" round>通过</el-button>
+            <el-button type="danger" @click.native.stop="reject(scope.row.id,0)" round>驳回</el-button>
+          </span>
+          <span v-else-if="scope.row.authentication === 2">
+            <el-button type="info" @click.native.stop="updateAuthentication(scope.row.id,1)" round>取消认证</el-button>
+          </span>
+        </template>
+      </el-table-column>
     </el-table>
 
     <pagination
@@ -258,10 +239,17 @@
     <el-descriptions-item>
       <template slot="label">
         <i class="el-icon-tickets"></i>
-        是否认证
+        认证状态
       </template>
-      <span v-if="details.authentication === 0">否</span>
-      <span v-else>是</span>
+      <template slot-scope="scope">
+          < :value="scope.row.status"/>
+        </template>
+      <span v-if="details.authentication === 1">
+        <el-tag>待处理</el-tag>
+      </span>
+      <span v-else-if="details.authentication === 2">
+        <el-tag type="success">已认证</el-tag>
+      </span>
     </el-descriptions-item>
         <el-descriptions-item>
       <template slot="label">
@@ -277,7 +265,15 @@
 </template>
 
 <script>
-import { listWorker, getWorker, delWorker, addWorker, updateWorker, showWorkerDetails } from '@/api/worker/worker'
+import {
+  listWorker,
+  getWorker,
+  delWorker,
+  addWorker,
+  updateWorker,
+  showWorkerDetails,
+  updateAut
+} from '@/api/worker/worker'
 import { getToken } from '@/utils/auth'
 import ScrollPane from '@/layout/components/TagsView/ScrollPane.vue'
 import axios from 'axios'
@@ -328,7 +324,7 @@ export default {
         pageNum: 1,
         pageSize: 10,
         workerTypeNames: ['钢筋工','水泥工','瓦工','水电工','壮工'],
-        authenticationList: ['是','否'],
+        authenticationList: ['已认证','待审核'],
         name: null
       },
       //员工详细信息
@@ -339,7 +335,7 @@ export default {
       rules: {
       },
       workerTypeNames:['钢筋工','水泥工','瓦工','水电工','壮工'],
-      authenticationList: ['是','否'],
+      authenticationList: ['已认证','待审核'],
       isIndeterminate: true,
       checkAll: true,
     };
@@ -474,22 +470,31 @@ export default {
       this.checkAll = checkedCount === this.queryParams.workerTypeNames.length;
       this.isIndeterminate = checkedCount > 0 && checkedCount < this.queryParams.workerTypeNames.length;
     },
-
-    // getWorkerTypes(){
-    //   this.loading = true;
-    //   listType(this.queryParams).then(response => {
-    //     this.loading = true;
-    //     listType(this.queryParams).then(response => {
-    //       for(let k = 0; k < response.rows.length ; k++){
-    //         this.workerTypeNames[k] = response.rows[k].name;
-    //       }
-    //       this.loading = false;
-    //     });
-    //       this.queryParams.workerTypeNames = this.workerTypeNames;
-    //     console.log(this.workerTypeNames);
-    //     console.log(this.queryParams.workerTypeNames)
-    //   })
-    // }
+    //操作方法
+     async updateAuthentication(id,authentication) {
+       updateAut(id,authentication).then(response => {
+         this.$message({
+           message: '修改成功',
+           type: 'success'
+         });
+       });
+        this.getList();
+    },
+    //驳回申请操作
+    reject(id,authentication){
+      this.$confirm('此操作将驳回此申请，是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.updateAuthentication(id,authentication)
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消驳回'
+        });
+      });
+    }
   }
 };
 </script>

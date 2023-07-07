@@ -8,6 +8,7 @@ import com.ruoyi.worker.domain.RuoyiWorker;
 import com.ruoyi.worker.mapper.RuoyiTypeMapper;
 import com.ruoyi.worker.mapper.RuoyiWorkerTypeMapper;
 import com.ruoyi.worker.service.IRuoyiWorkerService;
+import io.swagger.models.auth.In;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,10 +47,10 @@ public class RuoyiWorkerController extends BaseController
         startPage();
         List<Long> autId = new ArrayList<>();
         for(String aut : ruoyiWorker.getAuthenticationList()){
-            if(aut.equals("是"))
+            if(aut.equals("已认证"))
+                autId.add(2L);
+            else if(aut.equals("待审核"))
                 autId.add(1L);
-            else if(aut.equals("否"))
-                autId.add(0L);
         }
         List<RuoyiWorker> list = ruoyiWorkerService.selectRuoyiWorkerList(ruoyiWorker.getWorkerTypeNames(),autId,ruoyiWorker.getName(),false);
         int total = list.size();
@@ -78,8 +79,8 @@ public class RuoyiWorkerController extends BaseController
             else if(worker.getPolStatus() == 1) worker.setPolStatusName("党员");
             else worker.setPolStatusName("其他");
 
-            if(worker.getAuthentication() == 0) worker.setAuthenticationName("否");
-            else if(worker.getAuthentication() == 1) worker.setAuthenticationName("是");
+            if(worker.getAuthentication() == 0) worker.setAuthenticationName("待处理");
+            else if(worker.getAuthentication() == 1) worker.setAuthenticationName("已认证");
             else worker.setAuthenticationName("未知");
         }
         ExcelUtil<RuoyiWorker> util = new ExcelUtil<RuoyiWorker>(RuoyiWorker.class);
@@ -153,5 +154,13 @@ public class RuoyiWorkerController extends BaseController
     @GetMapping("/details")
     public AjaxResult selectDetails(RuoyiWorker ruoyiWorker){
         return success(ruoyiWorkerService.selectDetails(ruoyiWorker.getId()));
+    }
+
+    /*
+     * 有关认证审核的操作
+     */
+    @PutMapping("/authentication")
+    public AjaxResult updateAuthentication(RuoyiWorker ruoyiWorker){
+        return success(ruoyiWorkerService.updateAuthentication(ruoyiWorker));
     }
 }

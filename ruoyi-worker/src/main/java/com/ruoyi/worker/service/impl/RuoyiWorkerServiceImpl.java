@@ -96,29 +96,26 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
                 }
             }
         }
-
-
         for (RuoyiWorker worker : list){
-            if(worker.getCrewId() == null)
-                continue;
-            crew = ruoyiCrewMapper.selectRuoyiCrewByCrewId(worker.getCrewId());
-            worker.setCrewName(crew.getName());
-            typeIdList = ruoyiWorkerTypeMapper.selectTypeId(worker.getId());
-            if(typeIdList == null)
-                continue;
+            if(worker.getCrewId() != null) {
+                crew = ruoyiCrewMapper.selectRuoyiCrewByCrewId(worker.getCrewId());
+                worker.setCrewName(crew.getName());
+            }
 
             try{
                 worker.setProjectName(projectMapper.selectProjectByProjectId(worker.getProjectNow()).getProjectName());
             } catch (NullPointerException e){
                 worker.setProjectName("无");
             }
-
-            for(Long typeId : typeIdList){
-                str.append(ruoyiTypeMapper.selectTypeName(typeId)).append(',');
+            typeIdList = ruoyiWorkerTypeMapper.selectTypeId(worker.getId());
+            if (typeIdList != null) {
+                for (Long typeId : typeIdList) {
+                    str.append(ruoyiTypeMapper.selectTypeName(typeId)).append(',');
+                }
+                if (str.length() != 0)
+                    worker.setWorkerTypeName(str.deleteCharAt(str.length() - 1).toString());
+                str.delete(0, str.length());
             }
-            if(str.length() != 0)
-              worker.setWorkerTypeName(str.deleteCharAt(str.length() - 1).toString());
-            str.delete(0,str.length());
         }
         for(int i = 0; i < list.size() - 1 ; i++){
             for(int j = i+1 ; j < list.size() ; j++){
@@ -315,5 +312,9 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
             worker.setProjectName("无");
         }
         return worker;
+    }
+
+    public int updateAuthentication(RuoyiWorker ruoyiWorker){
+        return ruoyiWorkerMapper.updateRuoyiWorker(ruoyiWorker);
     }
 }
