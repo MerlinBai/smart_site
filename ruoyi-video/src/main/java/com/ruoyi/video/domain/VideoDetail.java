@@ -48,6 +48,16 @@ public class VideoDetail extends BaseEntity
 
     private Long realTime;
 
+    private float percentage;
+
+    public float getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(float percentage) {
+        this.percentage = percentage;
+    }
+
     public String getName() {
         return name;
     }
@@ -153,6 +163,25 @@ public class VideoDetail extends BaseEntity
         this.createTime = createTime;
     }
 
+    public VideoDetail(Long videoId, String videoViewTime, String progressBar, String videoLink, Long done, Long userId, Date createTime, Long realTime, float percentage, String createBy, String name, String img) {
+        this.videoId = videoId;
+        this.videoViewTime = videoViewTime;
+        this.progressBar = progressBar;
+        this.videoLink = videoLink;
+        this.done = done;
+        this.userId = userId;
+        this.createTime = createTime;
+        this.realTime = realTime;
+        this.percentage = percentage;
+        this.createBy = createBy;
+        this.name = name;
+        this.img = img;
+    }
+
+
+    public VideoDetail() {
+    }
+
     @Override
     public String toString() {
         return "VideoDetail{" +
@@ -164,22 +193,10 @@ public class VideoDetail extends BaseEntity
                 ", userId=" + userId +
                 ", createTime=" + createTime +
                 ", realTime=" + realTime +
+                ", percentage=" + percentage +
                 ", createBy='" + createBy + '\'' +
                 ", name='" + name + '\'' +
                 ", img='" + img + '\'' +
                 '}';
-    }
-
-    public VideoDetail(Long videoId, String videoViewTime, String progressBar, String videoLink, Long done, Long userId, Long realTime) {
-        this.videoId = videoId;
-        this.videoViewTime = videoViewTime;
-        this.progressBar = progressBar;
-        this.videoLink = videoLink;
-        this.done = done;
-        this.userId = userId;
-        this.realTime = realTime;
-    }
-
-    public VideoDetail() {
     }
 }
