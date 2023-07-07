@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="projectNow"    column="project_now"    />
         <result property="authentication"    column="authentication"    />
         <result property="idNumber"    column="id_number"    />
+
     </resultMap>
 
 
@@ -34,6 +35,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="id != null ">id = #{id}</if>
             <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
             <if test="authentication != null "> and authentication = #{authentication}</if>
+            <if test="crewId != null "> and crew_id = #{crewId}</if>
+
         </where>
     </select>
 
@@ -43,6 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="id != null ">id = #{id}</if>
             <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
             <if test="authentication != null "> and authentication = #{authentication}</if>
+            <if test="crewId != null "> and crew_id = #{crewId}</if>
         </where>
     </select>
     
@@ -95,6 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="projectNow != null">project_now = #{projectNow},</if>
             <if test="idNumber != null">id_number = #{idNumber},</if>
             <if test="authentication != null">authentication = #{authentication},</if>
+
         </trim>
         where id = #{id}
     </update>

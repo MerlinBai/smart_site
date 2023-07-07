@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.crew.mapper.RuoyiCrewMapper">
-    
+
     <resultMap type="RuoyiCrew" id="RuoyiCrewResult">
         <result property="crewId"    column="crew_id"    />
         <result property="name"    column="name"    />
@@ -15,31 +15,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="unfinishProject"    column="unfinish_project"    />
         <result property="popualtion"    column="popualtion"    />
         <result property="buildTime"    column="build_time"    />
+        <result property="applyAudit"    column="apply_audit"    />
+        <result property="crewNature"    column="crew_nature"    />
+        <result property="registeredCapital"    column="registered_capital"    />
+        <result property="applyAudit"    column="apply_audit"    />
+        <result property="area"      column="area"/>
+        <result property="reason"      column="reason"/>
     </resultMap>
 
     <sql id="selectRuoyiCrewVo">
-        select crew_id, name, res_person, phone, address, qualification, finish_project, unfinish_project, popualtion, build_time from tb_ruoyi_crew
+        select crew_id, name, res_person, phone, address, qualification, finish_project, unfinish_project, popualtion, build_time, apply_audit,crew_nature,registered_capital,area,reason from tb_ruoyi_crew
     </sql>
 
     <select id="selectRuoyiCrewList" parameterType="RuoyiCrew" resultMap="RuoyiCrewResult">
         <include refid="selectRuoyiCrewVo"/>
-        <where>  
+        <where>
             <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
-            <if test="qualification != null "> and qualification = #{qualification}</if>
+            <if test="applyAudit != null  and applyAudit != ''"> and apply_audit = #{applyAudit}</if>
         </where>
     </select>
-    
+
     <select id="selectRuoyiCrewByCrewId" parameterType="Long" resultMap="RuoyiCrewResult">
         <include refid="selectRuoyiCrewVo"/>
         where crew_id = #{crewId}
     </select>
-    <select id="selectCrewNamebyCrewId" resultType="java.lang.String">
-        select name from tb_ruoyi_crew where crew_id = #{crewId}
-    </select>
-    <select id="selectProjects" resultType="com.ruoyi.project.domain.Project">
-        select *from tb_project where project_id =#{projectId}
-    </select>
-
 
     <insert id="insertRuoyiCrew" parameterType="RuoyiCrew" useGeneratedKeys="true" keyProperty="crewId">
         insert into tb_ruoyi_crew
@@ -53,7 +52,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="unfinishProject != null">unfinish_project,</if>
             <if test="popualtion != null">popualtion,</if>
             <if test="buildTime != null">build_time,</if>
-         </trim>
+            <if test="applyAudit != null">apply_audit,</if>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="name != null">#{name},</if>
             <if test="resPerson != null">#{resPerson},</if>
@@ -64,7 +64,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="unfinishProject != null">#{unfinishProject},</if>
             <if test="popualtion != null">#{popualtion},</if>
             <if test="buildTime != null">#{buildTime},</if>
-         </trim>
+            <if test="applyAudit != null">#{applyAudit},</if>
+        </trim>
     </insert>
 
     <update id="updateRuoyiCrew" parameterType="RuoyiCrew">
@@ -79,6 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="unfinishProject != null">unfinish_project = #{unfinishProject},</if>
             <if test="popualtion != null">popualtion = #{popualtion},</if>
             <if test="buildTime != null">build_time = #{buildTime},</if>
+            <if test="applyAudit != null">apply_audit = #{applyAudit},</if>
         </trim>
         where crew_id = #{crewId}
     </update>
@@ -88,7 +90,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteRuoyiCrewByCrewIds" parameterType="String">
-        delete from tb_ruoyi_crew where crew_id in 
+        delete from tb_ruoyi_crew where crew_id in
         <foreach item="crewId" collection="array" open="(" separator="," close=")">
             #{crewId}
         </foreach>

@@ -50,3 +50,12 @@ export function showWorkerDetails(id) {
     method: 'get',
   })
 }
+
+//修改工匠认证信息
+export function updateAut(id,authentication) {
+  return request({
+    url: '/system/worker/authentication',
+    method: 'put',
+    params: {id,authentication}
+  })
+}

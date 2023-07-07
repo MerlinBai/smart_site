@@ -65,4 +65,6 @@ public interface IRuoyiWorkerService
     public String importWorker(List<RuoyiWorker> workerList, Boolean isUpdateSupport, String operName);
 
     public RuoyiWorker selectDetails(Long id);
+
+    public int updateAuthentication(RuoyiWorker ruoyiWorker);
 }
