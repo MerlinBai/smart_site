@@ -2,7 +2,9 @@ package com.ruoyi.worker.service;
 
 
 import com.ruoyi.common.core.domain.entity.SysUser;
+import com.ruoyi.worker.domain.Message;
 import com.ruoyi.worker.domain.RuoyiWorker;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -67,4 +69,8 @@ public interface IRuoyiWorkerService
     public RuoyiWorker selectDetails(Long id);
 
     public int updateAuthentication(RuoyiWorker ruoyiWorker);
+
+    List<Message> list(Long id);
+
+    void updatemsg(RuoyiWorker ruoyiWorker);
 }

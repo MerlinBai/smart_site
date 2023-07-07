@@ -2,8 +2,11 @@ package com.ruoyi.worker.mapper;
 
 
 import com.ruoyi.common.core.domain.R;
+import com.ruoyi.worker.domain.Message;
 import com.ruoyi.worker.domain.RuoyiWorker;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -65,4 +68,12 @@ public interface RuoyiWorkerMapper
      */
     public int deleteRuoyiWorkerByIds(Long[] ids);
 
+    @Insert("insert into message (title,body,create_by,create_time) values (#{title},#{body},#{createBy},#{createTime})")
+    void addmsg(Message message);
+
+    @Select("select * from message where id = #{id} order by is_read asc , create_time desc")
+    List<Message> list(Long id);
+
+    @Update("update message set is_read = #{isread}")
+    void upmsg(Integer isread);
 }
