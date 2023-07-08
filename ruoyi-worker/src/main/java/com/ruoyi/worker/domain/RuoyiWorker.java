@@ -19,6 +19,16 @@ public class RuoyiWorker extends BaseEntity
     private static final long serialVersionUID = 1L;
     private Double persent;
 
+    private Integer readId;
+
+    public Integer getReadId() {
+        return readId;
+    }
+
+    public void setReadId(Integer readId) {
+        this.readId = readId;
+    }
+
     /** id */
     @Excel( name = "用户id" )
     private Long id;

@@ -112,7 +112,7 @@ public class VideoDetailController extends BaseController
 
     @PostMapping("/lasttime")
     public AjaxResult LastTime(@RequestBody UserLog userlog) {
-        System.out.println(userlog.getUserId());
+        System.out.println(userlog.toString());
         videoDetailService.lasttime(userlog);
         return success();
     }

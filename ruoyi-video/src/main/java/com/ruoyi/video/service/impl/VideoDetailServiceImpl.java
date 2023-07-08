@@ -181,6 +181,7 @@ public class VideoDetailServiceImpl implements IVideoDetailService
     public void lasttime(UserLog userlog) {
         UserLog ul = videoDetailMapper.selectLog(userlog);
         if(ul != null) {
+
             if(userlog.getLastTime() < ul.getLastTime())
                 userlog.setLastTime(ul.getLastTime());
             videoDetailMapper.updateLog(userlog);

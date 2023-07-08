@@ -70,10 +70,10 @@ public interface VideoDetailMapper
     @Select("select * from user_video_log where userId = #{userId} and videoId = #{videoId}")
     UserLog selectLog(UserLog userlog);
 
-    @Update("update user_video_log set lastTime = #{lastTime} where userId = #{userId} and videoId = #{videoId}")
+    @Update("update user_video_log set lastTime = #{lastTime}, allTime = #{allTime} where userId = #{userId} and videoId = #{videoId}")
     void updateLog(UserLog userLog);
 
-    @Insert("insert into user_video_log set lastTime = #{lastTime}, userId = #{userId}, videoId = #{videoId}")
+    @Insert("insert into user_video_log set lastTime = #{lastTime}, userId = #{userId}, videoId = #{videoId}, allTime = #{allTime}")
     void insertLog(UserLog userlog);
 
     @Select("select lastTime from user_video_log where userId = #{userId} and videoId = #{videoId}")

@@ -1,11 +1,24 @@
 package com.ruoyi.worker.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Message {
+    private Long id;
     private String title;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     private String body;
-    private Date time;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+    private Date createTime;
     private String createBy;
     private Integer isRead;
     private Long rec;
@@ -42,12 +55,12 @@ public class Message {
         this.body = body;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setCreateTime(Date time) {
+        this.createTime = time;
     }
 
     public String getCreateBy() {

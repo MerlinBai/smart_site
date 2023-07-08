@@ -171,7 +171,7 @@ public class RuoyiWorkerController extends BaseController
      * @return
      */
     @PutMapping("/updatemsg")
-    public AjaxResult updateMsgRead(RuoyiWorker ruoyiWorker) {
+    public AjaxResult updateMsgRead(@RequestBody RuoyiWorker ruoyiWorker) {
         ruoyiWorkerService.updatemsg(ruoyiWorker);
         return success();
     }

@@ -1,12 +1,7 @@
 package com.ruoyi.video.domain;
 
 public class UserLog {
-    public UserLog(Integer id, Integer userId, Integer videoId, Double lastTime) {
-        this.id = id;
-        this.userId = userId;
-        this.videoId = videoId;
-        this.lastTime = lastTime;
-    }
+
 
     @Override
     public String toString() {
@@ -15,6 +10,7 @@ public class UserLog {
                 ", userId=" + userId +
                 ", videoId=" + videoId +
                 ", lastTime=" + lastTime +
+                ", allTime=" + allTime +
                 '}';
     }
 
@@ -24,7 +20,25 @@ public class UserLog {
     private Integer id;
     private Integer userId;
     private Integer videoId;
-    private Double lastTime;
+    private Double lastTime = 0.0;
+
+    public Double getAllTime() {
+        return allTime;
+    }
+
+    public void setAllTime(Double allTime) {
+        this.allTime = allTime;
+    }
+
+    public UserLog(Integer id, Integer userId, Integer videoId, Double lastTime, Double allTime) {
+        this.id = id;
+        this.userId = userId;
+        this.videoId = videoId;
+        this.lastTime = lastTime;
+        this.allTime = allTime;
+    }
+
+    private Double allTime;
 
     public Integer getId() {
         return id;

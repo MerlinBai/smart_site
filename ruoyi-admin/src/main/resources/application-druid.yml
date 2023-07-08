@@ -1,4 +1,5 @@
 # 数据源配置
+
 spring:
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
@@ -6,9 +7,9 @@ spring:
         druid:
             # 主库数据源
             master:
-                url: jdbc:mysql://localhost:3306/ruoyi
+                url: jdbc:mysql://localhost:3306/smart_site
                 username: root
-                password: 1234
+                password: 20030815
             # 从库数据源
             slave:
                 # 从数据源开关/默认关闭

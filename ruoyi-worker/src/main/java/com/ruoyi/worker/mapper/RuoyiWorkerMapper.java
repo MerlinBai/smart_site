@@ -68,12 +68,12 @@ public interface RuoyiWorkerMapper
      */
     public int deleteRuoyiWorkerByIds(Long[] ids);
 
-    @Insert("insert into message (title,body,create_by,create_time) values (#{title},#{body},#{createBy},#{createTime})")
+    @Insert("insert into message (title,body,createBy,createTime) values (#{title},#{body},#{createBy},#{createTime})")
     void addmsg(Message message);
 
-    @Select("select * from message where id = #{id} order by is_read asc , create_time desc")
+    @Select("select * from message where rec = #{id} order by isRead asc , createTime desc")
     List<Message> list(Long id);
 
-    @Update("update message set is_read = #{isread}")
-    void upmsg(Integer isread);
+    @Update("update message set isRead = 1 where rec = #{id} and id = #{readId}")
+    void upmsg(RuoyiWorker ruoyiWorker);
 }
