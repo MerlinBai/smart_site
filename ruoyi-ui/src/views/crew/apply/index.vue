@@ -123,14 +123,12 @@
             round
             size="small"
             @click="handleUpdate(scope.row,'0')"
-            v-hasPermi="['apply:apply:edit']"
           >审核通过</el-button>
           <el-button
             type="info"
             round
             size="small"
             @click="handleUpdate(scope.row,'2')"
-            v-hasPermi="['apply:apply:edit']"
           >审核未通过</el-button>
         </template>
         <!-- <el-row>

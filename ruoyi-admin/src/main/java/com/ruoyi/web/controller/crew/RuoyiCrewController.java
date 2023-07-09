@@ -30,7 +30,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
  * 施工队信息Controller
- * 
+ *
  * @author ruoyi
  * @date 2023-06-07
  *
@@ -55,18 +55,23 @@ public class RuoyiCrewController extends BaseController
 //    @PreAuthorize("@ss.hasPermi('crew:crew:list')")
     @GetMapping("/list")
     public TableDataInfo list(RuoyiCrew ruoyiCrew, Project project, RuoyiWorker worker)
+
+
     {
 
         startPage();
         List<RuoyiCrew> list = ruoyiCrewService.selectRuoyiCrewList(ruoyiCrew,project);
         List<RuoyiWorker> workers =ruoyiWorkerMapper.selectRuoyiWorkerList(worker);
+        list.forEach(s -> {
+            s.setPopualtion((long) s.getInitialEmployee());
+        });
         for (RuoyiCrew crew:list){
             for (RuoyiWorker work: workers) {
                 if(crew.getCrewId().equals(work.getCrewId()))
                 {
-
                     crew.setPopualtion(crew.getPopualtion()+1L);
                 }
+                ruoyiCrewMapper.updateRuoyiCrew(crew);
             }
 
         }
@@ -123,7 +128,7 @@ public class RuoyiCrewController extends BaseController
      */
 //    @PreAuthorize("@ss.hasPermi('crew:crew:remove')")
     @Log(title = "施工队信息", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{crewIds}")
+    @DeleteMapping("/{crewIds}")
     public AjaxResult remove(@PathVariable Long[] crewIds)
     {
         return toAjax(ruoyiCrewService.deleteRuoyiCrewByCrewIds(crewIds));

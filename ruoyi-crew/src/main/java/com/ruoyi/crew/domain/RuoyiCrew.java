@@ -12,7 +12,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 施工队信息对象 tb_ruoyi_crew
- * 
+ *
  * @author ruoyi
  * @date 2023-06-07
  */
@@ -41,8 +41,8 @@ public class RuoyiCrew extends BaseEntity
     private String address;
 
     /** 资质（特级，1，2，3级对应0，1，2，3） */
-    @Excel(name = "资质", readConverterExp = "特=级，1，2，3级对应0，1，2，3")
-    private Long qualification;
+    @Excel(name = "资质")
+    private String qualification;
 
     /** 已完成项目 */
     @Excel(name = "已完成项目")
@@ -61,93 +61,93 @@ public class RuoyiCrew extends BaseEntity
     @Excel(name = "成立时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date buildTime;
 
-    public void setCrewId(Long crewId) 
+    public void setCrewId(Long crewId)
     {
         this.crewId = crewId;
     }
 
-    public Long getCrewId() 
+    public Long getCrewId()
     {
         return crewId;
     }
-    public void setName(String name) 
+    public void setName(String name)
     {
         this.name = name;
     }
 
-    public String getName() 
+    public String getName()
     {
         return name;
     }
-    public void setResPerson(String resPerson) 
+    public void setResPerson(String resPerson)
     {
         this.resPerson = resPerson;
     }
 
-    public String getResPerson() 
+    public String getResPerson()
     {
         return resPerson;
     }
-    public void setPhone(String phone) 
+    public void setPhone(String phone)
     {
         this.phone = phone;
     }
 
-    public String getPhone() 
+    public String getPhone()
     {
         return phone;
     }
-    public void setAddress(String address) 
+    public void setAddress(String address)
     {
         this.address = address;
     }
 
-    public String getAddress() 
+    public String getAddress()
     {
         return address;
     }
-    public void setQualification(Long qualification) 
+    public void setQualification(String qualification)
     {
         this.qualification = qualification;
     }
 
-    public Long getQualification() 
+    public String getQualification()
     {
         return qualification;
     }
-    public void setFinishProject(Long finishProject) 
+    public void setFinishProject(Long finishProject)
     {
         this.finishProject = finishProject;
     }
 
-    public Long getFinishProject() 
+    public Long getFinishProject()
     {
         return finishProject;
     }
-    public void setUnfinishProject(Long unfinishProject) 
+    public void setUnfinishProject(Long unfinishProject)
     {
         this.unfinishProject = unfinishProject;
     }
 
-    public Long getUnfinishProject() 
+    public Long getUnfinishProject()
     {
         return unfinishProject;
     }
-    public void setPopualtion(Long popualtion) 
+    public void setPopualtion(Long popualtion)
     {
         this.popualtion = popualtion;
     }
 
-    public Long getPopualtion() 
+    public Long getPopualtion()
     {
         return popualtion;
     }
-    public void setBuildTime(Date buildTime) 
+    public void setBuildTime(Date buildTime)
     {
         this.buildTime = buildTime;
     }
 
-    public Date getBuildTime() 
+    public Date getBuildTime()
     {
         return buildTime;
     }
@@ -163,6 +163,15 @@ public class RuoyiCrew extends BaseEntity
     private String registeredCapital;
     private String reason;
     private String businessScope;
+    private Integer initialEmployee;
+
+    public Integer getInitialEmployee() {
+        return initialEmployee;
+    }
+
+    public void setInitialEmployee(Integer initialEmployee) {
+        this.initialEmployee = initialEmployee;
+    }
 
     public String getBusinessScope() {
         return businessScope;
@@ -283,16 +292,16 @@ public class RuoyiCrew extends BaseEntity
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("crewId", getCrewId())
-            .append("name", getName())
-            .append("resPerson", getResPerson())
-            .append("phone", getPhone())
-            .append("address", getAddress())
-            .append("qualification", getQualification())
-            .append("finishProject", getFinishProject())
-            .append("unfinishProject", getUnfinishProject())
-            .append("popualtion", getPopualtion())
-            .append("buildTime", getBuildTime())
-            .toString();
+                .append("crewId", getCrewId())
+                .append("name", getName())
+                .append("resPerson", getResPerson())
+                .append("phone", getPhone())
+                .append("address", getAddress())
+                .append("qualification", getQualification())
+                .append("finishProject", getFinishProject())
+                .append("unfinishProject", getUnfinishProject())
+                .append("popualtion", getPopualtion())
+                .append("buildTime", getBuildTime())
+                .toString();
     }
 }

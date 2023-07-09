@@ -7,7 +7,7 @@ import com.ruoyi.recruitment.domain.Recruitment;
  * 招聘公告Mapper接口
  *
  * @author ruoyi
- * @date 2023-06-20
+ * @date 2023-07-09
  */
 public interface RecruitmentMapper
 {

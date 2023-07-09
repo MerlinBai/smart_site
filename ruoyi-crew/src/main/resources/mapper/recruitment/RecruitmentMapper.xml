@@ -6,6 +6,7 @@
 
     <resultMap type="Recruitment" id="RecruitmentResult">
         <result property="itemId"    column="item_id"    />
+        <result property="crewId"    column="crew_id"    />
         <result property="itemName"    column="item_name"    />
         <result property="requireCorporation"    column="require_corporation"    />
         <result property="itemContent"    column="item_content"    />
@@ -19,7 +20,7 @@
     </resultMap>
 
     <sql id="selectRecruitmentVo">
-        select item_id, item_name, require_corporation, item_content, item_location, worker_require, require_num, item_finish_time, contact_phone, item_status, release_time from tb_recruitment
+        select item_id, crew_id, item_name, require_corporation, item_content, item_location, worker_require, require_num, item_finish_time, contact_phone, item_status, release_time from tb_recruitment
     </sql>
 
     <select id="selectRecruitmentList" parameterType="Recruitment" resultMap="RecruitmentResult">
@@ -41,6 +42,7 @@
     <insert id="insertRecruitment" parameterType="Recruitment" useGeneratedKeys="true" keyProperty="itemId">
         insert into tb_recruitment
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="crewId != null">crew_id,</if>
             <if test="itemName != null and itemName != ''">item_name,</if>
             <if test="requireCorporation != null and requireCorporation != ''">require_corporation,</if>
             <if test="itemContent != null and itemContent != ''">item_content,</if>
@@ -53,6 +55,7 @@
             <if test="releaseTime != null">release_time,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="crewId != null">#{crewId},</if>
             <if test="itemName != null and itemName != ''">#{itemName},</if>
             <if test="requireCorporation != null and requireCorporation != ''">#{requireCorporation},</if>
             <if test="itemContent != null and itemContent != ''">#{itemContent},</if>
@@ -69,6 +72,7 @@
     <update id="updateRecruitment" parameterType="Recruitment">
         update tb_recruitment
         <trim prefix="SET" suffixOverrides=",">
+            <if test="crewId != null">crew_id = #{crewId},</if>
             <if test="itemName != null and itemName != ''">item_name = #{itemName},</if>
             <if test="requireCorporation != null and requireCorporation != ''">require_corporation = #{requireCorporation},</if>
             <if test="itemContent != null and itemContent != ''">item_content = #{itemContent},</if>

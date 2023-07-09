@@ -1,7 +1,6 @@
 package com.ruoyi.recruitment.domain;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -13,7 +12,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 招聘公告对象 tb_recruitment
  *
  * @author ruoyi
- * @date 2023-06-20
+ * @date 2023-07-09
  */
 public class Recruitment extends BaseEntity
 {
@@ -21,6 +20,9 @@ public class Recruitment extends BaseEntity
 
     /** 项目id */
     private Long itemId;
+
+    /** 公司id */
+    private Long crewId;
 
     /** 项目名称 */
     @Excel(name = "项目名称")
@@ -72,6 +74,15 @@ public class Recruitment extends BaseEntity
     public Long getItemId()
     {
         return itemId;
+    }
+    public void setCrewId(Long crewId)
+    {
+        this.crewId = crewId;
+    }
+
+    public Long getCrewId()
+    {
+        return crewId;
     }
     public void setItemName(String itemName)
     {
@@ -168,6 +179,7 @@ public class Recruitment extends BaseEntity
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
                 .append("itemId", getItemId())
+                .append("crewId", getCrewId())
                 .append("itemName", getItemName())
                 .append("requireCorporation", getRequireCorporation())
                 .append("itemContent", getItemContent())

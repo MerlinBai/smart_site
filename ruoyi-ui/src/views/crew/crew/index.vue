@@ -77,13 +77,7 @@
       <el-table-column label="负责人" align="center" prop="resPerson" />
 <!--      <el-table-column label="电话" align="center" prop="phone" />-->
       <!--      <el-table-column label="地址" align="center" prop="address" />-->
-      <el-table-column label="资质" align="center" prop="qualification">
-        <template slot-scope="scope">
-          <span v-if="scope.row.qualification===1">一级</span>
-          <span v-else-if="scope.row.qualification===2">二级</span>
-          <span v-else-if="scope.row.qualification===0">特级</span>
-        </template>
-      </el-table-column>
+      <el-table-column label="资质" align="center" prop="qualification"/>
       <!--      <el-table-column label="已完成项目" align="center" prop="finishProject" />-->
       <!--      <el-table-column label="未完成项目" align="center" prop="unfinishProject" />-->
       <el-table-column label="员工数量" align="center" prop="popualtion" />
@@ -105,7 +99,6 @@
             size="small"
             @click="handleUpdate(scope.row,'0')"
             @click.native.stop
-            v-hasPermi="['apply:apply:edit']"
           >审核通过</el-button>
           <el-button
             type="info"
@@ -113,7 +106,6 @@
             size="small"
             @click="handleUpdate(scope.row,'2')"
             @click.native.stop
-            v-hasPermi="['apply:apply:edit']"
           >审核未通过</el-button>
         </template>
       </el-table-column>
@@ -126,7 +118,6 @@
             size="mini"
             @click="handleUpdate1(scope.row)"
             @click.native.stop
-            v-hasPermi="['system:crew:edit']"
           >未通过原因</el-button>
         </template>
       </el-table-column>
