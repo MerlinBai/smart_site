@@ -89,7 +89,6 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
       List<Integer>unfinishList=new ArrayList<>();
       List<String>finishNameList=new ArrayList<>();
       List<String>unfinishNameList=new ArrayList<>();
-      Long count=0L;
         List<Project> projects = projectMapper.selectProjectList(project);
         for( RuoyiCrew crew:crewList ) {
                    for(Project p:projects)
