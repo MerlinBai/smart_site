@@ -160,6 +160,7 @@ public class RuoyiWorkerController extends BaseController
     /*
      * 有关认证审核的操作
      */
+
     @PutMapping("/authentication")
     public AjaxResult updateAuthentication(RuoyiWorker ruoyiWorker){
         return success(ruoyiWorkerService.updateAuthentication(ruoyiWorker));

@@ -161,6 +161,7 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
             ruoyiWorkerTypeMapper.insert(ruoyiWorkerType);
         }
         return ruoyiWorkerMapper.updateRuoyiWorker(ruoyiWorker);
+
     }
 
     /**
@@ -322,8 +323,10 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
         Message message = new Message();
         if (ruoyiWorker.getAuthentication() == 2)
             message.setBody("您的成为工匠审核已通过，恭喜您正式成为一名工匠，请再接再厉，祝您步步高升，前程似锦！");
-        else
+        else if(ruoyiWorker.getAuthentication() == 0)
             message.setBody("您的成为工匠审核暂未通过，请尝试联系XXXXXXX了解详细情况。");
+        else if(ruoyiWorker.getAuthentication() == 1)
+            message.setBody("您的工匠资格已被取消，请等待消息或者联系XXXXXXX了解详细情况。");
         message.setCreateTime(new Date());
         message.setCreateBy("智慧村建官方");
         message.setTitle("审核通知");

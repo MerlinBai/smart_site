@@ -68,7 +68,7 @@ public interface RuoyiWorkerMapper
      */
     public int deleteRuoyiWorkerByIds(Long[] ids);
 
-    @Insert("insert into message (title,body,createBy,createTime) values (#{title},#{body},#{createBy},#{createTime})")
+    @Insert("insert into message (title,body,create_by,create_time,rec) values (#{title},#{body},#{createBy},#{createTime},#{rec})")
     void addmsg(Message message);
 
     @Select("select * from message where rec = #{id} order by isRead asc , createTime desc")
