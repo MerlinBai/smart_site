@@ -24,6 +24,10 @@ public class RuoyiCrew extends BaseEntity
     /** id */
     private Long crewId;
 
+    /** userId */
+    private Long userId;
+
+
     /** 施工单位名称 */
     @Excel(name = "施工单位名称")
     private String name;
@@ -70,6 +74,15 @@ public class RuoyiCrew extends BaseEntity
     {
         return crewId;
     }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     public void setName(String name)
     {
         this.name = name;
@@ -293,6 +306,7 @@ public class RuoyiCrew extends BaseEntity
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
                 .append("crewId", getCrewId())
+                .append("userId", getUserId())
                 .append("name", getName())
                 .append("resPerson", getResPerson())
                 .append("phone", getPhone())
@@ -303,5 +317,22 @@ public class RuoyiCrew extends BaseEntity
                 .append("popualtion", getPopualtion())
                 .append("buildTime", getBuildTime())
                 .toString();
+    }
+
+    public RuoyiCrew() {
+    }
+
+    public RuoyiCrew(Long crewId, Long userId, String name, String resPerson, String phone, String address, String qualification, Long finishProject, Long unfinishProject, Long popualtion, Date buildTime) {
+        this.crewId = crewId;
+        this.userId = userId;
+        this.name = name;
+        this.resPerson = resPerson;
+        this.phone = phone;
+        this.address = address;
+        this.qualification = qualification;
+        this.finishProject = finishProject;
+        this.unfinishProject = unfinishProject;
+        this.popualtion = popualtion;
+        this.buildTime = buildTime;
     }
 }

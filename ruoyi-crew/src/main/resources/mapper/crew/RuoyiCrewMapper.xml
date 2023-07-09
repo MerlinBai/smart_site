@@ -6,6 +6,7 @@
 
     <resultMap type="RuoyiCrew" id="RuoyiCrewResult">
         <result property="crewId"    column="crew_id"    />
+        <result property="userId"    column="user_id"    />
         <result property="name"    column="name"    />
         <result property="resPerson"    column="res_person"    />
         <result property="phone"    column="phone"    />
@@ -27,7 +28,7 @@
     </resultMap>
 
     <sql id="selectRuoyiCrewVo">
-        select crew_id, name, res_person, phone, address, qualification, finish_project, unfinish_project, popualtion, build_time, apply_audit,crew_nature,registered_capital,area,reason,business_scope,operating_term,annual_inspection,Initial_employee from tb_ruoyi_crew
+        select crew_id, user_id, name, res_person, phone, address, qualification, finish_project, unfinish_project, popualtion, build_time, apply_audit,crew_nature,registered_capital,area,reason,business_scope,operating_term,annual_inspection,Initial_employee from tb_ruoyi_crew
     </sql>
 
     <select id="selectRuoyiCrewList" parameterType="RuoyiCrew" resultMap="RuoyiCrewResult">
@@ -46,6 +47,7 @@
     <insert id="insertRuoyiCrew" parameterType="RuoyiCrew" useGeneratedKeys="true" keyProperty="crewId">
         insert into tb_ruoyi_crew
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
             <if test="name != null">name,</if>
             <if test="resPerson != null">res_person,</if>
             <if test="phone != null">phone,</if>
@@ -59,6 +61,7 @@
             <if test="initialEmployee!= null">initial_employee,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
             <if test="name != null">#{name},</if>
             <if test="resPerson != null">#{resPerson},</if>
             <if test="phone != null">#{phone},</if>

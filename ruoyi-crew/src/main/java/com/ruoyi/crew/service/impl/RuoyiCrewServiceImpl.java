@@ -3,9 +3,12 @@ package com.ruoyi.crew.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ruoyi.common.utils.SecurityUtils;
 import com.ruoyi.crew.domain.CrewProject;
 import com.ruoyi.project.domain.Project;
 import com.ruoyi.project.mapper.ProjectMapper;
+import com.ruoyi.system.domain.SysUserRole;
+import com.ruoyi.system.mapper.SysUserRoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.crew.mapper.RuoyiCrewMapper;
@@ -27,6 +30,8 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
     @Autowired
     private ProjectMapper projectMapper;
 
+    @Autowired
+    private SysUserRoleMapper userRoleMapper;
 
     @Override
     public void addfinsh(Integer CrewId, Integer ProjectId) {
@@ -63,7 +68,15 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
 
         crew.setFinishProject((long) finishList.size());
         crew.setUnfinishProject((long) unfinishList.size());
+        ArrayList<SysUserRole> list = new ArrayList<SysUserRole>();
 
+        // 提升企业权限
+        Long userId = crew.getUserId();
+        SysUserRole ur = new SysUserRole();
+        ur.setUserId(userId);
+        ur.setRoleId(103L);
+        list.add(ur);
+        userRoleMapper.batchUserRole(list);
         return crew;
     }
 
@@ -153,6 +166,8 @@ public class RuoyiCrewServiceImpl implements IRuoyiCrewService
     @Override
     public int insertRuoyiCrew(RuoyiCrew ruoyiCrew)
     {
+        Long userId = SecurityUtils.getUserId();
+        ruoyiCrew.setUserId(userId);
         return ruoyiCrewMapper.insertRuoyiCrew(ruoyiCrew);
     }
 

@@ -16,6 +16,10 @@ public class CrewProject {
         CrewId = crewId;
     }
 
+    public int getUserId() {return UserId;}
+
+    public void setUserId(int userId) {UserId = userId;}
+
     public List<Integer> getFinished() {
         return finished;
     }
@@ -33,6 +37,8 @@ public class CrewProject {
     }
 
     private int CrewId;
+
+    private int UserId;
     private List<Integer>finished;
     private List<Integer>Unfinished;
 
