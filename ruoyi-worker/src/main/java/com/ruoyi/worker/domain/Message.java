@@ -1,7 +1,6 @@
 package com.ruoyi.worker.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class Message {

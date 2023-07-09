@@ -22,6 +22,6 @@ public interface RuoyiWorkerTypeMapper {
     @Insert("insert into smart_site.tb_ruoyi_worker_type (worker_id, type_id) values (#{workerId},#{typeId})")
     public void insert(RuoyiWorkerType ruoyiWorkerType);
 
-    @Delete("delete fromtb_ruoyi_worker_type where worker_id = #{workerId}")
+    @Delete("delete from tb_ruoyi_worker_type where worker_id = #{workerId}")
     public void deleteByWorkerId(Long workerId);
 }
