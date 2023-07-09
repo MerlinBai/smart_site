@@ -73,4 +73,6 @@ public interface IRuoyiWorkerService
     List<Message> list(Long id);
 
     void updatemsg(RuoyiWorker ruoyiWorker);
+
+    void updateauth(RuoyiWorker ruoyiWorker);
 }

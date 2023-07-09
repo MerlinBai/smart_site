@@ -94,7 +94,7 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
                     if (isDetails)
                         list.addAll(ruoyiWorkerMapper.selectRuoyiWorkerListDetails(ruoyiWorker));
                     else
-                            list.addAll(ruoyiWorkerMapper.selectRuoyiWorkerList(ruoyiWorker));
+                        list.addAll(ruoyiWorkerMapper.selectRuoyiWorkerList(ruoyiWorker));
                 }
             }
         }
@@ -343,6 +343,17 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
     @Override
     public void updatemsg(RuoyiWorker ruoyiWorker) {
         ruoyiWorkerMapper.upmsg(ruoyiWorker);
+    }
+
+    @Override
+    public void updateauth(RuoyiWorker ruoyiWorker) {
+        ruoyiWorkerMapper.updateauth(ruoyiWorker);
+
+        RuoyiWorkerType ruoyiWorkerType = new RuoyiWorkerType();
+        ruoyiWorkerType.setTypeId(ruoyiWorker.getWorkerTypeId());
+        ruoyiWorkerType.setWorkerId(ruoyiWorker.getId());
+
+        ruoyiWorkerTypeMapper.insert(ruoyiWorkerType);
     }
 
 }

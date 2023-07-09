@@ -37,7 +37,6 @@ public class RuoyiWorkerController extends BaseController
     @Autowired
     private RuoyiTypeMapper ruoyiTypeMapper;
 
-
     /**
      * 查询员工管理列表
      */
@@ -57,6 +56,7 @@ public class RuoyiWorkerController extends BaseController
         int total = list.size();
         return getDataTable(list.subList((pageNum - 1) * pageSize , Math.min((pageNum - 1) * pageSize + 10,list.size())) , total);
     }
+
 
     /**
      * 导出员工管理列表
@@ -176,6 +176,12 @@ public class RuoyiWorkerController extends BaseController
         return success();
     }
 
+
+    @PutMapping("/updateauth")
+    public AjaxResult updateAuth(@RequestBody RuoyiWorker ruoyiWorker) {
+        ruoyiWorkerService.updateauth(ruoyiWorker);
+        return success();
+    }
     /**
      * 查询消息列表
      * @return

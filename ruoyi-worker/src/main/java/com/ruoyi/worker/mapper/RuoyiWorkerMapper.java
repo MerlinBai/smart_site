@@ -76,4 +76,8 @@ public interface RuoyiWorkerMapper
 
     @Update("update message set isRead = 1 where rec = #{id} and id = #{readId}")
     void upmsg(RuoyiWorker ruoyiWorker);
+
+    @Update("update tb_ruoyi_worker set authentication = 1, pol_status = #{polStatus}, " +
+            "address_now = #{addressNow}, address_reg = #{addressReg}, name = #{name}, id_number = #{idNumber} where id = #{id}")
+    void updateauth(RuoyiWorker ruoyiWorker);
 }
