@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 22/06/2023 17:26:59
+ Date: 09/07/2023 18:58:18
 */
 
 SET NAMES utf8mb4;
@@ -43,7 +43,7 @@ CREATE TABLE `gen_table`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`table_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of gen_table
@@ -54,7 +54,7 @@ INSERT INTO `gen_table` VALUES (3, 'tb_inform', '通知', NULL, NULL, 'Inform', 
 INSERT INTO `gen_table` VALUES (5, 'tb_user_inform_status', '用户通知状态信息', NULL, NULL, 'UserInformStatus', 'crud', 'com.ruoyi.inform', 'inform', 'inform', '用户通知状态信息', 'ruoyi', '0', '/', '{}', 'admin', '2023-05-27 14:24:35', '', '2023-05-27 14:25:26', NULL);
 INSERT INTO `gen_table` VALUES (9, 'tb_lingcheng_map', '陵城区区域', NULL, NULL, 'LingchengMap', 'crud', 'com.ruoyi.lingchengqumap', 'lingchengqumap', 'lingchengqumap', '陵城区区域', 'ruoyi', '0', '/', '{}', 'admin', '2023-06-07 13:56:02', '', '2023-06-07 13:56:59', NULL);
 INSERT INTO `gen_table` VALUES (11, 'tb_survey', '满意度检查', NULL, NULL, 'Survey', 'crud', 'com.ruoyi.satisfaction', 'satisfaction', 'survey', '满意度检查', 'ruoyi', '0', '/', '{}', 'admin', '2023-06-18 18:58:15', '', '2023-06-18 18:59:37', NULL);
-INSERT INTO `gen_table` VALUES (13, 'tb_recruitment', '招聘公告表', NULL, NULL, 'Recruitment', 'crud', 'com.ruoyi.recruitment', 'recruitment', 'recruitment', '招聘公告', 'ruoyi', '0', '/', '{}', 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41', NULL);
+INSERT INTO `gen_table` VALUES (13, 'tb_recruitment', '招聘公告表', NULL, NULL, 'Recruitment', 'crud', 'com.ruoyi.recruitment', 'recruitment', 'recruitment', '招聘公告', 'ruoyi', '0', '/', '{}', 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:03', NULL);
 INSERT INTO `gen_table` VALUES (14, 'tb_apply', '应聘人信息表', NULL, NULL, 'Apply', 'crud', 'com.ruoyi.apply', 'apply', 'apply', '应聘人信息', 'ruoyi', '0', '/', '{\"parentMenuId\":\"2029\"}', 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17', NULL);
 
 -- ----------------------------
@@ -85,7 +85,7 @@ CREATE TABLE `gen_table_column`  (
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`column_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 117 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 116 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of gen_table_column
@@ -143,17 +143,17 @@ INSERT INTO `gen_table_column` VALUES (83, '11', 'survey_object', '调查对象'
 INSERT INTO `gen_table_column` VALUES (84, '11', 'survey_by', '调查人', 'varchar(255)', 'String', 'surveyBy', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 4, 'admin', '2023-06-18 18:58:15', '', '2023-06-18 18:59:37');
 INSERT INTO `gen_table_column` VALUES (85, '11', 'survey_result', '调查等级', 'varchar(255)', 'String', 'surveyResult', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'select', 'grade', 5, 'admin', '2023-06-18 18:58:15', '', '2023-06-18 18:59:37');
 INSERT INTO `gen_table_column` VALUES (86, '11', 'survey_time', '调查时间', 'datetime', 'Date', 'surveyTime', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'datetime', '', 6, 'admin', '2023-06-18 18:58:15', '', '2023-06-18 18:59:37');
-INSERT INTO `gen_table_column` VALUES (98, '13', 'item_id', '项目id', 'bigint', 'Long', 'itemId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
-INSERT INTO `gen_table_column` VALUES (99, '13', 'item_name', '项目名称', 'varchar(255)', 'String', 'itemName', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 2, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
-INSERT INTO `gen_table_column` VALUES (100, '13', 'require_corporation', '招聘公司', 'varchar(255)', 'String', 'requireCorporation', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 3, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
-INSERT INTO `gen_table_column` VALUES (101, '13', 'item_content', '项目内容', 'varchar(255)', 'String', 'itemContent', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'textarea', '', 4, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
-INSERT INTO `gen_table_column` VALUES (102, '13', 'item_location', '项目所在地', 'varchar(255)', 'String', 'itemLocation', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 5, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
-INSERT INTO `gen_table_column` VALUES (103, '13', 'worker_require', '工种需求', 'varchar(255)', 'String', 'workerRequire', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 6, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
-INSERT INTO `gen_table_column` VALUES (104, '13', 'require_num', '招聘人数', 'int', 'Long', 'requireNum', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 7, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
-INSERT INTO `gen_table_column` VALUES (105, '13', 'item_finish_time', '预计完成时间', 'datetime', 'Date', 'itemFinishTime', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'datetime', '', 8, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
-INSERT INTO `gen_table_column` VALUES (106, '13', 'contact_phone', '联系电话', 'int', 'String', 'contactPhone', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 9, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:41');
-INSERT INTO `gen_table_column` VALUES (107, '13', 'item_status', '项目招聘状态', 'varchar(255)', 'String', 'itemStatus', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'recruitment', 10, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:42');
-INSERT INTO `gen_table_column` VALUES (108, '13', 'release_time', '发布时间', 'datetime', 'Date', 'releaseTime', '0', '0', '1', '0', '0', '1', '0', 'EQ', 'datetime', '', 11, 'admin', '2023-06-20 18:32:13', '', '2023-06-20 19:10:42');
+INSERT INTO `gen_table_column` VALUES (98, '13', 'item_id', '项目id', 'bigint', 'Long', 'itemId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:03');
+INSERT INTO `gen_table_column` VALUES (99, '13', 'item_name', '项目名称', 'varchar(255)', 'String', 'itemName', '0', '0', '1', '1', '1', '1', '1', 'LIKE', 'input', '', 3, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:03');
+INSERT INTO `gen_table_column` VALUES (100, '13', 'require_corporation', '招聘公司', 'varchar(255)', 'String', 'requireCorporation', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:03');
+INSERT INTO `gen_table_column` VALUES (101, '13', 'item_content', '项目内容', 'varchar(255)', 'String', 'itemContent', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'textarea', '', 5, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:04');
+INSERT INTO `gen_table_column` VALUES (102, '13', 'item_location', '项目所在地', 'varchar(255)', 'String', 'itemLocation', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 6, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:04');
+INSERT INTO `gen_table_column` VALUES (103, '13', 'worker_require', '工种需求', 'varchar(255)', 'String', 'workerRequire', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'input', '', 7, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:04');
+INSERT INTO `gen_table_column` VALUES (104, '13', 'require_num', '招聘人数', 'int', 'Long', 'requireNum', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 8, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:04');
+INSERT INTO `gen_table_column` VALUES (105, '13', 'item_finish_time', '预计完成时间', 'datetime', 'Date', 'itemFinishTime', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'datetime', '', 9, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:04');
+INSERT INTO `gen_table_column` VALUES (106, '13', 'contact_phone', '联系电话', 'int', 'String', 'contactPhone', '0', '0', '1', '1', '1', '1', '0', 'EQ', 'input', '', 10, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:04');
+INSERT INTO `gen_table_column` VALUES (107, '13', 'item_status', '项目招聘状态', 'varchar(255)', 'String', 'itemStatus', '0', '0', '1', '1', '1', '1', '1', 'EQ', 'radio', 'recruitment', 11, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:04');
+INSERT INTO `gen_table_column` VALUES (108, '13', 'release_time', '发布时间', 'datetime', 'Date', 'releaseTime', '0', '0', '1', '0', '0', '1', '0', 'EQ', 'datetime', '', 12, 'admin', '2023-06-20 18:32:13', '', '2023-07-09 17:09:04');
 INSERT INTO `gen_table_column` VALUES (109, '14', 'apply_id', '应聘id', 'bigint', 'Long', 'applyId', '1', '1', NULL, '0', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
 INSERT INTO `gen_table_column` VALUES (110, '14', 'item_id', '项目id', 'bigint', 'Long', 'itemId', '0', '0', '0', '0', '0', '0', '0', 'EQ', 'input', '', 2, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
 INSERT INTO `gen_table_column` VALUES (111, '14', 'item_name', '项目名称', 'varchar(255)', 'String', 'itemName', '0', '0', '0', '0', '0', '1', '1', 'LIKE', 'input', '', 3, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
@@ -162,6 +162,32 @@ INSERT INTO `gen_table_column` VALUES (113, '14', 'apply_user', '应聘人', 'va
 INSERT INTO `gen_table_column` VALUES (114, '14', 'apply_phone', '应聘人联系方式', 'varchar(15)', 'String', 'applyPhone', '0', '0', '0', '0', '0', '1', '0', 'EQ', 'input', '', 6, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
 INSERT INTO `gen_table_column` VALUES (115, '14', 'apply_time', '应聘时间', 'datetime', 'Date', 'applyTime', '0', '0', NULL, '0', '0', '1', '1', 'BETWEEN', 'datetime', '', 7, 'admin', '2023-06-21 09:43:04', '', '2023-06-21 10:44:17');
 INSERT INTO `gen_table_column` VALUES (116, '14', 'apply_audit', '审核结果', 'varchar(255)', 'String', 'applyAudit', '0', '0', '0', '0', '1', '1', '1', 'EQ', 'select', 'audit', 8, '', '2023-06-21 10:42:56', '', '2023-06-21 10:44:17');
+INSERT INTO `gen_table_column` VALUES (117, '13', 'crew_id', '公司id', 'bigint', 'Long', 'crewId', '0', '0', '0', '0', '0', '0', '0', 'EQ', 'input', '', 2, '', '2023-07-09 17:07:15', '', '2023-07-09 17:09:03');
+
+-- ----------------------------
+-- Table structure for message
+-- ----------------------------
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message`  (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `title` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标题',
+  `body` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容',
+  `create_by` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '发布人',
+  `create_time` date NOT NULL COMMENT '发布时间',
+  `is_read` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '是否查看',
+  `rec` int UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of message
+-- ----------------------------
+INSERT INTO `message` VALUES (1, '审核通知', '您的成为工匠审核已通过，恭喜您正式成为一名工匠，请再接再厉，祝您步步高升，前程似锦！', '智慧村建官方', '2023-07-09', 0, 4);
+INSERT INTO `message` VALUES (2, '审核通知', '您的工匠资格已被取消，请等待消息或者联系XXXXXXX了解详细情况。', '智慧村建官方', '2023-07-09', 0, 4);
+INSERT INTO `message` VALUES (3, '审核通知', '您的成为工匠审核已通过，恭喜您正式成为一名工匠，请再接再厉，祝您步步高升，前程似锦！', '智慧村建官方', '2023-07-09', 0, 4);
+INSERT INTO `message` VALUES (4, '审核通知', '您的工匠资格已被取消，请等待消息或者联系XXXXXXX了解详细情况。', '智慧村建官方', '2023-07-09', 0, 4);
+INSERT INTO `message` VALUES (5, '审核通知', '您的成为工匠审核暂未通过，请尝试联系XXXXXXX了解详细情况。', '智慧村建官方', '2023-07-09', 0, 4);
+INSERT INTO `message` VALUES (6, '审核通知', '您的成为工匠审核暂未通过，请尝试联系XXXXXXX了解详细情况。', '智慧村建官方', '2023-07-09', 0, 1123);
 
 -- ----------------------------
 -- Table structure for qrtz_blob_triggers
@@ -174,7 +200,7 @@ CREATE TABLE `qrtz_blob_triggers`  (
   `blob_data` blob NULL COMMENT '存放持久化Trigger对象',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_blob_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Blob类型的触发器表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Blob类型的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_blob_triggers
@@ -189,7 +215,7 @@ CREATE TABLE `qrtz_calendars`  (
   `calendar_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '日历名称',
   `calendar` blob NOT NULL COMMENT '存放持久化calendar对象',
   PRIMARY KEY (`sched_name`, `calendar_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '日历信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '日历信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_calendars
@@ -207,7 +233,7 @@ CREATE TABLE `qrtz_cron_triggers`  (
   `time_zone_id` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '时区',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_cron_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Cron类型的触发器表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Cron类型的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_cron_triggers
@@ -232,7 +258,7 @@ CREATE TABLE `qrtz_fired_triggers`  (
   `is_nonconcurrent` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否并发',
   `requests_recovery` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否接受恢复执行',
   PRIMARY KEY (`sched_name`, `entry_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '已触发的触发器表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '已触发的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_fired_triggers
@@ -254,7 +280,7 @@ CREATE TABLE `qrtz_job_details`  (
   `requests_recovery` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '是否接受恢复执行',
   `job_data` blob NULL COMMENT '存放持久化job对象',
   PRIMARY KEY (`sched_name`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '任务详细信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '任务详细信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_job_details
@@ -268,7 +294,7 @@ CREATE TABLE `qrtz_locks`  (
   `sched_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '调度名称',
   `lock_name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '悲观锁名称',
   PRIMARY KEY (`sched_name`, `lock_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '存储的悲观锁信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '存储的悲观锁信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_locks
@@ -282,7 +308,7 @@ CREATE TABLE `qrtz_paused_trigger_grps`  (
   `sched_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '调度名称',
   `trigger_group` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
   PRIMARY KEY (`sched_name`, `trigger_group`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '暂停的触发器表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '暂停的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_paused_trigger_grps
@@ -298,7 +324,7 @@ CREATE TABLE `qrtz_scheduler_state`  (
   `last_checkin_time` bigint NOT NULL COMMENT '上次检查时间',
   `checkin_interval` bigint NOT NULL COMMENT '检查间隔时间',
   PRIMARY KEY (`sched_name`, `instance_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '调度器状态表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '调度器状态表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_scheduler_state
@@ -317,7 +343,7 @@ CREATE TABLE `qrtz_simple_triggers`  (
   `times_triggered` bigint NOT NULL COMMENT '已经触发的次数',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_simple_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '简单触发器的信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '简单触发器的信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_simple_triggers
@@ -344,7 +370,7 @@ CREATE TABLE `qrtz_simprop_triggers`  (
   `bool_prop_2` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Boolean类型的trigger的第二个参数',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_simprop_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '同步机制的行锁表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '同步机制的行锁表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_simprop_triggers
@@ -374,7 +400,7 @@ CREATE TABLE `qrtz_triggers`  (
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   INDEX `sched_name`(`sched_name` ASC, `job_name` ASC, `job_group` ASC) USING BTREE,
   CONSTRAINT `qrtz_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `job_name`, `job_group`) REFERENCES `qrtz_job_details` (`sched_name`, `job_name`, `job_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '触发器详细信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '触发器详细信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_triggers
@@ -396,7 +422,7 @@ CREATE TABLE `sys_config`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '参数配置表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '参数配置表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_config
@@ -428,7 +454,7 @@ CREATE TABLE `sys_dept`  (
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 200 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 109 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '部门表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dept
@@ -464,7 +490,7 @@ CREATE TABLE `sys_dict_data`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 112 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 111 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_data
@@ -527,7 +553,7 @@ CREATE TABLE `sys_dict_type`  (
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_id`) USING BTREE,
   UNIQUE INDEX `dict_type`(`dict_type` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 105 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 104 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_type
@@ -567,7 +593,7 @@ CREATE TABLE `sys_job`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注信息',
   PRIMARY KEY (`job_id`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_job
@@ -590,7 +616,7 @@ CREATE TABLE `sys_job_log`  (
   `exception_info` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '异常信息',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`job_log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_job_log
@@ -625,7 +651,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 270 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 272 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -801,6 +827,52 @@ INSERT INTO `sys_logininfor` VALUES (267, 'xiaoxiao', '127.0.0.1', '内网IP', '
 INSERT INTO `sys_logininfor` VALUES (268, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-21 10:32:07');
 INSERT INTO `sys_logininfor` VALUES (269, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-22 14:41:14');
 INSERT INTO `sys_logininfor` VALUES (270, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-22 17:25:22');
+INSERT INTO `sys_logininfor` VALUES (271, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-07 20:49:18');
+INSERT INTO `sys_logininfor` VALUES (272, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-07 21:05:17');
+INSERT INTO `sys_logininfor` VALUES (273, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 15:33:16');
+INSERT INTO `sys_logininfor` VALUES (274, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 15:33:40');
+INSERT INTO `sys_logininfor` VALUES (275, 'huaqinag', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '注册成功', '2023-07-09 16:12:22');
+INSERT INTO `sys_logininfor` VALUES (276, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 16:12:33');
+INSERT INTO `sys_logininfor` VALUES (277, 'huaqiang', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '登录用户：huaqiang 不存在', '2023-07-09 16:12:42');
+INSERT INTO `sys_logininfor` VALUES (278, 'huaqiang', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '验证码错误', '2023-07-09 16:12:46');
+INSERT INTO `sys_logininfor` VALUES (279, 'huaqiang', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 16:13:28');
+INSERT INTO `sys_logininfor` VALUES (280, 'huaqiang', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 16:23:29');
+INSERT INTO `sys_logininfor` VALUES (281, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '验证码错误', '2023-07-09 16:23:39');
+INSERT INTO `sys_logininfor` VALUES (282, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 16:23:42');
+INSERT INTO `sys_logininfor` VALUES (283, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 16:34:55');
+INSERT INTO `sys_logininfor` VALUES (284, 'xiaoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '登录用户：xiaoccc 不存在', '2023-07-09 16:35:02');
+INSERT INTO `sys_logininfor` VALUES (285, 'xiaocccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '登录用户：xiaocccc 不存在', '2023-07-09 16:35:08');
+INSERT INTO `sys_logininfor` VALUES (286, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 16:35:18');
+INSERT INTO `sys_logininfor` VALUES (287, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 16:36:48');
+INSERT INTO `sys_logininfor` VALUES (288, 'huaqiang', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 16:36:58');
+INSERT INTO `sys_logininfor` VALUES (289, 'huaqiang', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 16:37:07');
+INSERT INTO `sys_logininfor` VALUES (290, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 16:37:16');
+INSERT INTO `sys_logininfor` VALUES (291, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 16:46:46');
+INSERT INTO `sys_logininfor` VALUES (292, 'xicoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '登录用户：xicoccc 不存在', '2023-07-09 16:46:58');
+INSERT INTO `sys_logininfor` VALUES (293, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 16:47:13');
+INSERT INTO `sys_logininfor` VALUES (294, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 16:52:28');
+INSERT INTO `sys_logininfor` VALUES (295, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '验证码错误', '2023-07-09 16:52:37');
+INSERT INTO `sys_logininfor` VALUES (296, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 16:52:42');
+INSERT INTO `sys_logininfor` VALUES (297, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 16:54:57');
+INSERT INTO `sys_logininfor` VALUES (298, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误1次', '2023-07-09 16:55:11');
+INSERT INTO `sys_logininfor` VALUES (299, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2023-07-09 16:55:11');
+INSERT INTO `sys_logininfor` VALUES (300, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 16:55:21');
+INSERT INTO `sys_logininfor` VALUES (301, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 17:26:42');
+INSERT INTO `sys_logininfor` VALUES (302, 'huaqiang', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 18:14:55');
+INSERT INTO `sys_logininfor` VALUES (303, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 18:31:23');
+INSERT INTO `sys_logininfor` VALUES (304, 'xiacoccc', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 18:32:51');
+INSERT INTO `sys_logininfor` VALUES (305, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 18:32:58');
+INSERT INTO `sys_logininfor` VALUES (306, 'huaqiang', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 18:41:22');
+INSERT INTO `sys_logininfor` VALUES (307, '华强', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '登录用户：华强 不存在', '2023-07-09 18:41:28');
+INSERT INTO `sys_logininfor` VALUES (308, 'huaqiang', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 18:41:40');
+INSERT INTO `sys_logininfor` VALUES (309, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 18:44:10');
+INSERT INTO `sys_logininfor` VALUES (310, 'huaqiang', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 18:45:41');
+INSERT INTO `sys_logininfor` VALUES (311, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 18:45:45');
+INSERT INTO `sys_logininfor` VALUES (312, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 18:48:44');
+INSERT INTO `sys_logininfor` VALUES (313, 'xiaoxiao', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 18:48:59');
+INSERT INTO `sys_logininfor` VALUES (314, 'beier', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '注册成功', '2023-07-09 18:55:12');
+INSERT INTO `sys_logininfor` VALUES (315, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-07-09 18:55:22');
+INSERT INTO `sys_logininfor` VALUES (316, 'beier', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-09 18:55:31');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -827,7 +899,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2063 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2062 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -930,11 +1002,11 @@ INSERT INTO `sys_menu` VALUES (2015, '修改', 2013, 2, '', NULL, NULL, 1, 0, 'F
 INSERT INTO `sys_menu` VALUES (2016, '删除', 2013, 3, '', NULL, NULL, 1, 0, 'F', '0', '0', 'satisfaction:survey:remove', '#', 'admin', '2023-06-07 15:09:09', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2017, '导出', 2013, 4, '', NULL, NULL, 1, 0, 'F', '0', '0', 'satisfaction:survey:export', '#', 'admin', '2023-06-07 15:09:28', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2018, '满意度可视化', 2012, 2, 'echartssurvey', 'satisfaction/echartssurvey/index', NULL, 1, 0, 'C', '0', '0', NULL, 'chart', 'admin', '2023-06-07 15:26:31', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2019, '施工队管理', 0, 7, 'crew', NULL, NULL, 1, 0, 'M', '0', '0', '', 'component', 'admin', '2023-06-10 16:11:32', 'admin', '2023-06-10 16:32:39', '');
-INSERT INTO `sys_menu` VALUES (2020, '施工队信息', 2019, 1, 'crew', 'crew/crew/index', NULL, 1, 0, 'C', '0', '0', NULL, 'clipboard', 'admin', '2023-06-10 16:12:18', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2019, '施工企业管理', 0, 7, 'crew', NULL, NULL, 1, 0, 'M', '0', '0', '', 'component', 'admin', '2023-06-10 16:11:32', 'admin', '2023-07-09 18:52:58', '');
+INSERT INTO `sys_menu` VALUES (2020, '施工企业审核', 2019, 1, 'crew', 'crew/crew/index', NULL, 1, 0, 'C', '0', '0', '', 'clipboard', 'admin', '2023-06-10 16:12:18', 'admin', '2023-07-09 18:53:57', '');
 INSERT INTO `sys_menu` VALUES (2021, '项目管理', 2019, 2, 'project', 'crew/project/index', NULL, 1, 0, 'C', '0', '1', '', 'job', 'admin', '2023-06-10 16:13:09', 'admin', '2023-06-19 20:19:13', '');
 INSERT INTO `sys_menu` VALUES (2022, '员工管理', 0, 8, 'worker', NULL, NULL, 1, 0, 'M', '0', '0', '', 'education', 'admin', '2023-06-10 16:13:40', 'admin', '2023-06-19 21:20:46', '');
-INSERT INTO `sys_menu` VALUES (2023, '员工信息', 2022, 1, 'worker', 'worker/worker/index', NULL, 1, 0, 'C', '0', '0', '', 'people', 'admin', '2023-06-10 16:14:46', 'admin', '2023-06-19 21:21:17', '');
+INSERT INTO `sys_menu` VALUES (2023, '工匠审核', 2022, 1, 'worker', 'worker/worker/index', NULL, 1, 0, 'C', '0', '0', '', 'people', 'admin', '2023-06-10 16:14:46', 'admin', '2023-07-09 18:53:42', '');
 INSERT INTO `sys_menu` VALUES (2024, '查看通知', 2001, 2, 'informlk', 'inform/informlk/index', NULL, 1, 0, 'C', '0', '0', '', 'dashboard', 'admin', '2023-06-10 16:26:57', 'admin', '2023-06-10 16:31:21', '');
 INSERT INTO `sys_menu` VALUES (2025, '培训资料', 0, 6, 'train', NULL, NULL, 1, 0, 'M', '0', '0', '', 'drag', 'admin', '2023-06-10 16:28:00', 'admin', '2023-06-10 16:32:34', '');
 INSERT INTO `sys_menu` VALUES (2026, '资料发布', 2025, 1, 'train', 'train/video/index', NULL, 1, 0, 'C', '0', '0', '', 'component', 'admin', '2023-06-10 16:28:31', 'admin', '2023-06-19 20:22:10', '');
@@ -952,6 +1024,7 @@ INSERT INTO `sys_menu` VALUES (2057, '应聘人信息', 2029, 3, 'apply', 'crew/
 INSERT INTO `sys_menu` VALUES (2058, '应聘人信息查询', 2057, 1, '#', '', NULL, 1, 0, 'F', '0', '0', 'apply:apply:query', '#', 'admin', '2023-06-21 10:45:42', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2061, '应聘人信息删除', 2057, 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'apply:apply:remove', '#', 'admin', '2023-06-21 10:45:42', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2062, '应聘人信息导出', 2057, 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'apply:apply:export', '#', 'admin', '2023-06-21 10:45:42', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2063, '申请加入', 0, 1, 'applycom', 'applycom/index', NULL, 1, 0, 'C', '0', '0', '', 'documentation', 'admin', '2023-07-09 15:44:56', 'admin', '2023-07-09 15:50:12', '');
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -969,7 +1042,7 @@ CREATE TABLE `sys_notice`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`notice_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知公告表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知公告表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_notice
@@ -1009,7 +1082,7 @@ CREATE TABLE `sys_oper_log`  (
   INDEX `idx_sys_oper_log_bt`(`business_type` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_ot`(`oper_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 526 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 527 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -1440,6 +1513,67 @@ INSERT INTO `sys_oper_log` VALUES (522, '应聘人信息', 2, 'com.ruoyi.web.con
 INSERT INTO `sys_oper_log` VALUES (523, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"0\",\"applyId\":4,\"applyPhone\":\"15986578532\",\"applyTime\":\"2023-06-03\",\"applyUser\":\"里斯\",\"itemId\":2,\"itemName\":\"智慧村建\",\"params\":{},\"workerRequire\":\"瓦工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-22 14:44:49', 7);
 INSERT INTO `sys_oper_log` VALUES (524, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"2\",\"applyId\":7,\"applyPhone\":\"17367890876\",\"applyTime\":\"2023-06-21\",\"applyUser\":\"王五\",\"itemId\":4,\"itemName\":\"智慧建设\",\"params\":{},\"workerRequire\":\"壮工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-22 14:44:52', 5);
 INSERT INTO `sys_oper_log` VALUES (525, '应聘人信息', 2, 'com.ruoyi.web.controller.crew.ApplyController.edit()', 'PUT', 1, 'admin', NULL, '/apply/apply', '127.0.0.1', '内网IP', '{\"applyAudit\":\"0\",\"applyId\":7,\"applyPhone\":\"17367890876\",\"applyTime\":\"2023-06-21\",\"applyUser\":\"王五\",\"itemId\":4,\"itemName\":\"智慧建设\",\"params\":{},\"workerRequire\":\"壮工\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-06-22 14:44:53', 6);
+INSERT INTO `sys_oper_log` VALUES (526, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'admin', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"江苏省南通市启东市北新镇\",\"applyAudit\":\"0\",\"area\":\"1221\",\"buildTime\":\"2023-06-07\",\"crewId\":1,\"crewNature\":\"民营\",\"finishProject\":0,\"name\":\"强盛集团\",\"params\":{},\"phone\":\"18239425875\",\"popualtion\":11,\"qualification\":0,\"registeredCapital\":\"1122\",\"resPerson\":\"高启强\",\"unfinishProject\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-07 20:49:49', 16);
+INSERT INTO `sys_oper_log` VALUES (527, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'admin', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"江苏省南通市启东市北新镇\",\"applyAudit\":\"0\",\"area\":\"1221\",\"buildTime\":\"2023-06-07\",\"crewId\":1,\"crewNature\":\"民营\",\"finishProject\":0,\"name\":\"强盛集团\",\"params\":{},\"phone\":\"18239425875\",\"popualtion\":11,\"qualification\":0,\"registeredCapital\":\"1122\",\"resPerson\":\"高启强\",\"unfinishProject\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-07 21:06:41', 4);
+INSERT INTO `sys_oper_log` VALUES (528, '角色管理', 1, 'com.ruoyi.web.controller.system.SysRoleController.add()', 'POST', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createBy\":\"admin\",\"deptCheckStrictly\":true,\"deptIds\":[],\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[],\"params\":{},\"roleId\":101,\"roleKey\":\"checkingcom\",\"roleName\":\"未审核企业\",\"roleSort\":4,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 15:41:29', 32);
+INSERT INTO `sys_oper_log` VALUES (529, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"icon\":\"documentation\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"申请加入\",\"menuType\":\"M\",\"orderNum\":1,\"params\":{},\"parentId\":0,\"path\":\"applycom\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 15:44:56', 15);
+INSERT INTO `sys_oper_log` VALUES (530, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"applycom/index\",\"createTime\":\"2023-07-09 15:44:56\",\"icon\":\"documentation\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2063,\"menuName\":\"申请加入\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":0,\"path\":\"applycom\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 15:50:12', 7);
+INSERT INTO `sys_oper_log` VALUES (531, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2023-07-09 15:41:29\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2063],\"params\":{},\"roleId\":101,\"roleKey\":\"checkingcom\",\"roleName\":\"未审核企业\",\"roleSort\":4,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 15:53:51', 27);
+INSERT INTO `sys_oper_log` VALUES (532, '通知', 2, 'com.ruoyi.web.controller.inform.InformController.edit()', 'PUT', 1, 'admin', NULL, '/inform/inform', '127.0.0.1', '内网IP', '{\"createBy\":\"admin\",\"createTime\":\"2023-05-27 16:44:21\",\"informContent\":\"<p>智慧工地</p>\",\"informId\":17,\"informTitle\":\"智慧工地通知1\",\"informType\":\"1\",\"infromFile\":\"/profile/upload/2023/06/05/智慧工地_20230605185651A002.doc\",\"params\":{},\"status\":\"0\",\"updateBy\":\"admin\",\"updateTime\":\"2023-07-09 15:57:19\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 15:57:19', 15);
+INSERT INTO `sys_oper_log` VALUES (533, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'admin', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"江苏省南通市启东市北新镇\",\"annualInspection\":\"好\",\"applyAudit\":\"2\",\"area\":\"1221\",\"buildTime\":\"2023-06-07\",\"businessScope\":\"建筑\",\"crewId\":1,\"crewNature\":\"民营\",\"finishProject\":0,\"name\":\"强盛集团\",\"operatingTerm\":\"10年\",\"params\":{},\"phone\":\"18239425875\",\"popualtion\":0,\"qualification\":0,\"reason\":\"二次元浓度超标\",\"registeredCapital\":\"1122\",\"resPerson\":\"高启强\",\"unfinishProject\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 16:19:37', 15);
+INSERT INTO `sys_oper_log` VALUES (534, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'admin', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"江苏省南通市启东市北新镇\",\"annualInspection\":\"好\",\"applyAudit\":\"0\",\"area\":\"1221\",\"buildTime\":\"2023-06-07\",\"businessScope\":\"建筑\",\"crewId\":1,\"crewNature\":\"民营\",\"finishProject\":0,\"name\":\"强盛集团\",\"operatingTerm\":\"10年\",\"params\":{},\"phone\":\"18239425875\",\"popualtion\":0,\"qualification\":0,\"reason\":\"二次元浓度超标\",\"registeredCapital\":\"1122\",\"resPerson\":\"高启强\",\"unfinishProject\":1}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 16:19:41', 0);
+INSERT INTO `sys_oper_log` VALUES (535, '角色管理', 1, 'com.ruoyi.web.controller.system.SysRoleController.add()', 'POST', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createBy\":\"admin\",\"deptCheckStrictly\":true,\"deptIds\":[],\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2012,2001,2002,2008,2009,2010,2011,2024,2019,2020,2021,2022,2023,2032,2013,2014,2015,2016,2017,2029,2030,2033,2034,2035,2036,2037,2038,2057,2058,2061,2062],\"params\":{},\"roleId\":102,\"roleKey\":\"checking\",\"roleName\":\"监管方\",\"roleSort\":5,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 16:21:24', 31);
+INSERT INTO `sys_oper_log` VALUES (536, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2023-07-09 16:21:24\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2012,2001,2002,2008,2009,2010,2011,2024,2019,2020,2021,2022,2023,2032,2013,2014,2015,2016,2017],\"params\":{},\"roleId\":102,\"roleKey\":\"checking\",\"roleName\":\"监管方\",\"roleSort\":5,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 16:22:07', 22);
+INSERT INTO `sys_oper_log` VALUES (537, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2023-05-16 15:57:05\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":107,\"deptName\":\"工地五\",\"leader\":\"若依\",\"orderNum\":5,\"params\":{},\"parentId\":101,\"status\":\"0\"},\"deptId\":107,\"email\":\"1231@qq.com\",\"idNumber\":\"370811200210289020\",\"loginDate\":\"2023-06-21 09:59:13\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"里斯\",\"params\":{},\"phonenumber\":\"15986578532\",\"postIds\":[],\"roleIds\":[102],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"1\",\"status\":\"0\",\"userId\":4,\"userName\":\"xiaoxiao\"}', '{\"msg\":\"修改用户\'xiaoxiao\'失败，邮箱账号已存在\",\"code\":500}', 0, NULL, '2023-07-09 16:22:33', 10);
+INSERT INTO `sys_oper_log` VALUES (538, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2023-05-16 15:57:05\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":107,\"deptName\":\"工地五\",\"leader\":\"若依\",\"orderNum\":5,\"params\":{},\"parentId\":101,\"status\":\"0\"},\"deptId\":107,\"email\":\"1231@qq.com\",\"idNumber\":\"370811200210289020\",\"loginDate\":\"2023-06-21 09:59:13\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"里斯\",\"params\":{},\"phonenumber\":\"15986578532\",\"postIds\":[],\"roleIds\":[102],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"1\",\"status\":\"0\",\"userId\":4,\"userName\":\"xiaoxiao\"}', '{\"msg\":\"修改用户\'xiaoxiao\'失败，邮箱账号已存在\",\"code\":500}', 0, NULL, '2023-07-09 16:22:37', 7);
+INSERT INTO `sys_oper_log` VALUES (539, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2023-05-16 15:57:05\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":107,\"deptName\":\"工地五\",\"leader\":\"若依\",\"orderNum\":5,\"params\":{},\"parentId\":101,\"status\":\"0\"},\"deptId\":107,\"email\":\"1231@qq.com\",\"idNumber\":\"370811200210289020\",\"loginDate\":\"2023-06-21 09:59:13\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"里斯\",\"params\":{},\"phonenumber\":\"15986578532\",\"postIds\":[],\"roleIds\":[102],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"1\",\"status\":\"0\",\"userId\":4,\"userName\":\"xiaoxiao\"}', '{\"msg\":\"修改用户\'xiaoxiao\'失败，邮箱账号已存在\",\"code\":500}', 0, NULL, '2023-07-09 16:22:48', 7);
+INSERT INTO `sys_oper_log` VALUES (540, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2023-05-16 15:57:05\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":107,\"deptName\":\"工地五\",\"leader\":\"若依\",\"orderNum\":5,\"params\":{},\"parentId\":101,\"status\":\"0\"},\"deptId\":107,\"email\":\"1231@qq.com\",\"idNumber\":\"370811200210289020\",\"loginDate\":\"2023-06-21 09:59:13\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"里斯\",\"params\":{},\"phonenumber\":\"15986578532\",\"postIds\":[],\"roleIds\":[2,102],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"1\",\"status\":\"0\",\"userId\":4,\"userName\":\"xiaoxiao\"}', '{\"msg\":\"修改用户\'xiaoxiao\'失败，邮箱账号已存在\",\"code\":500}', 0, NULL, '2023-07-09 16:23:01', 0);
+INSERT INTO `sys_oper_log` VALUES (541, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2023-05-16 15:57:05\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":107,\"deptName\":\"工地五\",\"leader\":\"若依\",\"orderNum\":5,\"params\":{},\"parentId\":101,\"status\":\"0\"},\"deptId\":107,\"email\":\"12311@qq.com\",\"idNumber\":\"370811200210289020\",\"loginDate\":\"2023-06-21 09:59:13\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"里斯\",\"params\":{},\"phonenumber\":\"15986578532\",\"postIds\":[],\"roleIds\":[102],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"1\",\"status\":\"0\",\"updateBy\":\"admin\",\"userId\":4,\"userName\":\"xiaoxiao\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 16:23:08', 19);
+INSERT INTO `sys_oper_log` VALUES (542, '角色管理', 1, 'com.ruoyi.web.controller.system.SysRoleController.add()', 'POST', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createBy\":\"admin\",\"deptCheckStrictly\":true,\"deptIds\":[],\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2001,2025,2029,2024,2026,2022,2023,2032,2033,2034,2035,2036,2037,2038,2057,2058,2061,2062],\"params\":{},\"roleId\":103,\"roleKey\":\"company\",\"roleName\":\"入驻企业\",\"roleSort\":5,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 16:34:19', 14);
+INSERT INTO `sys_oper_log` VALUES (543, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2023-06-07 14:51:03\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":107,\"deptName\":\"工地五\",\"leader\":\"若依\",\"orderNum\":5,\"params\":{},\"parentId\":101,\"status\":\"0\"},\"deptId\":107,\"email\":\"1231@qq.com\",\"idNumber\":\"370811200210289020\",\"loginDate\":\"2023-06-21 10:32:07\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"王五\",\"params\":{},\"phonenumber\":\"17367890876\",\"postIds\":[],\"roleIds\":[103],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"1\",\"status\":\"0\",\"userId\":10,\"userName\":\"xiacoccc\"}', '{\"msg\":\"修改用户\'xiacoccc\'失败，手机号码已存在\",\"code\":500}', 0, NULL, '2023-07-09 16:34:37', 4);
+INSERT INTO `sys_oper_log` VALUES (544, '用户管理', 2, 'com.ruoyi.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2023-06-07 14:51:03\",\"delFlag\":\"0\",\"dept\":{\"ancestors\":\"0,100,101\",\"children\":[],\"deptId\":107,\"deptName\":\"工地五\",\"leader\":\"若依\",\"orderNum\":5,\"params\":{},\"parentId\":101,\"status\":\"0\"},\"deptId\":107,\"email\":\"123q1@qq.com\",\"idNumber\":\"370811200210289020\",\"loginDate\":\"2023-06-21 10:32:07\",\"loginIp\":\"127.0.0.1\",\"nickName\":\"王五\",\"params\":{},\"phonenumber\":\"17367890823\",\"postIds\":[],\"roleIds\":[103],\"roles\":[{\"admin\":false,\"dataScope\":\"2\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":2,\"roleKey\":\"common\",\"roleName\":\"普通角色\",\"roleSort\":2,\"status\":\"0\"}],\"sex\":\"1\",\"status\":\"0\",\"updateBy\":\"admin\",\"userId\":10,\"userName\":\"xiacoccc\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 16:34:47', 18);
+INSERT INTO `sys_oper_log` VALUES (545, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2064', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"存在子菜单,不允许删除\",\"code\":601}', 0, NULL, '2023-07-09 17:05:55', 10);
+INSERT INTO `sys_oper_log` VALUES (546, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2065', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:00', 14);
+INSERT INTO `sys_oper_log` VALUES (547, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2066', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:02', 12);
+INSERT INTO `sys_oper_log` VALUES (548, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2068', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:04', 9);
+INSERT INTO `sys_oper_log` VALUES (549, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2069', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:08', 8);
+INSERT INTO `sys_oper_log` VALUES (550, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2067', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:11', 8);
+INSERT INTO `sys_oper_log` VALUES (551, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2064', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:14', 8);
+INSERT INTO `sys_oper_log` VALUES (552, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2071', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:17', 11);
+INSERT INTO `sys_oper_log` VALUES (553, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2072', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:19', 5);
+INSERT INTO `sys_oper_log` VALUES (554, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2073', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:21', 27);
+INSERT INTO `sys_oper_log` VALUES (555, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2074', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:23', 10);
+INSERT INTO `sys_oper_log` VALUES (556, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2075', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:25', 9);
+INSERT INTO `sys_oper_log` VALUES (557, '菜单管理', 3, 'com.ruoyi.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/system/menu/2070', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:06:30', 11);
+INSERT INTO `sys_oper_log` VALUES (558, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.synchDb()', 'GET', 1, 'admin', NULL, '/tool/gen/synchDb/tb_recruitment', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:07:15', 77);
+INSERT INTO `sys_oper_log` VALUES (559, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'PUT', 1, 'admin', NULL, '/tool/gen', '127.0.0.1', '内网IP', '{\"businessName\":\"recruitment\",\"className\":\"Recruitment\",\"columns\":[{\"capJavaField\":\"ItemId\",\"columnComment\":\"项目id\",\"columnId\":98,\"columnName\":\"item_id\",\"columnType\":\"bigint\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":true,\"insert\":false,\"isIncrement\":\"1\",\"isInsert\":\"0\",\"isPk\":\"1\",\"javaField\":\"itemId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":true,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":1,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-07-09 17:07:15\",\"usableColumn\":false},{\"capJavaField\":\"CrewId\",\"columnComment\":\"公司id\",\"columnId\":117,\"columnName\":\"crew_id\",\"columnType\":\"bigint\",\"createBy\":\"\",\"createTime\":\"2023-07-09 17:07:15\",\"dictType\":\"\",\"edit\":false,\"htmlType\":\"input\",\"increment\":false,\"insert\":false,\"isEdit\":\"0\",\"isIncrement\":\"0\",\"isInsert\":\"0\",\"isList\":\"0\",\"isPk\":\"0\",\"isQuery\":\"0\",\"isRequired\":\"0\",\"javaField\":\"crewId\",\"javaType\":\"Long\",\"list\":false,\"params\":{},\"pk\":false,\"query\":false,\"queryType\":\"EQ\",\"required\":false,\"sort\":2,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"usableColumn\":false},{\"capJavaField\":\"ItemName\",\"columnComment\":\"项目名称\",\"columnId\":99,\"columnName\":\"item_name\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncrement\":\"0\",\"isInsert\":\"1\",\"isList\":\"1\",\"isPk\":\"0\",\"isQuery\":\"1\",\"isRequired\":\"1\",\"javaField\":\"itemName\",\"javaType\":\"String\",\"list\":true,\"params\":{},\"pk\":false,\"query\":true,\"queryType\":\"LIKE\",\"required\":true,\"sort\":3,\"superColumn\":false,\"tableId\":13,\"updateBy\":\"\",\"updateTime\":\"2023-07-09 17:07:15\",\"usableColumn\":false},{\"capJavaField\":\"RequireCorporation\",\"columnComment\":\"招聘公司\",\"columnId\":100,\"columnName\":\"require_corporation\",\"columnType\":\"varchar(255)\",\"createBy\":\"admin\",\"createTime\":\"2023-06-20 18:32:13\",\"dictType\":\"\",\"edit\":true,\"htmlType\":\"input\",\"increment\":false,\"insert\":true,\"isEdit\":\"1\",\"isIncr', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 17:09:04', 46);
+INSERT INTO `sys_oper_log` VALUES (560, '施工队信息', 1, 'com.ruoyi.web.controller.crew.RuoyiCrewController.add()', 'POST', 1, 'huaqiang', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"1\",\"annualInspection\":\"1\",\"area\":\"1\",\"buildTime\":\"2023-07-16\",\"businessScope\":\"1\",\"crewId\":21,\"crewNature\":\"1\",\"initialEmployee\":1,\"name\":\"1\",\"operatingTerm\":\"1\",\"params\":{},\"phone\":\"1\",\"qualification\":\"1111111\",\"registeredCapital\":\"1\",\"resPerson\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:15:43', 22);
+INSERT INTO `sys_oper_log` VALUES (561, '施工队信息', 1, 'com.ruoyi.web.controller.crew.RuoyiCrewController.add()', 'POST', 1, 'huaqiang', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"11\",\"annualInspection\":\"1\",\"area\":\"1\",\"buildTime\":\"2023-07-24\",\"businessScope\":\"1\",\"crewNature\":\"1\",\"initialEmployee\":1,\"name\":\"11\",\"operatingTerm\":\"1\",\"params\":{},\"phone\":\"19244411793\",\"qualification\":\"1\",\"registeredCapital\":\"1\",\"resPerson\":\"11\",\"userId\":102}', NULL, 1, 'nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named \'user_id\' in \'class com.ruoyi.crew.domain.RuoyiCrew\'', '2023-07-09 18:20:04', 19);
+INSERT INTO `sys_oper_log` VALUES (562, '施工队信息', 1, 'com.ruoyi.web.controller.crew.RuoyiCrewController.add()', 'POST', 1, 'huaqiang', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"11\",\"annualInspection\":\"1\",\"area\":\"1\",\"buildTime\":\"2023-07-24\",\"businessScope\":\"1\",\"crewNature\":\"1\",\"initialEmployee\":1,\"name\":\"11\",\"operatingTerm\":\"1\",\"params\":{},\"phone\":\"19244411793\",\"qualification\":\"1\",\"registeredCapital\":\"1\",\"resPerson\":\"11\",\"userId\":102}', NULL, 1, 'nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named \'user_id\' in \'class com.ruoyi.crew.domain.RuoyiCrew\'', '2023-07-09 18:20:33', 3);
+INSERT INTO `sys_oper_log` VALUES (563, '施工队信息', 1, 'com.ruoyi.web.controller.crew.RuoyiCrewController.add()', 'POST', 1, 'huaqiang', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"11\",\"annualInspection\":\"1\",\"area\":\"1\",\"buildTime\":\"2023-07-24\",\"businessScope\":\"1\",\"crewNature\":\"1\",\"initialEmployee\":1,\"name\":\"11\",\"operatingTerm\":\"1\",\"params\":{},\"phone\":\"19244411793\",\"qualification\":\"1\",\"registeredCapital\":\"1\",\"resPerson\":\"11\",\"userId\":102}', NULL, 1, 'nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named \'user_id\' in \'class com.ruoyi.crew.domain.RuoyiCrew\'', '2023-07-09 18:25:18', 17);
+INSERT INTO `sys_oper_log` VALUES (564, '施工队信息', 1, 'com.ruoyi.web.controller.crew.RuoyiCrewController.add()', 'POST', 1, 'huaqiang', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"1\",\"annualInspection\":\"1\",\"area\":\"1\",\"buildTime\":\"2023-07-10\",\"businessScope\":\"1\",\"crewNature\":\"1\",\"initialEmployee\":1,\"name\":\"111\",\"operatingTerm\":\"1\",\"params\":{},\"phone\":\"19853411793\",\"qualification\":\"1\",\"registeredCapital\":\"1\",\"resPerson\":\"1\",\"userId\":102}', NULL, 1, 'nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named \'user_id\' in \'class com.ruoyi.crew.domain.RuoyiCrew\'', '2023-07-09 18:26:11', 0);
+INSERT INTO `sys_oper_log` VALUES (565, '施工队信息', 1, 'com.ruoyi.web.controller.crew.RuoyiCrewController.add()', 'POST', 1, 'huaqiang', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"1\",\"annualInspection\":\"1\",\"area\":\"1\",\"buildTime\":\"2023-07-10\",\"businessScope\":\"1\",\"crewId\":22,\"crewNature\":\"1\",\"initialEmployee\":1,\"name\":\"111\",\"operatingTerm\":\"1\",\"params\":{},\"phone\":\"19853411793\",\"qualification\":\"1\",\"registeredCapital\":\"1\",\"resPerson\":\"1\",\"userId\":102}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:30:49', 31);
+INSERT INTO `sys_oper_log` VALUES (566, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'xiaoxiao', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"1\",\"applyAudit\":\"0\",\"buildTime\":\"2023-07-10\",\"crewId\":22,\"finishProject\":0,\"initialEmployee\":1,\"name\":\"111\",\"params\":{},\"phone\":\"19853411793\",\"popualtion\":1,\"qualification\":\"1\",\"resPerson\":\"1\",\"unfinishProject\":0,\"userId\":102}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:33:23', 0);
+INSERT INTO `sys_oper_log` VALUES (567, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'xiaoxiao', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"1\",\"applyAudit\":\"0\",\"buildTime\":\"2023-07-10\",\"crewId\":22,\"finishProject\":0,\"initialEmployee\":1,\"name\":\"111\",\"params\":{},\"phone\":\"19853411793\",\"popualtion\":1,\"qualification\":\"1\",\"resPerson\":\"1\",\"unfinishProject\":0,\"userId\":102}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:34:12', 3);
+INSERT INTO `sys_oper_log` VALUES (568, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'xiaoxiao', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"1\",\"applyAudit\":\"2\",\"buildTime\":\"2023-07-10\",\"crewId\":22,\"finishProject\":0,\"initialEmployee\":1,\"name\":\"111\",\"params\":{},\"phone\":\"19853411793\",\"popualtion\":1,\"qualification\":\"1\",\"resPerson\":\"1\",\"unfinishProject\":0,\"userId\":102}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:35:13', 6);
+INSERT INTO `sys_oper_log` VALUES (569, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'xiaoxiao', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"1\",\"applyAudit\":\"0\",\"buildTime\":\"2023-07-10\",\"crewId\":22,\"finishProject\":0,\"initialEmployee\":1,\"name\":\"111\",\"params\":{},\"phone\":\"19853411793\",\"popualtion\":1,\"qualification\":\"1\",\"resPerson\":\"1\",\"unfinishProject\":0,\"userId\":102}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:35:21', 4);
+INSERT INTO `sys_oper_log` VALUES (570, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'xiaoxiao', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"1\",\"applyAudit\":\"0\",\"buildTime\":\"2023-07-10\",\"crewId\":22,\"finishProject\":0,\"initialEmployee\":1,\"name\":\"111\",\"params\":{},\"phone\":\"19853411793\",\"popualtion\":1,\"qualification\":\"1\",\"resPerson\":\"1\",\"unfinishProject\":0,\"userId\":102}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:41:04', 1);
+INSERT INTO `sys_oper_log` VALUES (571, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'xiaoxiao', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"1\",\"applyAudit\":\"0\",\"buildTime\":\"2023-07-10\",\"crewId\":22,\"finishProject\":0,\"initialEmployee\":1,\"name\":\"111\",\"params\":{},\"phone\":\"19853411793\",\"popualtion\":1,\"qualification\":\"1\",\"resPerson\":\"1\",\"unfinishProject\":0,\"userId\":102}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:45:02', 18);
+INSERT INTO `sys_oper_log` VALUES (572, '用户管理', 3, 'com.ruoyi.web.controller.system.SysUserController.remove()', 'DELETE', 1, 'admin', NULL, '/system/user/102', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:45:53', 43);
+INSERT INTO `sys_oper_log` VALUES (573, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2023-07-09 16:34:19\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2001,2025,2022,2029,2024,2026,2032,2033,2034,2035,2036,2037,2038,2057,2058,2061,2062],\"params\":{},\"roleId\":103,\"roleKey\":\"company\",\"roleName\":\"入驻企业\",\"roleSort\":5,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:47:03', 18);
+INSERT INTO `sys_oper_log` VALUES (574, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2023-07-09 16:21:24\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2012,2001,2002,2008,2009,2010,2011,2024,2019,2020,2021,2022,2023,2032,2013,2014,2015,2016,2017],\"params\":{},\"roleId\":102,\"roleKey\":\"checking\",\"roleName\":\"监管方\",\"roleSort\":5,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:47:34', 15);
+INSERT INTO `sys_oper_log` VALUES (575, '角色管理', 3, 'com.ruoyi.web.controller.system.SysRoleController.remove()', 'DELETE', 1, 'admin', NULL, '/system/role/100', '127.0.0.1', '内网IP', '{}', NULL, 1, '总监已分配,不能删除', '2023-07-09 18:48:10', 7);
+INSERT INTO `sys_oper_log` VALUES (576, '角色管理', 4, 'com.ruoyi.web.controller.system.SysRoleController.cancelAuthUser()', 'PUT', 1, 'admin', NULL, '/system/role/authUser/cancel', '127.0.0.1', '内网IP', '{\"roleId\":100,\"userId\":3}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:48:16', 0);
+INSERT INTO `sys_oper_log` VALUES (577, '角色管理', 3, 'com.ruoyi.web.controller.system.SysRoleController.remove()', 'DELETE', 1, 'admin', NULL, '/system/role/100', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:48:20', 21);
+INSERT INTO `sys_oper_log` VALUES (578, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2023-07-09 16:21:24\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2012,2001,2002,2008,2009,2010,2011,2024,2019,2020,2021,2022,2023,2032,2013,2014,2015,2016,2017],\"params\":{},\"roleId\":102,\"roleKey\":\"checking\",\"roleName\":\"监管方\",\"roleSort\":5,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:50:32', 15);
+INSERT INTO `sys_oper_log` VALUES (579, '角色管理', 4, 'com.ruoyi.web.controller.system.SysRoleController.cancelAuthUser()', 'PUT', 1, 'admin', NULL, '/system/role/authUser/cancel', '127.0.0.1', '内网IP', '{\"roleId\":103,\"userId\":4}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:50:49', 4);
+INSERT INTO `sys_oper_log` VALUES (580, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-06-10 16:11:32\",\"icon\":\"component\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2019,\"menuName\":\"施工企业\",\"menuType\":\"M\",\"orderNum\":7,\"params\":{},\"parentId\":0,\"path\":\"crew\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:52:28', 18);
+INSERT INTO `sys_oper_log` VALUES (581, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"crew/crew/index\",\"createTime\":\"2023-06-10 16:12:18\",\"icon\":\"clipboard\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2020,\"menuName\":\"施工企业申请\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2019,\"path\":\"crew\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:52:40', 0);
+INSERT INTO `sys_oper_log` VALUES (582, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createTime\":\"2023-06-10 16:11:32\",\"icon\":\"component\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2019,\"menuName\":\"施工企业管理\",\"menuType\":\"M\",\"orderNum\":7,\"params\":{},\"parentId\":0,\"path\":\"crew\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:52:58', 8);
+INSERT INTO `sys_oper_log` VALUES (583, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"worker/worker/index\",\"createTime\":\"2023-06-10 16:14:46\",\"icon\":\"people\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2023,\"menuName\":\"工匠审核\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2022,\"path\":\"worker\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:53:42', 6);
+INSERT INTO `sys_oper_log` VALUES (584, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"crew/crew/index\",\"createTime\":\"2023-06-10 16:12:18\",\"icon\":\"clipboard\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2020,\"menuName\":\"施工企业审核\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2019,\"path\":\"crew\",\"perms\":\"\",\"status\":\"0\",\"updateBy\":\"admin\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:53:57', 0);
+INSERT INTO `sys_oper_log` VALUES (585, '施工队信息', 1, 'com.ruoyi.web.controller.crew.RuoyiCrewController.add()', 'POST', 1, 'beier', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"上海市\",\"annualInspection\":\"合格\",\"area\":\"1000亩\",\"buildTime\":\"2023-07-09\",\"businessScope\":\"上海市\",\"crewId\":23,\"crewNature\":\"私营\",\"initialEmployee\":100,\"name\":\"贝儿集团\",\"operatingTerm\":\"100年\",\"params\":{},\"phone\":\"19853411793\",\"qualification\":\"优质\",\"registeredCapital\":\"1000万\",\"resPerson\":\"贝儿\",\"userId\":103}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:56:37', 0);
+INSERT INTO `sys_oper_log` VALUES (586, '施工队信息', 2, 'com.ruoyi.web.controller.crew.RuoyiCrewController.edit()', 'PUT', 1, 'xiaoxiao', NULL, '/crew/crew', '127.0.0.1', '内网IP', '{\"address\":\"上海市\",\"applyAudit\":\"0\",\"buildTime\":\"2023-07-09\",\"crewId\":23,\"finishProject\":0,\"initialEmployee\":100,\"name\":\"贝儿集团\",\"params\":{},\"phone\":\"19853411793\",\"popualtion\":100,\"qualification\":\"优质\",\"resPerson\":\"贝儿\",\"unfinishProject\":0,\"userId\":103}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-07-09 18:56:45', 0);
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -1457,7 +1591,7 @@ CREATE TABLE `sys_post`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`post_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '岗位信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '岗位信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_post
@@ -1487,14 +1621,17 @@ CREATE TABLE `sys_role`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 'admin', '2023-05-07 10:41:24', '', NULL, '超级管理员');
 INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', 1, 1, '0', '0', 'admin', '2023-05-07 10:41:24', 'admin', '2023-06-21 10:01:53', '普通角色');
-INSERT INTO `sys_role` VALUES (100, '总监', 'system', 2, '1', 1, 1, '0', '0', 'admin', '2023-06-07 11:03:11', 'admin', '2023-06-21 10:45:02', NULL);
+INSERT INTO `sys_role` VALUES (100, '总监', 'system', 2, '1', 1, 1, '0', '2', 'admin', '2023-06-07 11:03:11', 'admin', '2023-06-21 10:45:02', NULL);
+INSERT INTO `sys_role` VALUES (101, '未审核企业', 'checkingcom', 4, '1', 1, 1, '0', '0', 'admin', '2023-07-09 15:41:29', 'admin', '2023-07-09 15:53:51', NULL);
+INSERT INTO `sys_role` VALUES (102, '监管方', 'checking', 5, '1', 1, 1, '0', '0', 'admin', '2023-07-09 16:21:24', 'admin', '2023-07-09 18:50:32', NULL);
+INSERT INTO `sys_role` VALUES (103, '入驻企业', 'company', 5, '1', 1, 1, '0', '0', 'admin', '2023-07-09 16:34:19', 'admin', '2023-07-09 18:47:03', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role_dept
@@ -1504,7 +1641,7 @@ CREATE TABLE `sys_role_dept`  (
   `role_id` bigint NOT NULL COMMENT '角色ID',
   `dept_id` bigint NOT NULL COMMENT '部门ID',
   PRIMARY KEY (`role_id`, `dept_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色和部门关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色和部门关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role_dept
@@ -1521,7 +1658,7 @@ CREATE TABLE `sys_role_menu`  (
   `role_id` bigint NOT NULL COMMENT '角色ID',
   `menu_id` bigint NOT NULL COMMENT '菜单ID',
   PRIMARY KEY (`role_id`, `menu_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色和菜单关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色和菜单关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -1543,71 +1680,43 @@ INSERT INTO `sys_role_menu` VALUES (2, 2024);
 INSERT INTO `sys_role_menu` VALUES (2, 2029);
 INSERT INTO `sys_role_menu` VALUES (2, 2033);
 INSERT INTO `sys_role_menu` VALUES (2, 2034);
-INSERT INTO `sys_role_menu` VALUES (100, 1);
-INSERT INTO `sys_role_menu` VALUES (100, 2);
-INSERT INTO `sys_role_menu` VALUES (100, 100);
-INSERT INTO `sys_role_menu` VALUES (100, 101);
-INSERT INTO `sys_role_menu` VALUES (100, 102);
-INSERT INTO `sys_role_menu` VALUES (100, 103);
-INSERT INTO `sys_role_menu` VALUES (100, 104);
-INSERT INTO `sys_role_menu` VALUES (100, 109);
-INSERT INTO `sys_role_menu` VALUES (100, 110);
-INSERT INTO `sys_role_menu` VALUES (100, 1000);
-INSERT INTO `sys_role_menu` VALUES (100, 1001);
-INSERT INTO `sys_role_menu` VALUES (100, 1002);
-INSERT INTO `sys_role_menu` VALUES (100, 1003);
-INSERT INTO `sys_role_menu` VALUES (100, 1004);
-INSERT INTO `sys_role_menu` VALUES (100, 1005);
-INSERT INTO `sys_role_menu` VALUES (100, 1006);
-INSERT INTO `sys_role_menu` VALUES (100, 1007);
-INSERT INTO `sys_role_menu` VALUES (100, 1008);
-INSERT INTO `sys_role_menu` VALUES (100, 1009);
-INSERT INTO `sys_role_menu` VALUES (100, 1010);
-INSERT INTO `sys_role_menu` VALUES (100, 1011);
-INSERT INTO `sys_role_menu` VALUES (100, 1012);
-INSERT INTO `sys_role_menu` VALUES (100, 1013);
-INSERT INTO `sys_role_menu` VALUES (100, 1014);
-INSERT INTO `sys_role_menu` VALUES (100, 1015);
-INSERT INTO `sys_role_menu` VALUES (100, 1016);
-INSERT INTO `sys_role_menu` VALUES (100, 1017);
-INSERT INTO `sys_role_menu` VALUES (100, 1018);
-INSERT INTO `sys_role_menu` VALUES (100, 1019);
-INSERT INTO `sys_role_menu` VALUES (100, 1020);
-INSERT INTO `sys_role_menu` VALUES (100, 1021);
-INSERT INTO `sys_role_menu` VALUES (100, 1022);
-INSERT INTO `sys_role_menu` VALUES (100, 1023);
-INSERT INTO `sys_role_menu` VALUES (100, 1024);
-INSERT INTO `sys_role_menu` VALUES (100, 1046);
-INSERT INTO `sys_role_menu` VALUES (100, 1047);
-INSERT INTO `sys_role_menu` VALUES (100, 1048);
-INSERT INTO `sys_role_menu` VALUES (100, 1049);
-INSERT INTO `sys_role_menu` VALUES (100, 1050);
-INSERT INTO `sys_role_menu` VALUES (100, 1051);
-INSERT INTO `sys_role_menu` VALUES (100, 1052);
-INSERT INTO `sys_role_menu` VALUES (100, 1053);
-INSERT INTO `sys_role_menu` VALUES (100, 1054);
-INSERT INTO `sys_role_menu` VALUES (100, 2000);
-INSERT INTO `sys_role_menu` VALUES (100, 2001);
-INSERT INTO `sys_role_menu` VALUES (100, 2002);
-INSERT INTO `sys_role_menu` VALUES (100, 2008);
-INSERT INTO `sys_role_menu` VALUES (100, 2009);
-INSERT INTO `sys_role_menu` VALUES (100, 2010);
-INSERT INTO `sys_role_menu` VALUES (100, 2011);
-INSERT INTO `sys_role_menu` VALUES (100, 2012);
-INSERT INTO `sys_role_menu` VALUES (100, 2013);
-INSERT INTO `sys_role_menu` VALUES (100, 2014);
-INSERT INTO `sys_role_menu` VALUES (100, 2015);
-INSERT INTO `sys_role_menu` VALUES (100, 2016);
-INSERT INTO `sys_role_menu` VALUES (100, 2017);
-INSERT INTO `sys_role_menu` VALUES (100, 2018);
-INSERT INTO `sys_role_menu` VALUES (100, 2019);
-INSERT INTO `sys_role_menu` VALUES (100, 2020);
-INSERT INTO `sys_role_menu` VALUES (100, 2021);
-INSERT INTO `sys_role_menu` VALUES (100, 2022);
-INSERT INTO `sys_role_menu` VALUES (100, 2023);
-INSERT INTO `sys_role_menu` VALUES (100, 2024);
-INSERT INTO `sys_role_menu` VALUES (100, 2025);
-INSERT INTO `sys_role_menu` VALUES (100, 2026);
+INSERT INTO `sys_role_menu` VALUES (101, 2063);
+INSERT INTO `sys_role_menu` VALUES (102, 2001);
+INSERT INTO `sys_role_menu` VALUES (102, 2002);
+INSERT INTO `sys_role_menu` VALUES (102, 2008);
+INSERT INTO `sys_role_menu` VALUES (102, 2009);
+INSERT INTO `sys_role_menu` VALUES (102, 2010);
+INSERT INTO `sys_role_menu` VALUES (102, 2011);
+INSERT INTO `sys_role_menu` VALUES (102, 2012);
+INSERT INTO `sys_role_menu` VALUES (102, 2013);
+INSERT INTO `sys_role_menu` VALUES (102, 2014);
+INSERT INTO `sys_role_menu` VALUES (102, 2015);
+INSERT INTO `sys_role_menu` VALUES (102, 2016);
+INSERT INTO `sys_role_menu` VALUES (102, 2017);
+INSERT INTO `sys_role_menu` VALUES (102, 2019);
+INSERT INTO `sys_role_menu` VALUES (102, 2020);
+INSERT INTO `sys_role_menu` VALUES (102, 2021);
+INSERT INTO `sys_role_menu` VALUES (102, 2022);
+INSERT INTO `sys_role_menu` VALUES (102, 2023);
+INSERT INTO `sys_role_menu` VALUES (102, 2024);
+INSERT INTO `sys_role_menu` VALUES (102, 2032);
+INSERT INTO `sys_role_menu` VALUES (103, 2001);
+INSERT INTO `sys_role_menu` VALUES (103, 2022);
+INSERT INTO `sys_role_menu` VALUES (103, 2024);
+INSERT INTO `sys_role_menu` VALUES (103, 2025);
+INSERT INTO `sys_role_menu` VALUES (103, 2026);
+INSERT INTO `sys_role_menu` VALUES (103, 2029);
+INSERT INTO `sys_role_menu` VALUES (103, 2032);
+INSERT INTO `sys_role_menu` VALUES (103, 2033);
+INSERT INTO `sys_role_menu` VALUES (103, 2034);
+INSERT INTO `sys_role_menu` VALUES (103, 2035);
+INSERT INTO `sys_role_menu` VALUES (103, 2036);
+INSERT INTO `sys_role_menu` VALUES (103, 2037);
+INSERT INTO `sys_role_menu` VALUES (103, 2038);
+INSERT INTO `sys_role_menu` VALUES (103, 2057);
+INSERT INTO `sys_role_menu` VALUES (103, 2058);
+INSERT INTO `sys_role_menu` VALUES (103, 2061);
+INSERT INTO `sys_role_menu` VALUES (103, 2062);
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -1635,19 +1744,21 @@ CREATE TABLE `sys_user`  (
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `id_number` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证号',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '/profile/avatar/2023/05/17/blob_20230517125046A003.png', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-06-22 17:25:23', 'admin', '2023-05-07 10:41:24', '', '2023-06-22 17:25:22', '管理员', '370811200210286013');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '/profile/avatar/2023/05/17/blob_20230517125046A003.png', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-07-09 18:45:46', 'admin', '2023-05-07 10:41:24', '', '2023-07-09 18:45:45', '管理员', '370811200210286013');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$npQBtNRViJvAsCFtzj83D.ZsjSHPORKtC8m9bzlzwFYsPo.PgtiWu', '0', '0', '127.0.0.1', '2023-05-17 19:37:09', 'admin', '2023-05-07 10:41:24', 'admin', '2023-05-17 19:37:08', '测试员', '');
 INSERT INTO `sys_user` VALUES (3, 106, 'xixixi', '张三', '00', '1231@qq.com', '17367890876', '0', '', '$2a$10$CWKNoz8/1syxteHNvJcbweabP/rlDi8O3b7rowLyNJ8CVOs2SGWWe', '0', '0', '127.0.0.1', '2023-06-11 17:23:30', 'admin', '2023-05-16 15:54:26', 'admin', '2023-06-11 17:23:29', NULL, '370811200210289020');
-INSERT INTO `sys_user` VALUES (4, 107, 'xiaoxiao', '里斯', '00', '1231@qq.com', '15986578532', '1', '', '$2a$10$IpeFk8XMZ.pckULRyk3cdO31LmJOn5GKpJgj8fwOmAE6zmuSCNgTa', '0', '0', '127.0.0.1', '2023-06-21 09:59:13', 'admin', '2023-05-16 15:57:05', 'admin', '2023-06-21 09:59:13', NULL, '370811200210289020');
+INSERT INTO `sys_user` VALUES (4, 107, 'xiaoxiao', '里斯', '00', '12311@qq.com', '15986578532', '1', '', '$2a$10$IpeFk8XMZ.pckULRyk3cdO31LmJOn5GKpJgj8fwOmAE6zmuSCNgTa', '0', '0', '127.0.0.1', '2023-07-09 18:49:00', 'admin', '2023-05-16 15:57:05', 'admin', '2023-07-09 18:48:59', NULL, '370811200210289020');
 INSERT INTO `sys_user` VALUES (5, 108, 'xiao1', '王五', '00', '1231@qq.com', '12312334534', '1', '', '$2a$10$UNYmDlgIIX0Wt/U5ZrjTruEALYGgylaKy.EpyGHiIdFjElhTBSI3G', '0', '2', '127.0.0.1', '2023-06-06 09:23:59', 'admin', '2023-06-05 18:49:01', 'admin', '2023-06-06 09:23:59', NULL, '370811200210289020');
-INSERT INTO `sys_user` VALUES (10, 107, 'xiacoccc', '王五', '00', '1231@qq.com', '17367890876', '1', '', '$2a$10$Qt5vEzjJ3BCzEWA8Wbs3eulLCY24tmyPN1x0npDvpAI5vt/Egql56', '0', '0', '127.0.0.1', '2023-06-21 10:32:07', 'admin', '2023-06-07 14:51:03', '', '2023-06-21 10:32:07', NULL, '370811200210289020');
+INSERT INTO `sys_user` VALUES (10, 107, 'xiacoccc', '王五', '00', '123q1@qq.com', '17367890823', '1', '', '$2a$10$Qt5vEzjJ3BCzEWA8Wbs3eulLCY24tmyPN1x0npDvpAI5vt/Egql56', '0', '0', '127.0.0.1', '2023-07-09 18:31:23', 'admin', '2023-06-07 14:51:03', 'admin', '2023-07-09 18:31:23', NULL, '370811200210289020');
 INSERT INTO `sys_user` VALUES (100, 106, 'xiaoc', 'xiaoc', '00', '', '', '0', '', '$2a$10$ffmEwyTopgMlhxii2f0eWuSf13TNFbL84PE4SiYjutvdBs0q6U1P.', '0', '2', '127.0.0.1', '2023-06-06 09:39:06', '', '2023-05-14 11:26:05', '', '2023-06-06 09:39:05', NULL, '');
 INSERT INTO `sys_user` VALUES (101, NULL, 'xiaocc', 'xiaocc', '00', '', '', '0', '', '$2a$10$3QU.lpayCdPDhbN1NKk83ui8JgTS/OeGd1sQ1eJ7UA/qxNYg.1AbS', '0', '2', '127.0.0.1', '2023-06-06 09:25:35', '', '2023-06-04 11:33:39', '', '2023-06-06 09:25:34', NULL, NULL);
+INSERT INTO `sys_user` VALUES (102, NULL, 'huaqiang', 'huaqiang', '00', '', '', '0', '', '$2a$10$Vk8NNYHOVI/dapaf/aosIOABfyO/cwT8c1IWx2V3t/onPsIuktUMG', '0', '2', '127.0.0.1', '2023-07-09 18:41:40', '', '2023-07-09 16:12:22', '', '2023-07-09 18:41:40', NULL, NULL);
+INSERT INTO `sys_user` VALUES (103, NULL, 'beier', 'beier', '00', '', '', '0', '', '$2a$10$jmePOvhn4H2OegYQZ73lPechzTNoFRSjzitakHR2HOXCH6E0gYl6u', '0', '0', '127.0.0.1', '2023-07-09 18:55:31', '', '2023-07-09 18:55:12', '', '2023-07-09 18:55:31', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_user_post
@@ -1657,7 +1768,7 @@ CREATE TABLE `sys_user_post`  (
   `user_id` bigint NOT NULL COMMENT '用户ID',
   `post_id` bigint NOT NULL COMMENT '岗位ID',
   PRIMARY KEY (`user_id`, `post_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户与岗位关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户与岗位关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user_post
@@ -1673,16 +1784,17 @@ CREATE TABLE `sys_user_role`  (
   `user_id` bigint NOT NULL COMMENT '用户ID',
   `role_id` bigint NOT NULL COMMENT '角色ID',
   PRIMARY KEY (`user_id`, `role_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户和角色关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户和角色关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
 INSERT INTO `sys_user_role` VALUES (1, 1);
 INSERT INTO `sys_user_role` VALUES (2, 2);
-INSERT INTO `sys_user_role` VALUES (3, 100);
-INSERT INTO `sys_user_role` VALUES (4, 2);
-INSERT INTO `sys_user_role` VALUES (10, 2);
+INSERT INTO `sys_user_role` VALUES (4, 102);
+INSERT INTO `sys_user_role` VALUES (10, 103);
+INSERT INTO `sys_user_role` VALUES (103, 101);
+INSERT INTO `sys_user_role` VALUES (103, 103);
 
 -- ----------------------------
 -- Table structure for tb_apply
@@ -1698,7 +1810,7 @@ CREATE TABLE `tb_apply`  (
   `apply_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '应聘时间',
   `apply_audit` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '1' COMMENT '审核结果',
   PRIMARY KEY (`apply_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '应聘人信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '应聘人信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_apply
@@ -1722,7 +1834,7 @@ CREATE TABLE `tb_assets_total`  (
   `total_revenue` decimal(15, 2) NULL DEFAULT NULL COMMENT '总税收',
   `site_id` int NULL DEFAULT NULL COMMENT '所属工地',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工地资产统计表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工地资产统计表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_assets_total
@@ -1740,7 +1852,7 @@ CREATE TABLE `tb_check_point`  (
   `status` tinyint NULL DEFAULT NULL COMMENT '检测点状态 0:正常 1:未启用  2:维修中',
   `site_id` int NULL DEFAULT NULL COMMENT '所属工地',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '监测点信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '监测点信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_check_point
@@ -1759,7 +1871,7 @@ CREATE TABLE `tb_company`  (
   `company_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '公司名称',
   `type` int NULL DEFAULT NULL COMMENT '公司类型',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '公司信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '公司信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_company
@@ -1793,7 +1905,7 @@ CREATE TABLE `tb_company_type`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
   `type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '类型',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '公司类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '公司类型表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_company_type
@@ -1817,7 +1929,7 @@ CREATE TABLE `tb_environment_detection`  (
   `wind_speed` double NULL DEFAULT NULL COMMENT '风速(m/s)',
   `check_time` datetime NULL DEFAULT NULL COMMENT '检测时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '环境监测' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '环境监测' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_environment_detection
@@ -1851,12 +1963,12 @@ CREATE TABLE `tb_inform`  (
   `update_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`inform_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_inform
 -- ----------------------------
-INSERT INTO `tb_inform` VALUES (17, '智慧工地通知1', '1', '0', '<p>智慧工地</p>', '/profile/upload/2023/06/05/智慧工地_20230605185651A002.doc', 'admin', '2023-05-27 16:44:21', 'admin', '2023-06-05 18:57:30');
+INSERT INTO `tb_inform` VALUES (17, '智慧工地通知1', '1', '0', '<p>智慧工地</p>', '/profile/upload/2023/06/05/智慧工地_20230605185651A002.doc', 'admin', '2023-05-27 16:44:21', 'admin', '2023-07-09 15:57:19');
 INSERT INTO `tb_inform` VALUES (18, '智慧工地通知2', '2', '0', '<p>智慧工地</p>', '', 'admin', '2023-05-28 11:54:30', 'admin', '2023-06-05 19:00:50');
 INSERT INTO `tb_inform` VALUES (19, '智慧工地通知3', '2', '0', '<p>智慧工地</p>', NULL, 'admin', '2023-05-28 11:56:03', 'admin', '2023-06-05 19:00:45');
 INSERT INTO `tb_inform` VALUES (20, '智慧工地通知4', '2', '0', '<p>智慧工地</p>', NULL, 'admin', '2023-05-28 12:00:55', 'admin', '2023-06-05 19:00:41');
@@ -1873,7 +1985,7 @@ CREATE TABLE `tb_lingcheng_map`  (
   `area_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '区域名',
   `population` bigint NULL DEFAULT NULL COMMENT '人口',
   PRIMARY KEY (`map_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '陵城区区域' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '陵城区区域' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_lingcheng_map
@@ -1908,7 +2020,7 @@ CREATE TABLE `tb_news`  (
   `mask` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '备注',
   `site_id` int NULL DEFAULT NULL COMMENT '所属工地',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_news
@@ -1939,7 +2051,7 @@ CREATE TABLE `tb_project`  (
   `crew_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '施工队名字',
   `authentication` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否完成',
   PRIMARY KEY (`project_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_project
@@ -1959,6 +2071,7 @@ INSERT INTO `tb_project` VALUES (21, '新世界', NULL, 11, '2023-06-14 00:00:00
 DROP TABLE IF EXISTS `tb_recruitment`;
 CREATE TABLE `tb_recruitment`  (
   `item_id` bigint NOT NULL AUTO_INCREMENT COMMENT '项目id',
+  `crew_id` bigint NOT NULL COMMENT '公司id',
   `item_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '项目名称',
   `require_corporation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '招聘公司',
   `item_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '项目内容',
@@ -1970,15 +2083,15 @@ CREATE TABLE `tb_recruitment`  (
   `item_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '项目招聘状态',
   `release_time` datetime NULL DEFAULT NULL COMMENT '发布时间',
   PRIMARY KEY (`item_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '招聘公告表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '招聘公告表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_recruitment
 -- ----------------------------
-INSERT INTO `tb_recruitment` VALUES (1, '村建项目', '海天集团', '建设智慧村建', '德州市陵城区前孙镇', '水泥工', 10, '2023-12-20 00:00:00', '15269853654', '1', '2023-06-19 00:00:00');
-INSERT INTO `tb_recruitment` VALUES (2, '智慧村建', '海天集团', '建设智慧美丽乡村', '德州市陵城区前孙镇', '瓦工', 8, '2023-11-20 00:00:00', '15859635475', '0', '2023-06-20 00:00:00');
-INSERT INTO `tb_recruitment` VALUES (3, '智慧建设农村', '海天集团', '智慧建设农村', '德州市陵城区前孙镇', '钢筋工', 7, '2023-11-20 00:00:00', '15986325485', '0', '2023-06-20 00:00:00');
-INSERT INTO `tb_recruitment` VALUES (4, '智慧建设', '海天集团', '智慧村建', '德州市陵城区前孙镇', '壮工', 15, '2023-11-20 00:00:00', '1586953647', '0', '2023-06-20 00:00:00');
+INSERT INTO `tb_recruitment` VALUES (1, 8, '村建项目', '海天集团', '建设智慧村建', '德州市陵城区前孙镇', '水泥工', 10, '2023-12-20 00:00:00', '15269853654', '1', '2023-06-19 00:00:00');
+INSERT INTO `tb_recruitment` VALUES (2, 8, '智慧村建', '海天集团', '建设智慧美丽乡村', '德州市陵城区前孙镇', '瓦工', 8, '2023-11-20 00:00:00', '15859635475', '0', '2023-06-20 00:00:00');
+INSERT INTO `tb_recruitment` VALUES (3, 8, '智慧建设农村', '海天集团', '智慧建设农村', '德州市陵城区前孙镇', '钢筋工', 7, '2023-11-20 00:00:00', '15986325485', '0', '2023-06-20 00:00:00');
+INSERT INTO `tb_recruitment` VALUES (4, 8, '智慧建设', '海天集团', '智慧村建', '德州市陵城区前孙镇', '壮工', 15, '2023-11-20 00:00:00', '1586953647', '0', '2023-06-20 00:00:00');
 
 -- ----------------------------
 -- Table structure for tb_ruoyi_crew
@@ -1986,31 +2099,42 @@ INSERT INTO `tb_recruitment` VALUES (4, '智慧建设', '海天集团', '智慧�
 DROP TABLE IF EXISTS `tb_ruoyi_crew`;
 CREATE TABLE `tb_ruoyi_crew`  (
   `crew_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `user_id` bigint NULL DEFAULT NULL COMMENT '用户id',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '施工单位名称',
   `res_person` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '负责人',
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电话',
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地址',
-  `qualification` int NULL DEFAULT NULL COMMENT '资质（特级，1，2，3级对应0，1，2，3）',
+  `qualification` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资质',
   `finish_project` int NULL DEFAULT NULL COMMENT '已完成项目',
+  `initial_employee` int NULL DEFAULT 0 COMMENT '初始员工数量',
   `unfinish_project` int NULL DEFAULT NULL COMMENT '未完成项目',
   `popualtion` int NULL DEFAULT NULL COMMENT '员工数量',
   `build_time` datetime NULL DEFAULT NULL COMMENT '成立时间',
+  `apply_audit` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '审核结果',
+  `crew_nature` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '企业性质',
+  `area` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '占地面积',
+  `registered_capital` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '注册资金',
+  `reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '审核未通过原因',
+  `business_scope` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '经营范围',
+  `operating_term` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '经营期限',
+  `annual_inspection` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '年检情况',
   PRIMARY KEY (`crew_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_ruoyi_crew
 -- ----------------------------
-INSERT INTO `tb_ruoyi_crew` VALUES (1, '强盛集团', '高启强', '18239425875', '江苏省南通市启东市北新镇', 0, 1, 2, 111, '2023-06-07 00:00:00');
-INSERT INTO `tb_ruoyi_crew` VALUES (2, '建军集团', 'mark', '15510907681', '甘肃省兰州市西固区西柳沟街道', 1, 1, 1, 223, '2021-02-25 00:00:00');
-INSERT INTO `tb_ruoyi_crew` VALUES (3, '圣天集团', '陆雄霖  ', '02400164308', '山东省德州市德州运河经济开发区新区', 2, 1, 2, 112, '2023-06-13 00:00:00');
-INSERT INTO `tb_ruoyi_crew` VALUES (4, '华兴集团', ' 贾美欣   ', '02449899102', '上海市市辖区宝山区淞南镇', 2, 0, 1, 321, '2023-06-29 00:00:00');
-INSERT INTO `tb_ruoyi_crew` VALUES (5, '上天集团', '孔益帆', '08649464843', ' 河南省驻马店市遂平县凤鸣谷风景区', 2, 1, 2, 1112, '2023-06-27 00:00:00');
-INSERT INTO `tb_ruoyi_crew` VALUES (6, '御园集团', '鱼皮', '06798770143', '四川省巴中市巴中经济开发区时新街道', 2, 1, 2, 1231, '2023-06-26 00:00:00');
-INSERT INTO `tb_ruoyi_crew` VALUES (7, '建工集团', '胡润丽', '01784636828', '新疆维吾尔自治区乌鲁木齐市头屯河区兵团十二师三坪农场', 2, 1, 2, 1678, '2023-06-28 00:00:00');
-INSERT INTO `tb_ruoyi_crew` VALUES (8, '海天集团', ' 袁文昊', '08525666205', '青海省西宁市湟中区甘河工业园 ', 2, 1, 2, 1211, '2023-06-11 00:00:00');
-INSERT INTO `tb_ruoyi_crew` VALUES (9, '天海集团', '雷芳 ', '02542444789', '河南省驻马店市遂平县凤鸣谷风景区', 2, 1, 2, 1212, '2023-06-01 00:00:00');
-INSERT INTO `tb_ruoyi_crew` VALUES (10, '东方集团', '雷芳   ', '18766542424', '西藏自治区昌都市洛隆县硕督镇', 1, 2, 1, 2222, '2023-06-28 00:00:00');
+INSERT INTO `tb_ruoyi_crew` VALUES (1, 10, '强盛集团', '高启强', '18239425875', '江苏省南通市启东市北新镇', NULL, 0, 0, 1, 0, '2023-06-07 00:00:00', '0', '民营', '1221', '1122', '二次元浓度超标', '建筑', '10年', '好');
+INSERT INTO `tb_ruoyi_crew` VALUES (2, 10, '建军集团', 'mark', '15510907681', '甘肃省兰州市西固区西柳沟街道', NULL, 3, 0, 1, 7, '2021-02-25 00:00:00', '2', '12', '12', '2221', '不行', NULL, NULL, NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (3, 10, '圣天集团', '陆雄霖  ', '02400164308', '山东省德州市德州运河经济开发区新区', NULL, 1, 0, 0, 1, '2023-06-13 00:00:00', '0', '121', '121', '112', NULL, NULL, NULL, NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (4, 10, '华兴集团', ' 贾美欣   ', '02449899102', '上海市市辖区宝山区淞南镇', NULL, 1, 0, 0, 1, '2023-06-29 00:00:00', '2', '212', '1', '21', NULL, NULL, NULL, NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (5, 10, '上天集团', '孔益帆', '08649464843', ' 河南省驻马店市遂平县凤鸣谷风景区', NULL, 1, 0, 0, 0, '2023-06-27 00:00:00', '0', '212', '212', '12', NULL, NULL, NULL, NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (6, 10, '御园集团', '鱼皮', '06798770143', '四川省巴中市巴中经济开发区时新街道', NULL, 0, 0, 0, 0, '2023-06-26 00:00:00', '0', '12', '121', '12', NULL, NULL, NULL, NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (7, 10, '建工集团', '胡润丽', '01784636828', '新疆维吾尔自治区乌鲁木齐市头屯河区兵团十二师三坪农场', NULL, 0, 0, 0, 0, '2023-06-28 00:00:00', '2', '12', '12', '21', NULL, NULL, NULL, NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (8, 10, '海天集团', ' 袁文昊', '08525666205', '青海省西宁市湟中区甘河工业园 ', NULL, 0, 0, 0, 0, '2023-06-11 00:00:00', '0', '12', '12', '331', NULL, NULL, NULL, NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (9, 10, '天海集团', '雷芳 ', '02542444789', '河南省驻马店市遂平县凤鸣谷风景区', NULL, 0, 0, 0, 0, '2023-06-01 00:00:00', '0', '12', '22', '33', NULL, NULL, NULL, NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (10, 10, '东方集团', '雷芳   ', '18766542424', '西藏自治区昌都市洛隆县硕督镇', NULL, 0, 0, 0, 0, '2023-06-28 00:00:00', '2', '12', '31', '21', NULL, NULL, NULL, NULL);
+INSERT INTO `tb_ruoyi_crew` VALUES (23, 103, '贝儿集团', '贝儿', '19853411793', '上海市', '优质', 0, 100, 0, 100, '2023-07-09 00:00:00', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for tb_ruoyi_type
@@ -2021,7 +2145,7 @@ CREATE TABLE `tb_ruoyi_type`  (
   `name` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '工种名',
   `brief` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '工种简介',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_ruoyi_type
@@ -2047,26 +2171,28 @@ CREATE TABLE `tb_ruoyi_worker`  (
   `pol_status` int NULL DEFAULT NULL COMMENT '政治面貌',
   `crew_id` int NULL DEFAULT NULL COMMENT '属于哪一个施工队',
   `project_now` int NULL DEFAULT NULL COMMENT '正在进行的项目',
-  `authentication` int NULL DEFAULT NULL COMMENT '是否认证',
+  `authentication` int NULL DEFAULT 0 COMMENT '是否认证',
   `id_number` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证号',
+  `username` varchar(26) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `password` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 11217 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_ruoyi_worker
 -- ----------------------------
-INSERT INTO `tb_ruoyi_worker` VALUES (3, '方伟洋', 0, 42, '19010996062', '江西省九江市德安县爱民乡', '西藏自治区日喀则市康马县涅如麦乡', 1, 5, 1, 1, '330201199607081324');
-INSERT INTO `tb_ruoyi_worker` VALUES (4, '郭文轩', 0, 33, '17676611492', '四川省广元市昭化区太公镇', '陕西省汉中市留坝县玉皇庙镇', 1, 4, 2, 1, '310101199508191406');
-INSERT INTO `tb_ruoyi_worker` VALUES (5, '范昕蕊', 1, 33, '13851033537', '湖南省怀化市辰溪县船溪乡', '河南省商丘市豫东综合物流产业聚集区中州街道', 1, 2, 3, 0, '430101200002216998');
-INSERT INTO `tb_ruoyi_worker` VALUES (7, '沈文杰', 1, 25, '15087627145', '广东省云浮市云安区都杨镇', '安徽省芜湖市弋江区龙湖街道', 0, 3, 4, 1, '120201200111093192');
-INSERT INTO `tb_ruoyi_worker` VALUES (1123, '任子璇', 0, 34, '1231231231', '河南省漯河市召陵区召陵区召陵镇', '云南省昆明市西山区昆明滇池国家旅游度假区', 1, 2, 5, 1, '450101199306011957');
-INSERT INTO `tb_ruoyi_worker` VALUES (3572, '黄苒溪', 1, 23, '15253451111', '江苏省扬州市广陵区沙头镇', '新疆维吾尔自治区巴音郭楞蒙古自治州尉犁县兴平镇', 1, 2, 6, 1, '320201197801174857');
-INSERT INTO `tb_ruoyi_worker` VALUES (3573, '刘延旭', 0, 51, '221312213', '海南省省直辖县级行政区划文昌市翁田镇', '青海省海南藏族自治州兴海县龙藏乡', 0, 2, 7, 1, '350101199405246408');
-INSERT INTO `tb_ruoyi_worker` VALUES (3578, '金慧嘉', 0, 88, '1231231231', '湖南省益阳市益阳市大通湖管理区金盆镇', '河南省郑州市中牟县豫兴街道     北京市市辖区房山区南窖乡', 1, 2, 2, 1, '140201199207144327');
-INSERT INTO `tb_ruoyi_worker` VALUES (3579, '方天赫', 0, 46, '1241241241', '云南省昭通市威信县扎西镇', '西藏自治区那曲市索县若达乡', 0, 2, 3, 1, '460101197404039390');
-INSERT INTO `tb_ruoyi_worker` VALUES (11213, '孙淼', 0, 42, '1231231231', '北京市市辖区朝阳区黑庄户地区', '安徽省淮南市八公山区八公山镇', 1, 2, 4, 1, '620201199904017846');
-INSERT INTO `tb_ruoyi_worker` VALUES (11214, '谢晨璐', 0, 26, '123152121', '北京市市辖区海淀区北太平庄街道', '云南省红河哈尼族彝族自治州河口瑶族自治县莲花滩乡', 1, 2, 1, 1, '370101197312034486');
-INSERT INTO `tb_ruoyi_worker` VALUES (11216, '阎淑君', 0, 65, '1231231231', '陕西省宝鸡市扶风县午井镇     河北省秦皇岛市北戴河区西山街道', '辽宁省大连市普兰店区唐家房街道', 0, 2, 2, 1, '540201198703099940');
+INSERT INTO `tb_ruoyi_worker` VALUES (3, '方伟洋', 0, 42, '19010996062', '江西省九江市德安县爱民乡', '西藏自治区日喀则市康马县涅如麦乡', 1, NULL, NULL, 0, '330201199607081324', 'fangweiyang', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (4, '郭文轩', 0, 33, '17676611492', '四川省广元市昭化区太公镇', '陕西省汉中市留坝县玉皇庙镇', 1, 4, 2, 0, '310101199508191406', 'guowenxuan', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (5, '范昕蕊', 1, 33, '13851033537', '湖南省怀化市辰溪县船溪乡', '河南省商丘市豫东综合物流产业聚集区中州街道', 1, 2, 3, 2, '430101200002216998', 'fanxinrui', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (7, '沈文杰', 1, 25, '15087627145', '广东省云浮市云安区都杨镇', '安徽省芜湖市弋江区龙湖街道', 0, 3, 4, 1, '120201200111093192', 'shenwenjie', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (1123, '任子璇', 0, 34, '1231231231', '河南省漯河市召陵区召陵区召陵镇', '云南省昆明市西山区昆明滇池国家旅游度假区', 1, 2, 5, 0, '450101199306011957', 'renzixuan', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (3572, '黄苒溪', 1, 23, '15253451111', '江苏省扬州市广陵区沙头镇', '新疆维吾尔自治区巴音郭楞蒙古自治州尉犁县兴平镇', 1, 2, 6, 1, '320201197801174857', 'huangranxi', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (3573, '刘延旭', 0, 51, '221312213', '海南省省直辖县级行政区划文昌市翁田镇', '青海省海南藏族自治州兴海县龙藏乡', 0, 2, 7, 1, '350101199405246408', 'liuyanxu', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (3578, '金慧嘉', 0, 88, '1231231231', '湖南省益阳市益阳市大通湖管理区金盆镇', '河南省郑州市中牟县豫兴街道     北京市市辖区房山区南窖乡', 1, 2, 2, 1, '140201199207144327', 'jinhuijia', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (3579, '方天赫', 0, 46, '1241241241', '云南省昭通市威信县扎西镇', '西藏自治区那曲市索县若达乡', 0, NULL, NULL, 1, '460101197404039390', 'fangtianhe', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (11213, '孙淼', 0, 42, '1231231231', '北京市市辖区朝阳区黑庄户地区', '安徽省淮南市八公山区八公山镇', 1, NULL, NULL, 0, '620201199904017846', 'sunmiao', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (11214, '谢晨璐', 0, 26, '123152121', '北京市市辖区海淀区北太平庄街道', '云南省红河哈尼族彝族自治州河口瑶族自治县莲花滩乡', 1, 2, 1, 1, '370101197312034486', 'xiechenlu', '123456');
+INSERT INTO `tb_ruoyi_worker` VALUES (11216, '阎淑君', 0, 65, '1231231231', '陕西省宝鸡市扶风县午井镇     河北省秦皇岛市北戴河区西山街道', '辽宁省大连市普兰店区唐家房街道', 0, 2, 2, 1, '540201198703099940', 'yanshujun', '123456');
 
 -- ----------------------------
 -- Table structure for tb_ruoyi_worker_type
@@ -2075,7 +2201,7 @@ DROP TABLE IF EXISTS `tb_ruoyi_worker_type`;
 CREATE TABLE `tb_ruoyi_worker_type`  (
   `worker_id` int NULL DEFAULT NULL COMMENT '用户id',
   `type_id` int NULL DEFAULT NULL COMMENT '工种id'
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_ruoyi_worker_type
@@ -2111,7 +2237,7 @@ CREATE TABLE `tb_site_info`  (
   `Construction_erea` double(7, 2) NULL DEFAULT NULL COMMENT '建筑面积',
   `Construction_land_erea` double(7, 2) NULL DEFAULT NULL COMMENT '建设用地面积',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工地概览表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '工地概览表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_site_info
@@ -2130,7 +2256,7 @@ CREATE TABLE `tb_survey`  (
   `survey_result` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '调查等级',
   `survey_time` datetime NULL DEFAULT NULL COMMENT '调查时间',
   PRIMARY KEY (`survey_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '满意度检查' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '满意度检查' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_survey
@@ -2160,12 +2286,12 @@ CREATE TABLE `tb_user_inform_status`  (
   `status` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '已读状态',
   `time` datetime NULL DEFAULT NULL COMMENT '时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 77 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户通知状态信息' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户通知状态信息' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_user_inform_status
 -- ----------------------------
-INSERT INTO `tb_user_inform_status` VALUES (26, 17, '1', 1, 'admin', '若依', '0', '2023-06-11 16:54:59');
+INSERT INTO `tb_user_inform_status` VALUES (26, 17, '1', 1, 'admin', '若依', '0', '2023-07-09 15:57:16');
 INSERT INTO `tb_user_inform_status` VALUES (27, 17, '1', 2, 'ry', '若依', '1', '2023-05-27 16:44:21');
 INSERT INTO `tb_user_inform_status` VALUES (28, 17, '1', 3, 'xixixi', '张三', '0', '2023-06-07 11:31:21');
 INSERT INTO `tb_user_inform_status` VALUES (29, 17, '1', 4, 'xiaoxiao', '里斯', '1', '2023-05-27 16:44:21');
@@ -2175,7 +2301,7 @@ INSERT INTO `tb_user_inform_status` VALUES (32, 18, '21', 2, 'ry', '若依', '1'
 INSERT INTO `tb_user_inform_status` VALUES (33, 18, '21', 3, 'xixixi', '张三', '1', '2023-05-28 11:54:30');
 INSERT INTO `tb_user_inform_status` VALUES (34, 18, '21', 4, 'xiaoxiao', '里斯', '1', '2023-05-28 11:54:30');
 INSERT INTO `tb_user_inform_status` VALUES (35, 18, '21', 100, 'xiaoc', 'xiaoc', '0', '2023-06-06 09:22:24');
-INSERT INTO `tb_user_inform_status` VALUES (36, 19, '12', 1, 'admin', '若依', '0', '2023-06-05 20:16:37');
+INSERT INTO `tb_user_inform_status` VALUES (36, 19, '12', 1, 'admin', '若依', '0', '2023-07-09 15:56:48');
 INSERT INTO `tb_user_inform_status` VALUES (37, 19, '12', 2, 'ry', '若依', '1', '2023-05-28 11:56:03');
 INSERT INTO `tb_user_inform_status` VALUES (38, 19, '12', 3, 'xixixi', '张三', '1', '2023-05-28 11:56:03');
 INSERT INTO `tb_user_inform_status` VALUES (39, 19, '12', 4, 'xiaoxiao', '里斯', '1', '2023-05-28 11:56:03');
@@ -2197,7 +2323,7 @@ INSERT INTO `tb_user_inform_status` VALUES (54, 22, '1212121212', 3, 'xixixi', '
 INSERT INTO `tb_user_inform_status` VALUES (55, 22, '1212121212', 4, 'xiaoxiao', '里斯', '1', '2023-06-05 18:19:00');
 INSERT INTO `tb_user_inform_status` VALUES (56, 22, '1212121212', 100, 'xiaoc', 'xiaoc', '0', '2023-06-06 09:22:33');
 INSERT INTO `tb_user_inform_status` VALUES (57, 22, '1212121212', 101, 'xiaocc', 'xiaocc', '1', '2023-06-05 18:19:00');
-INSERT INTO `tb_user_inform_status` VALUES (58, 23, 'zhihui', 1, 'admin', '若依', '0', '2023-06-10 15:37:57');
+INSERT INTO `tb_user_inform_status` VALUES (58, 23, 'zhihui', 1, 'admin', '若依', '0', '2023-07-09 15:57:09');
 INSERT INTO `tb_user_inform_status` VALUES (59, 23, 'zhihui', 2, 'ry', '若依', '1', '2023-06-06 09:44:16');
 INSERT INTO `tb_user_inform_status` VALUES (60, 23, 'zhihui', 3, 'xixixi', '张三', '1', '2023-06-06 09:44:16');
 INSERT INTO `tb_user_inform_status` VALUES (61, 23, 'zhihui', 4, 'xiaoxiao', '里斯', '1', '2023-06-06 09:44:16');
@@ -2233,7 +2359,7 @@ CREATE TABLE `tb_video_detail`  (
   `createTime` datetime NULL DEFAULT NULL,
   `createBy` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`video_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_video_detail
@@ -2275,7 +2401,7 @@ CREATE TABLE `user_video_log`  (
   `lastTime` decimal(8, 5) NULL DEFAULT NULL,
   `allTime` decimal(8, 5) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user_video_log
@@ -2283,62 +2409,5 @@ CREATE TABLE `user_video_log`  (
 INSERT INTO `user_video_log` VALUES (1, 1, 1, 46.61333, NULL);
 INSERT INTO `user_video_log` VALUES (2, 1, 5, 4.44512, NULL);
 INSERT INTO `user_video_log` VALUES (3, 10, 9, 12.39467, NULL);
-
-SET FOREIGN_KEY_CHECKS = 1;
- /*
- Navicat Premium Data Transfer
-
- Source Server         : first
- Source Server Type    : MySQL
- Source Server Version : 80033 (8.0.33)
- Source Host           : localhost:3306
- Source Schema         : ruoyi
-
- Target Server Type    : MySQL
- Target Server Version : 80033 (8.0.33)
- File Encoding         : 65001
-
- Date: 07/07/2023 20:20:12
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for tb_ruoyi_crew
--- ----------------------------
-DROP TABLE IF EXISTS `tb_ruoyi_crew`;
-CREATE TABLE `tb_ruoyi_crew`  (
-                                  `crew_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-                                  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '施工单位名称',
-                                  `res_person` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '负责人',
-                                  `phone` varchar(11) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '电话',
-                                  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '地址',
-                                  `qualification` int NULL DEFAULT NULL COMMENT '资质（特级，1，2，3级对应0，1，2，3）',
-                                  `finish_project` int NULL DEFAULT NULL COMMENT '已完成项目',
-                                  `unfinish_project` int NULL DEFAULT NULL COMMENT '未完成项目',
-                                  `popualtion` int NULL DEFAULT NULL COMMENT '员工数量',
-                                  `build_time` datetime NULL DEFAULT NULL COMMENT '成立时间',
-                                  `apply_audit` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT '1' COMMENT '审核结果',
-                                  `crew_nature` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '企业性质',
-                                  `area` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '占地面积',
-                                  `registered_capital` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '注册资金',
-                                  `reason` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '审核未通过原因',
-                                  PRIMARY KEY (`crew_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of tb_ruoyi_crew
--- ----------------------------
-INSERT INTO `tb_ruoyi_crew` VALUES (1, '强盛集团', '高启强', '18239425875', '江苏省南通市启东市北新镇', 0, 0, 1, 11, '2023-06-07 00:00:00', '2', '民营', '1221', '1122', NULL);
-INSERT INTO `tb_ruoyi_crew` VALUES (2, '建军集团', 'mark', '15510907681', '甘肃省兰州市西固区西柳沟街道', 1, 3, 1, 22, '2021-02-25 00:00:00', '0', '12', '12', '2221', NULL);
-INSERT INTO `tb_ruoyi_crew` VALUES (3, '圣天集团', '陆雄霖  ', '02400164308', '山东省德州市德州运河经济开发区新区', 2, 1, 0, 11, '2023-06-13 00:00:00', '0', '121', '121', '112', NULL);
-INSERT INTO `tb_ruoyi_crew` VALUES (4, '华兴集团', ' 贾美欣   ', '02449899102', '上海市市辖区宝山区淞南镇', 2, 1, 0, 32, '2023-06-29 00:00:00', '2', '212', '1', '21', NULL);
-INSERT INTO `tb_ruoyi_crew` VALUES (5, '上天集团', '孔益帆', '08649464843', ' 河南省驻马店市遂平县凤鸣谷风景区', 2, 1, 0, 111, '2023-06-27 00:00:00', '0', '212', '212', '12', NULL);
-INSERT INTO `tb_ruoyi_crew` VALUES (6, '御园集团', '鱼皮', '06798770143', '四川省巴中市巴中经济开发区时新街道', 2, 1, 2, 123, '2023-06-26 00:00:00', '0', '12', '121', '12', NULL);
-INSERT INTO `tb_ruoyi_crew` VALUES (7, '建工集团', '胡润丽', '01784636828', '新疆维吾尔自治区乌鲁木齐市头屯河区兵团十二师三坪农场', 2, 0, 0, 167, '2023-06-28 00:00:00', '2', '12', '12', '21', NULL);
-INSERT INTO `tb_ruoyi_crew` VALUES (8, '海天集团', ' 袁文昊', '08525666205', '青海省西宁市湟中区甘河工业园 ', 2, 1, 2, 121, '2023-06-11 00:00:00', '0', '12', '12', '331', NULL);
-INSERT INTO `tb_ruoyi_crew` VALUES (9, '天海集团', '雷芳 ', '02542444789', '河南省驻马店市遂平县凤鸣谷风景区', 2, 1, 2, 121, '2023-06-01 00:00:00', '0', '12', '22', '33', NULL);
-INSERT INTO `tb_ruoyi_crew` VALUES (10, '东方集团', '雷芳   ', '18766542424', '西藏自治区昌都市洛隆县硕督镇', 1, 2, 1, 222, '2023-06-28 00:00:00', '2', '12', '31', '21', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
