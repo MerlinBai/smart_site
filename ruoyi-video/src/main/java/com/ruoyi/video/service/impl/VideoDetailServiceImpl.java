@@ -50,7 +50,33 @@ public class VideoDetailServiceImpl implements IVideoDetailService
     @Override
     public List<VideoDetail> selectVideoDetailList(VideoDetail videoDetail)
     {
+        int flag=0;
         List<VideoDetail> videoDetails = videoDetailMapper.selectVideoDetailList(videoDetail);
+        float size = videoDetails.size();
+        for (int i=0;i<size;i++) {
+            if (videoDetails.get(i).getDone()!=0){
+                flag++;
+            }
+
+        }
+        if (size==0){
+            for (int j = 0; j < size; j++) {
+                VideoDetail videoDetail1 = videoDetails.get(j);
+                videoDetail1.setPercentage(flag/1);
+                videoDetails.set(j,videoDetail1);
+            }
+
+
+
+        }
+        else {
+            for (int j = 0; j < size; j++) {
+                VideoDetail videoDetail2 = videoDetails.get(j);
+                videoDetail2.setPercentage(flag / size);
+                videoDetails.set(j,videoDetail2);
+            }
+
+        }
 
         Collections.sort(videoDetails, new Comparator<VideoDetail>() {
             @Override
@@ -155,6 +181,7 @@ public class VideoDetailServiceImpl implements IVideoDetailService
     public void lasttime(UserLog userlog) {
         UserLog ul = videoDetailMapper.selectLog(userlog);
         if(ul != null) {
+
             if(userlog.getLastTime() < ul.getLastTime())
                 userlog.setLastTime(ul.getLastTime());
             videoDetailMapper.updateLog(userlog);
@@ -167,5 +194,17 @@ public class VideoDetailServiceImpl implements IVideoDetailService
     @Override
     public Double getlast(UserLog userLog) {
         return videoDetailMapper.getlast(userLog);
+    }
+
+    /**
+     * 新增记录视频观看时长
+     *
+     * @param videoDetail 记录视频观看时长
+     * @return 结果
+     */
+//    @Override
+    public int insertVideoDetail02(VideoDetail videoDetail){
+
+        return videoDetailMapper.insertVideoDetail(videoDetail);
     }
 }

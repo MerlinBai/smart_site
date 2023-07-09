@@ -4,7 +4,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.common.annotation.Anonymous;
+import com.ruoyi.crew.mapper.RuoyiCrewMapper;
 import com.ruoyi.project.domain.Project;
+import com.ruoyi.worker.domain.RuoyiWorker;
+import com.ruoyi.worker.mapper.RuoyiWorkerMapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,24 +33,43 @@ import com.ruoyi.common.core.page.TableDataInfo;
  * 
  * @author ruoyi
  * @date 2023-06-07
+ *
  */
+
 @Anonymous
 @RestController
 @RequestMapping("/crew/crew")
+
 public class RuoyiCrewController extends BaseController
 {
     @Autowired
     private IRuoyiCrewService ruoyiCrewService;
+    @Autowired
+    private RuoyiCrewMapper ruoyiCrewMapper;
+    @Autowired
+    private RuoyiWorkerMapper ruoyiWorkerMapper;
 
     /**
      * 查询施工队信息列表
      */
 //    @PreAuthorize("@ss.hasPermi('crew:crew:list')")
     @GetMapping("/list")
-    public TableDataInfo list(RuoyiCrew ruoyiCrew, Project project)
+    public TableDataInfo list(RuoyiCrew ruoyiCrew, Project project, RuoyiWorker worker)
     {
+
         startPage();
         List<RuoyiCrew> list = ruoyiCrewService.selectRuoyiCrewList(ruoyiCrew,project);
+        List<RuoyiWorker> workers =ruoyiWorkerMapper.selectRuoyiWorkerList(worker);
+        for (RuoyiCrew crew:list){
+            for (RuoyiWorker work: workers) {
+                if(crew.getCrewId().equals(work.getCrewId()))
+                {
+
+                    crew.setPopualtion(crew.getPopualtion()+1L);
+                }
+            }
+
+        }
         return getDataTable(list);
     }
 

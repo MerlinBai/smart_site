@@ -20,11 +20,13 @@
         <result property="registeredCapital"    column="registered_capital"    />
         <result property="applyAudit"    column="apply_audit"    />
         <result property="area"      column="area"/>
-        <result property="reason"      column="reason"/>
+        <result property="businessScope"      column="business_scope"/>
+        <result property="operatingTerm"      column="operating_term"/>
+        <result property="annualInspection"      column="annual_inspection"/>
     </resultMap>
 
     <sql id="selectRuoyiCrewVo">
-        select crew_id, name, res_person, phone, address, qualification, finish_project, unfinish_project, popualtion, build_time, apply_audit,crew_nature,registered_capital,area,reason from tb_ruoyi_crew
+        select crew_id, name, res_person, phone, address, qualification, finish_project, unfinish_project, popualtion, build_time, apply_audit,crew_nature,registered_capital,area,reason,business_scope,operating_term,annual_inspection from tb_ruoyi_crew
     </sql>
 
     <select id="selectRuoyiCrewList" parameterType="RuoyiCrew" resultMap="RuoyiCrewResult">
@@ -81,6 +83,7 @@
             <if test="popualtion != null">popualtion = #{popualtion},</if>
             <if test="buildTime != null">build_time = #{buildTime},</if>
             <if test="applyAudit != null">apply_audit = #{applyAudit},</if>
+            <if test="reason != null">reason= #{reason},</if>
         </trim>
         where crew_id = #{crewId}
     </update>

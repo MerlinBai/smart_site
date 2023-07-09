@@ -1,6 +1,7 @@
 package com.ruoyi.worker.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +13,7 @@ import com.ruoyi.common.utils.bean.BeanValidators;
 import com.ruoyi.crew.domain.RuoyiCrew;
 import com.ruoyi.crew.mapper.RuoyiCrewMapper;
 import com.ruoyi.project.mapper.ProjectMapper;
+import com.ruoyi.worker.domain.Message;
 import com.ruoyi.worker.domain.RuoyiWorker;
 import com.ruoyi.worker.domain.RuoyiWorkerType;
 import com.ruoyi.worker.mapper.RuoyiTypeMapper;
@@ -33,7 +35,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
 {
-    @Autowired
+ @Autowired
     private RuoyiWorkerMapper ruoyiWorkerMapper;
 
     @Autowired
@@ -65,7 +67,7 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
     /**
      * 查询员工管理列表
      * 
-     * @param ruoyiWorker 员工管理
+//     * @param ruoyiWorker 员工管理
      * @return 员工管理
      */
     @Override
@@ -315,6 +317,32 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
     }
 
     public int updateAuthentication(RuoyiWorker ruoyiWorker){
-        return ruoyiWorkerMapper.updateRuoyiWorker(ruoyiWorker);
+        Integer res = ruoyiWorkerMapper.updateRuoyiWorker(ruoyiWorker);
+
+        Message message = new Message();
+        if (ruoyiWorker.getAuthentication() == 2)
+            message.setBody("您的成为工匠审核已通过，恭喜您正式成为一名工匠，请再接再厉，祝您步步高升，前程似锦！");
+        else
+            message.setBody("您的成为工匠审核暂未通过，请尝试联系XXXXXXX了解详细情况。");
+        message.setCreateTime(new Date());
+        message.setCreateBy("智慧村建官方");
+        message.setTitle("审核通知");
+        message.setRec(ruoyiWorker.getId());
+
+
+        ruoyiWorkerMapper.addmsg(message);
+
+        return res;
     }
+
+    @Override
+    public List<Message> list(Long id) {
+        return ruoyiWorkerMapper.list(id);
+    }
+
+    @Override
+    public void updatemsg(RuoyiWorker ruoyiWorker) {
+        ruoyiWorkerMapper.upmsg(ruoyiWorker);
+    }
+
 }

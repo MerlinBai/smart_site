@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ruoyi.worker.domain.Message;
 import com.ruoyi.worker.domain.RuoyiWorker;
 import com.ruoyi.worker.mapper.RuoyiTypeMapper;
 import com.ruoyi.worker.mapper.RuoyiWorkerTypeMapper;
@@ -162,5 +163,25 @@ public class RuoyiWorkerController extends BaseController
     @PutMapping("/authentication")
     public AjaxResult updateAuthentication(RuoyiWorker ruoyiWorker){
         return success(ruoyiWorkerService.updateAuthentication(ruoyiWorker));
+    }
+
+    /**
+     * 查看消息
+     * @param ruoyiWorker
+     * @return
+     */
+    @PutMapping("/updatemsg")
+    public AjaxResult updateMsgRead(@RequestBody RuoyiWorker ruoyiWorker) {
+        ruoyiWorkerService.updatemsg(ruoyiWorker);
+        return success();
+    }
+
+    /**
+     * 查询消息列表
+     * @return
+     */
+    @PostMapping("/message")
+    public AjaxResult selmsg(Long id) {
+        return success(ruoyiWorkerService.list(id));
     }
 }
