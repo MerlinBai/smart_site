@@ -87,11 +87,11 @@
       <!--      <el-table-column label="已完成项目" align="center" prop="finishProject" />-->
       <!--      <el-table-column label="未完成项目" align="center" prop="unfinishProject" />-->
       <el-table-column label="员工数量" align="center" prop="popualtion" />
-      <el-table-column label="成立时间" align="center" prop="buildTime" width="180">
-        <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.buildTime, '{y}-{m}-{d}') }}</span>
-        </template>
-      </el-table-column>
+<!--      <el-table-column label="成立时间" align="center" prop="buildTime" width="180">-->
+<!--        <template slot-scope="scope">-->
+<!--          <span>{{ parseTime(scope.row.buildTime, '{y}-{m}-{d}') }}</span>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column label="审核结果" align="center" prop="applyAudit">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.audit" :value="scope.row.applyAudit"/>
@@ -117,8 +117,19 @@
           >审核未通过</el-button>
         </template>
       </el-table-column>
-
-
+      <el-table-column label="原因" align="center" class-name="small-padding fixed-width">
+        <template slot-scope="scope">
+          <el-button
+            type="primary"
+            round
+            icon="el-icon-edit"
+            size="mini"
+            @click="handleUpdate1(scope.row)"
+            @click.native.stop
+            v-hasPermi="['system:crew:edit']"
+          >未通过原因</el-button>
+        </template>
+      </el-table-column>
     </el-table>
 
     <pagination
@@ -185,7 +196,9 @@
         <el-descriptions-item label="未完成项目">
           {{row.unFinSumName }}
         </el-descriptions-item>
-
+        <el-descriptions-item label="成立时间">
+          {{row.buildTime }}
+        </el-descriptions-item>
         <el-descriptions-item label="企业性质">
           {{row.crewNature}}
         </el-descriptions-item>
@@ -195,6 +208,15 @@
         <el-descriptions-item label="占地面积（平方千米）">
           {{row.area}}
         </el-descriptions-item>
+        <el-descriptions-item label="经营范围">
+          {{row.businessScope}}
+        </el-descriptions-item>
+        <el-descriptions-item label="经营期限">
+          {{row.operatingTerm}}
+        </el-descriptions-item>
+        <el-descriptions-item label="年检情况">
+          {{row.annualInspection}}
+        </el-descriptions-item>
         <el-descriptions-item label="联系方式">
           {{row.phone}}
         </el-descriptions-item>
@@ -202,6 +224,17 @@
 
     </el-dialog>
 
+    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="85px">
+        <el-form-item label="未通过原因" prop="reason">
+          <el-input v-model="form.reason" placeholder="请输入审核未通过原因" />
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="submitForm">确 定</el-button>
+        <el-button @click="cancel">取 消</el-button>
+      </div>
+    </el-dialog>
   </div>
 
 
@@ -317,6 +350,16 @@ export default {
       this.open = true;
       this.title = "添加施工队信息";
     },
+    /** 填写原因操作 */
+    handleUpdate1(row) {
+      const crewId = row.crewId || this.ids
+      getCrew(crewId).then(response => {
+        this.form = response.data;
+        this.open = true;
+        this.title = "未通过原因";
+      });
+    },
+
     /** 修改按钮操作 */
     handleUpdate(row,is) {
       const crewId = row.crewId || this.ids
@@ -338,7 +381,7 @@ export default {
         if (valid) {
           if (this.form.crewId != null) {
             updateCrew(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
+              this.$modal.msgSuccess("填写成功");
               this.open = false;
               this.getList();
             });

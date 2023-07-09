@@ -162,6 +162,35 @@ public class RuoyiCrew extends BaseEntity
     private String area;
     private String registeredCapital;
     private String reason;
+    private String businessScope;
+
+    public String getBusinessScope() {
+        return businessScope;
+    }
+
+    public void setBusinessScope(String businessScope) {
+        this.businessScope = businessScope;
+    }
+
+    public String getOperatingTerm() {
+        return operatingTerm;
+    }
+
+    public void setOperatingTerm(String operatingTerm) {
+        this.operatingTerm = operatingTerm;
+    }
+
+    public String getAnnualInspection() {
+        return annualInspection;
+    }
+
+    public void setAnnualInspection(String annualInspection) {
+        this.annualInspection = annualInspection;
+    }
+
+    private String operatingTerm;
+    private String annualInspection;
+
 
     public String getReason() {
         return reason;
@@ -251,7 +280,6 @@ public class RuoyiCrew extends BaseEntity
     public void setUnfinishProjects(List<Integer> unfinishProjects) {
         this.unfinishProjects = unfinishProjects;
     }
-
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
