@@ -35,7 +35,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
 {
-    @Autowired
+ @Autowired
     private RuoyiWorkerMapper ruoyiWorkerMapper;
 
     @Autowired
@@ -67,7 +67,7 @@ public class RuoyiWorkerServiceImpl implements IRuoyiWorkerService
     /**
      * 查询员工管理列表
      * 
-     * @param ruoyiWorker 员工管理
+//     * @param ruoyiWorker 员工管理
      * @return 员工管理
      */
     @Override
